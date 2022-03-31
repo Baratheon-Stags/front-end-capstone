@@ -1,0 +1,43 @@
+{
+  "name": "front-end-capstone",
+  "version": "1.0.0",
+  "description": "Frontend Capstone group formed to build the frontend of an e-commerce site.",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Baratheon-Stags/front-end-capstone.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Baratheon-Stags/front-end-capstone/issues"
+  },
+  "homepage": "https://github.com/Baratheon-Stags/front-end-capstone#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-react": "^7.16.7",
+    "babel-loader": "^8.2.4",
+    "eslint": "^8.12.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-react": "^7.29.4",
+    "eslint-plugin-react-hooks": "^4.4.0",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3",
+    "nodemon": "^2.0.15",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "style-components": "^0.1.0"
+  }
+}
