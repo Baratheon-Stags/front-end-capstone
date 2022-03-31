@@ -1,9 +1,13 @@
 import React from 'react';
 
-const App = () => (
-  <div>
-    Hello World
-  </div>
-);
+const App = () => {
+  console.log('hello world');
+
+  return (
+    <div>
+      Hello World
+    </div>
+  );
+};
 
 export default App;
