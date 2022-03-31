@@ -1,4 +1,3 @@
-/* eslint-disable */
 /*
  * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
  * This devtool is neither made for production nor for readable output files.
@@ -16,18 +15,18 @@
   \**********************/
 /***/ (() => {
 
-eval("var helloWorld = 'Hello World!';\n\n//# sourceURL=webpack://front-end-capstone/./src/index.js?");
+eval("var helloWorld = 'hello';\n\n//# sourceURL=webpack://front-end-capstone/./src/index.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/
+/******/ 	
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
 /******/ 	__webpack_modules__["./src/index.js"]();
-/******/
+/******/ 	
 /******/ })()
 ;
