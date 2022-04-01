@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 
+// accepts flex-direction and gap props
+
 const FlexContainer = styled.div`
   display: flex;
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.gap || '3em'};
-  background-color: #f3f3f3;
+  justify-content: ${(props) => props.justify};
+  align-items: ${(props) => props.align};
 `;
 
 export default FlexContainer;

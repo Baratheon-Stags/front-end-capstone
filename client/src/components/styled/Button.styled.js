@@ -14,6 +14,7 @@ const Button = styled.button`
     cursor: pointer;
     background-color: grey;
     color: white;
+    border-radius: 3px;
   }
 `;
 
