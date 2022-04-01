@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-const controller = require('./controllers.js');
+const controller = require('./controllers');
 
 // Route endpoints to controller methods
 // All products
@@ -26,6 +26,9 @@ app.get('/related/:product_id', controller.getRelatedProduct);
 
 // Reviews
 app.get('/reviews/:product_id/:page/:count/:sort', controller.getReviews);
+app.put('/helpful/:review_id', controller.markAsHelpful);
+app.put('/report/:review_id', controller.markAsReported);
+app.post('/reviews', controller.addReview);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
