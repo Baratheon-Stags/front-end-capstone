@@ -6,7 +6,7 @@ import OverviewDetails from './OverviewDetails';
 import OverviewDescription from './OverviewDescription';
 
 const Overview = ({product, overview, styles, metadata}) => {
-  const [selectedStyle, setSelectedStyle] = useState(styles.results[0]);
+  const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
 
   const handleStyleChange = (style) => {
     setSelectedStyle(style);
@@ -27,8 +27,8 @@ const Overview = ({product, overview, styles, metadata}) => {
           align="center"
           justify="space-between"
         >
-          <OverviewGallery />
-          <OverviewDetails overview={overview} />
+          <OverviewGallery currentStyle={currentStyle} />
+          <OverviewDetails overview={overview} styles={styles} currentStyle={currentStyle} />
         </FlexContainer>
         <OverviewDescription overview={overview} />
       </FlexContainer>

@@ -35,4 +35,8 @@ export default createGlobalStyle`
   button:focus {
     outline: 1px solid blue;
   }
+
+  img {
+    width: 100%;
+  }
 `;
