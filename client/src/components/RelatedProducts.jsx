@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
+import Card from './Card';
+
 import FlexContainer from './styled/FlexContainer.styled';
-import Card from './styled/Card.styled';
-import CardImage from './styled/CardImage.styled';
-import CardDesc from './styled/CardDesc.styled';
 
 const StyledCarousel = styled(FlexContainer)`
   border: 3px solid red;
@@ -11,22 +11,33 @@ const StyledCarousel = styled(FlexContainer)`
   justify-content: flex-start;
 `;
 
-const RelatedProducts = () => (
-  <>
-    <h1>Related</h1>
-    <StyledCarousel direction="row">
-    <Card>
-      <CardImage></CardImage>
-      <CardDesc>
-        <div>category</div>
-        <div>description</div>
-        <div>price</div>
-        *****
-      </CardDesc>
-    </Card>
+const RelatedProducts = (props) => {
+  // Extract related product IDs
+  const { related } = props;
+  // Set state to use array of related products
+  const [relatedProducts, setRelated] = useState([]);
 
-    </StyledCarousel>
-  </>
-);
+  // After mount, fetch all related product information
+  useEffect(() => {
+    related.forEach((id) => {
+      axios.get(`/related/${id}`)
+        .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
+    });
+  }, []);
+
+  // Checking if related products has been populated
+  if (relatedProducts.length !== 0) {
+    console.log(relatedProducts);
+  }
+
+  return (
+    <>
+      <h1>Related</h1>
+      <StyledCarousel direction="row">
+        {relatedProducts.map((product) => <Card product={product} />)}
+      </StyledCarousel>
+    </>
+  );
+};
 
 export default RelatedProducts;
