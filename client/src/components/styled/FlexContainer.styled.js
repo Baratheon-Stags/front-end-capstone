@@ -8,6 +8,7 @@ const FlexContainer = styled.div`
   gap: ${(props) => props.gap || '3em'};
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
+  width: 100%;
 `;
 
 export default FlexContainer;
