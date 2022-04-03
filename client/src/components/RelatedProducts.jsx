@@ -9,6 +9,8 @@ const StyledCarousel = styled(FlexContainer)`
   border: 3px solid red;
   align-items: center;
   justify-content: flex-start;
+  width: 1000px;
+  overflow: auto;list-style-type: none;
 `;
 
 const RelatedProducts = (props) => {
@@ -33,9 +35,14 @@ const RelatedProducts = (props) => {
   return (
     <>
       <h1>Related</h1>
-      <StyledCarousel direction="row">
-        {relatedProducts.map((product) => <Card product={product} />)}
-      </StyledCarousel>
+      <ul>
+        <StyledCarousel direction="row">
+          <button>left</button>
+          {relatedProducts.map((product) => <Card product={product} />)}
+          <button>right</button>
+        </StyledCarousel>
+      </ul>
+
     </>
   );
 };

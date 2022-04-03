@@ -5,7 +5,10 @@ const CardImage = styled.div`
   border: 2px solid green;
   width: 100%;
   height: 65%;
+  background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
 `;
 
 // ${(props) => props.url} ||

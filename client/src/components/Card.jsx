@@ -1,22 +1,29 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import CardContainer from './styled/CardContainer.styled';
 import CardImage from './styled/CardImage.styled';
 import CardDesc from './styled/CardDesc.styled';
 import FlexContainer from './styled/FlexContainer.styled';
 
-const Card = (props) => (
-  <CardContainer>
-    <CardImage url={props.product.image} />
-    <CardDesc>
-      <FlexContainer>{props.product.category}</FlexContainer>
-      <FlexContainer>
-        {props.product.name}
-        {' '}
-      </FlexContainer>
-      <FlexContainer>{props.product.default_price}</FlexContainer>
-    </CardDesc>
-  </CardContainer>
+const Card = (props) => {
+  const { product } = props;
+  const { image, category, name, default_price } = product;
 
-);
+  return (
+    <li>
+      <CardContainer>
+        <CardImage url={image} />
+        <CardDesc>
+          <FlexContainer>{category}</FlexContainer>
+          <FlexContainer>
+            {name}
+            {' '}
+          </FlexContainer>
+          <FlexContainer>${default_price}</FlexContainer>
+        </CardDesc>
+      </CardContainer>
+    </li>
+  );
+};
 
 export default Card;
