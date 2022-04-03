@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import Card from './Card';
@@ -10,7 +10,11 @@ const StyledCarousel = styled(FlexContainer)`
   align-items: center;
   justify-content: flex-start;
   width: 1000px;
-  overflow: auto;list-style-type: none;
+  overflow-x: auto;
+  list-style-type: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const RelatedProducts = (props) => {
@@ -31,16 +35,25 @@ const RelatedProducts = (props) => {
   if (relatedProducts.length !== 0) {
     console.log(relatedProducts);
   }
+  const carousel = useRef(null);
+
+  const scrollRight = () => {
+    carousel.current.scrollLeft += 200;
+  };
+
+  const scrollLeft = () => {
+    carousel.current.scrollLeft -= 200;
+  };
 
   return (
     <>
       <h1>Related</h1>
       <ul>
-        <StyledCarousel direction="row">
-          <button>left</button>
+        <button onClick={scrollLeft}>left</button>
+        <StyledCarousel ref={carousel} direction="row">
           {relatedProducts.map((product) => <Card product={product} />)}
-          <button>right</button>
         </StyledCarousel>
+        <button onClick={scrollRight}>right</button>
       </ul>
 
     </>

@@ -20,6 +20,8 @@ const Card = (props) => {
             {' '}
           </FlexContainer>
           <FlexContainer>${default_price}</FlexContainer>
+          <FlexContainer>*****</FlexContainer>
+
         </CardDesc>
       </CardContainer>
     </li>
