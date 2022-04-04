@@ -15,6 +15,7 @@ const StyledCarousel = styled(FlexContainer)`
   &::-webkit-scrollbar {
     display: none;
   }
+  transform: translate3d(0);
 `;
 
 const RelatedProducts = (props) => {
@@ -22,6 +23,8 @@ const RelatedProducts = (props) => {
   const { related } = props;
   // Set state to use array of related products
   const [relatedProducts, setRelated] = useState([]);
+  const [scroll, setScrolled] = useState(false);
+  const carousel = useRef(null);
 
   // After mount, fetch all related product information
   useEffect(() => {
@@ -35,7 +38,6 @@ const RelatedProducts = (props) => {
   if (relatedProducts.length !== 0) {
     console.log(relatedProducts);
   }
-  const carousel = useRef(null);
 
   const scrollRight = () => {
     carousel.current.scrollLeft += 200;
@@ -49,11 +51,11 @@ const RelatedProducts = (props) => {
     <>
       <h1>Related</h1>
       <ul>
-        <button onClick={scrollLeft}>left</button>
+        <button type="button" onClick={scrollLeft}>left</button>
         <StyledCarousel ref={carousel} direction="row">
-          {relatedProducts.map((product) => <Card product={product} />)}
+          {relatedProducts.map((product) => <Card key={Math.random()} product={product} />)}
         </StyledCarousel>
-        <button onClick={scrollRight}>right</button>
+        <button type="button" onClick={scrollRight}>right</button>
       </ul>
 
     </>
