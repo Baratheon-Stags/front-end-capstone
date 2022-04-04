@@ -8,6 +8,7 @@ export default createGlobalStyle`
     line-height: 1.35;
     background-color: ${(props) => (props.darkMode ? '#292A30' : '#f5f5f5')};
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#333333')};
+    overflow-x: hidden;
   }
 
   *,
@@ -34,5 +35,9 @@ export default createGlobalStyle`
   a:focus,
   button:focus {
     outline: 1px solid blue;
+  }
+
+  img {
+    width: 100%;
   }
 `;

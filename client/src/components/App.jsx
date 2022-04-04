@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProductDisplay from './ProductDisplay';
+import Overview from './overview/Overview';
 import RelatedProducts from './RelatedProducts';
 import Reviews from './Reviews';
 import Outfit from './Outfit';
@@ -30,7 +30,7 @@ const App = () => {
         : (
           <AppContainer>
             <FlexContainer direction="column" gap="5em">
-              <ProductDisplay
+              <Overview
                 product={product}
                 overview={overview}
                 styles={styles}
