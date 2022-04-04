@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { CardContainer, CardImage, CardDesc } from './styled/CardContainer.styled';
+import { CardContainer, CardImage, CardDesc } from './styled/Card.styled';
 
 import FlexContainer from './styled/FlexContainer.styled';
 

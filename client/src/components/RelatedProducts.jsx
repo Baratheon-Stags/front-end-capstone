@@ -1,24 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import styled from 'styled-components';
 import Card from './Card';
 
+import StyledCarousel from './styled/RelatedCarousel.styled';
 import FlexContainer from './styled/FlexContainer.styled';
-
-const StyledCarousel = styled(FlexContainer)`
-  border: 3px solid red;
-  align-items: center;
-  justify-content: flex-start;
-  width: 1000px;
-  overflow-x: auto;
-  list-style-type: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  transform: translate3d(0);
-  scroll-behavior: smooth;
-
-`;
 
 const RelatedProducts = ({ related }) => {
   // Extract related product IDs
@@ -33,11 +18,6 @@ const RelatedProducts = ({ related }) => {
         .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
     });
   }, []);
-
-  // Checking if related products has been populated
-  if (relatedProducts.length !== 0) {
-    console.log(relatedProducts);
-  }
 
   const scrollRight = () => {
     carousel.current.scrollLeft += 450;
