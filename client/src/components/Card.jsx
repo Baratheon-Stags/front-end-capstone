@@ -1,12 +1,10 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import CardContainer from './styled/CardContainer.styled';
-import CardImage from './styled/CardImage.styled';
-import CardDesc from './styled/CardDesc.styled';
+import { CardContainer, CardImage, CardDesc } from './styled/CardContainer.styled';
+
 import FlexContainer from './styled/FlexContainer.styled';
 
-const Card = (props) => {
-  const { product } = props;
+const Card = ({ product }) => {
   const { image, category, name, default_price } = product;
 
   return (

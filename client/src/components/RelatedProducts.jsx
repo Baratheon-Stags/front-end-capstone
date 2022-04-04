@@ -16,14 +16,14 @@ const StyledCarousel = styled(FlexContainer)`
     display: none;
   }
   transform: translate3d(0);
+  scroll-behavior: smooth;
+
 `;
 
-const RelatedProducts = (props) => {
+const RelatedProducts = ({ related }) => {
   // Extract related product IDs
-  const { related } = props;
   // Set state to use array of related products
   const [relatedProducts, setRelated] = useState([]);
-  const [scroll, setScrolled] = useState(false);
   const carousel = useRef(null);
 
   // After mount, fetch all related product information
@@ -40,22 +40,24 @@ const RelatedProducts = (props) => {
   }
 
   const scrollRight = () => {
-    carousel.current.scrollLeft += 200;
+    carousel.current.scrollLeft += 450;
   };
 
   const scrollLeft = () => {
-    carousel.current.scrollLeft -= 200;
+    carousel.current.scrollLeft -= 450;
   };
 
   return (
     <>
       <h1>Related</h1>
       <ul>
-        <button type="button" onClick={scrollLeft}>left</button>
-        <StyledCarousel ref={carousel} direction="row">
-          {relatedProducts.map((product) => <Card key={Math.random()} product={product} />)}
-        </StyledCarousel>
-        <button type="button" onClick={scrollRight}>right</button>
+        <FlexContainer direction="row" gap="0em">
+          <button type="button" onClick={scrollLeft}>left</button>
+          <StyledCarousel ref={carousel} direction="row">
+            {relatedProducts.map((product) => <Card key={Math.random()} product={product} />)}
+          </StyledCarousel>
+          <button type="button" onClick={scrollRight}>right</button>
+        </FlexContainer>
       </ul>
 
     </>

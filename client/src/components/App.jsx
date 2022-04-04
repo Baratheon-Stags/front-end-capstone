@@ -14,7 +14,7 @@ const App = () => {
 
   // grab product on mount
   useEffect(() => {
-    axios.get('/product/40344').then((res) => {
+    axios.get('/product/40350').then((res) => {
       setProduct(res.data);
     });
   }, []);
