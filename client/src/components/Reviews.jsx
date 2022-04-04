@@ -1,27 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import Metadata from './Ratings';
+import Metadata from './Metadata';
 import Review from './Review';
+import AddReview from './AddReview';
 import axios from 'axios';
 
-const Reviews = (props) => {
-  const [data, setData] = useState([]);
+const Reviews = ({ productId }) => {
+  const [allData, setAllData] = useState([]);
+  const [count, setCount] = useState(2);
+  const [form, setForm] = useState(false);
+  const [metadata, reviews] = allData;
 
-  // grab product on mount
   useEffect(() => {
-    axios.get(`/reviews/${props.productId}/1/2/newest`).then((data) => {
-      setData(data.data);
+    axios.get(`/reviews/${productId}/1/2/newest`).then((data) => {
+      setAllData(data.data);
     });
   }, []);
 
-  const [metadata, reviews] = data;
+  const updateReviews = (position, increaseBy = 2) => {
+    axios.get(`/reviews/${productId}/1/${count + increaseBy}/newest`).then((data) => {
+      setCount(count + increaseBy);
+      setAllData(data.data);
+      window.scrollTo(0, position);
+    });
+  };
+
+  const useForm = (boolean) => {
+    setForm(boolean);
+  };
 
   return (
     <>
       <div>reviews, sorted by</div>
-      <Metadata metadata={metadata}/>
-      <Review reviews={reviews}/>
-      <button>More Reviews</button>
-      <button>Add a Review +</button>
+      <Metadata metadata={metadata} />
+      {metadata === undefined ? null : reviews.results.map(
+        (review) => <Review key={review.review_id} review={review} />,
+      )}
+      {form ? (
+        <>
+          <AddReview
+            productId={productId}
+            discardHandler={useForm}
+            characteristics={metadata.characteristics}
+          />
+        </>
+      ) : (
+        <>
+          <button type="button" onClick={() => updateReviews(window.pageYOffset)}>More Reviews</button>
+          <button type="button" onClick={() => { setForm(true); }}>Add a Review +</button>
+        </>
+      )}
     </>
   );
 };

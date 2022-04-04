@@ -9,7 +9,6 @@ module.exports = {
     const average = Number((total / count).toFixed(1));
     const percentage = average * 20
     const roundedPercentage = Math.round((percentage)/ 5) * 5;
-    console.log(average, roundedPercentage)
     return {
       average,
       roundedPercentage,
@@ -30,7 +29,7 @@ module.exports = {
     }
     let distribution = {};
     for (const k in obj) {
-      distribution[k] = (obj[k] / largest.quantity) * 100;
+      distribution[k] = (obj[k] / largest.quantity) * 50;
     }
     return distribution;
   }

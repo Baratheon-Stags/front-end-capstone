@@ -1,17 +1,22 @@
 import React from 'react';
 
-const Review = (props) => {
-  // if (props !== undefined) {
-  //   console.log(props)
-  // }
-
+const Review = ({ review }) => {
+  console.log('');
   return (
     <>
-      <div>Stars</div>
-      <div>Username, Date</div>
-      <div>Summary</div>
-      <div>Body</div>
-      <div>Helpful?</div>
+      <div>
+        {review.rating + ' '}
+        stars
+      </div>
+      <div>
+        {review.reviewer_name + ', ' + review.date}
+      </div>
+      <div>{review.summary}</div>
+      <div>{review.body}</div>
+      <div>
+        Helpful?
+        {' (' + review.helpfulness + ')'}
+      </div>
       <div>Yes</div>
       <div>Report</div>
     </>
