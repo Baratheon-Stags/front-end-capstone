@@ -40,4 +40,9 @@ export default createGlobalStyle`
   img {
     width: 100%;
   }
+
+  .star-icon {
+    opacity: 75%;
+    width: 20px;
+  }
 `;

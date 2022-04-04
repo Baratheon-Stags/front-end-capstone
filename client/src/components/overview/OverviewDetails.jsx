@@ -4,10 +4,10 @@ import ProductDetails from './ProductDetails';
 import StyleSelection from './StyleSelection';
 import ProductInteraction from './ProductInteraction';
 
-const OverviewDetails = ({overview, styles, currentStyle}) => {
+const OverviewDetails = ({overview, styles, currentStyle, metadata}) => {
   return (
     <FlexContainer direction="column" align="center" justify="space-between">
-      <ProductDetails overview={overview} />
+      <ProductDetails overview={overview} metadata={metadata} />
       <StyleSelection styles={styles} currentStyle={currentStyle} />
       <ProductInteraction />
     </FlexContainer>
