@@ -15,8 +15,9 @@ const RatingContainer = styled.div`
 const RatingBar = styled.div`
   width: ${(props) => props.width};
   height: 100%;
-  color: grey;
+  background-color: black;
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
 `;
@@ -29,6 +30,7 @@ const RatingStars = styled.div`
   gap: 0;
   align-items: center;
   justify-content: center;
+  z-index: 2;
 `;
 
 // accepts a ratings object and returns a fully generated ratings component
