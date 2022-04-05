@@ -17,11 +17,20 @@ const Card = ({ product }) => {
     left: '83%',
   };
 
+  const goToProduct = () => {
+    console.log('Going to product:', product.id);
+  };
+
+  const openComparison = (event) => {
+    event.stopPropagation();
+    console.log('Opening modal..')
+  };
+
   return (
     <li>
-      <CardContainer>
+      <CardContainer onClick={goToProduct}>
         <CardImage url={image}>
-          <FontAwesomeIcon style={style} icon={regular('star')} className="fa-lg" />
+          <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
         </CardImage>
         <CardDesc>
           <FlexContainer gap="0" direction="column">
