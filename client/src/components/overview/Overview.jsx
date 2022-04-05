@@ -12,7 +12,6 @@ const Overview = ({product, overview, styles, metadata}) => {
 
   return (
     <>
-      <h5>SITE-WIDE ANNOUNCEMENT MESSAGE!</h5>
       {/* overall overview container */}
       <FlexContainer
         direction="column"
