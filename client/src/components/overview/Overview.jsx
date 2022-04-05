@@ -8,10 +8,6 @@ import OverviewDescription from './OverviewDescription';
 const Overview = ({product, overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
 
-  const handleStyleChange = (style) => {
-    setSelectedStyle(style);
-  };
-
   return (
     <>
       <h5>SITE-WIDE ANNOUNCEMENT MESSAGE!</h5>
@@ -33,6 +29,7 @@ const Overview = ({product, overview, styles, metadata}) => {
             styles={styles}
             currentStyle={currentStyle}
             metadata={metadata}
+            handleStyleChange={(style) => setSelectedStyle(style)}
           />
         </FlexContainer>
         <OverviewDescription overview={overview} />
