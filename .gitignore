@@ -1,5 +1,4 @@
 config.js
-KyleTODO.md
 
 # Logs
 logs
@@ -83,7 +82,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist/main.js
+main.js
 
 # Gatsby files
 .cache/
