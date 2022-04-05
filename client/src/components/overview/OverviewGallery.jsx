@@ -1,4 +1,5 @@
 import React from 'react';
+import GalleryCarousel from './GalleryCarousel';
 
 const OverviewGallery = ({currentStyle}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
@@ -7,7 +8,7 @@ const OverviewGallery = ({currentStyle}) => {
   }, []);
 
   return (
-    <img src={galleryImages[0]} alt="product" />
+    <GalleryCarousel galleryImages={galleryImages} />
   );
 };
 
