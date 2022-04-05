@@ -9,7 +9,7 @@ const StyledCarousel = styled(FlexContainer)`
   overflow-y: hidden;
   list-style-type: none;
   &::-webkit-scrollbar {
-    display: none;å
+    display: none;
   }
   transform: translate3d(0);
   scroll-behavior: smooth;

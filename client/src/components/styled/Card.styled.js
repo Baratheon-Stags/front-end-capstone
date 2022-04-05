@@ -10,7 +10,8 @@ export const CardContainer = styled.div`
 export const CardDesc = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  margin: auto 1em;
+  justify-content: center;
   height: 35%;
 `;
 
