@@ -25,6 +25,7 @@ const App = () => {
   return (
     <>
       <Navbar />
+      <h4 className="text-center">Site-wide Announcement Message</h4>
       {product.length === 0
         ? null
         : (
