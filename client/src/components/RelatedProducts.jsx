@@ -33,11 +33,11 @@ const RelatedProducts = ({ related }) => {
       <h1>Related</h1>
       <ul>
         <FlexContainer direction="row" gap="0em">
-          <button type="button" onClick={scrollLeft}>left</button>
+          <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollLeft}>&lt;</button>
           <StyledCarousel ref={carousel} direction="row">
             {relatedProducts.map((product) => <Card key={Math.random()} product={product} />)}
           </StyledCarousel>
-          <button type="button" onClick={scrollRight}>right</button>
+          <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollRight}>&gt;</button>
         </FlexContainer>
       </ul>
 

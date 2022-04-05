@@ -6,6 +6,7 @@ const StyledCarousel = styled(FlexContainer)`
   justify-content: flex-start;
   width: 1000px;
   overflow-x: auto;
+  overflow-y: hidden;
   list-style-type: none;
   &::-webkit-scrollbar {
     display: none;å
