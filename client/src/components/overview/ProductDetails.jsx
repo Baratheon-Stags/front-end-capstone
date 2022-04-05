@@ -1,6 +1,6 @@
 import React from 'react';
 import FlexContainer from '../styled/FlexContainer.styled';
-import GenerateStarRatings from '../generateStarRatings';
+import GenerateStarRatings from '../GenerateStarRatings';
 
 const ProductDetails = ({overview, metadata}) => {
   const { name, category, default_price } = overview;

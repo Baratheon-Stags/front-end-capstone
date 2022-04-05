@@ -77,7 +77,7 @@ const GenerateStarRatings = ({ratings}) => {
           <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         </RatingStarsContainer>
       </RatingContainer>
-      <span className>{reviewAverage.toFixed(1)}</span>
+      <span>{reviewAverage.toFixed(1)}</span>
     </FlexContainer>
   );
 };
