@@ -45,4 +45,9 @@ export default createGlobalStyle`
     width: 20px;
     color: black;
   }
+
+  .text-center {
+    text-align:center;
+  }
+
 `;
