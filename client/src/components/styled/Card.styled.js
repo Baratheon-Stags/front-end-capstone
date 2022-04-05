@@ -23,4 +23,5 @@ export const CardImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
+  position: relative;
 `;
