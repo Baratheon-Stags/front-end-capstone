@@ -1,39 +1,45 @@
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { regular } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import FlexContainer from './styled/FlexContainer.styled';
 
 const RatingContainer = styled.div`
+  display: inline-block;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 20px;
   width: 100px;
+  line-height: 1;
+
+  + span {
+    line-height: 1;
+  }
 `;
 
-const RatingBar = styled.div`
+const RatingBar = styled.span`
   width: ${(props) => props.width};
   height: 100%;
-  background-color: black;
+  background-color: #f5f5f5;
   position: absolute;
-  z-index: 1;
   top: 0;
-  left: 0;
+  right: 0;
+  white-space: nowrap;
+  overflow: hidden;
 `;
 
-const RatingStarsContainer = styled.div`
+const RatingStarsContainer = styled.span`
   position: absolute;
   top: 0;
   left: 0;
   display: flex;
-  gap: 0;
   align-items: center;
   justify-content: center;
-  z-index: 2;
 `;
 
-const generateStarRatings = (ratings) => {
+const GenerateStarRatings = ({ratings}) => {
   // grab the ratings, parse them into integers, push into an array
   const ratingValues = Object.values(ratings).reduce((values, rating) => {
     values.push(parseInt(rating));
@@ -50,20 +56,30 @@ const generateStarRatings = (ratings) => {
   const reviewAverage = weightedTotal / ratingSum;
 
   // calculate the width of the RatingBar
-  const ratingBarWidth = `${(reviewAverage / 5) * 100}%`;
+  const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
 
   return (
-    <RatingContainer>
-      <RatingStarsContainer>
-        <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-        <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-        <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-        <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-        <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-      </RatingStarsContainer>
-      <RatingBar width={ratingBarWidth} id="mask" />
-    </RatingContainer>
+    <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
+      <RatingContainer>
+        <RatingStarsContainer>
+          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+        </RatingStarsContainer>
+        <RatingBar width={ratingBarWidth} />
+        <RatingStarsContainer>
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+        </RatingStarsContainer>
+      </RatingContainer>
+      <span className>{reviewAverage.toFixed(1)}</span>
+    </FlexContainer>
   );
 };
 
-export default generateStarRatings;
+export default GenerateStarRatings;
