@@ -55,7 +55,7 @@ const GenerateStarRatings = ({ratings}) => {
   // calculate the review average
   const reviewAverage = weightedTotal / ratingSum;
 
-  // calculate the width of the RatingBar
+  // calculate the inverse width of the RatingBar
   const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
 
   return (
