@@ -45,7 +45,7 @@ const CarouselContent = styled.div`
   }
 `;
 
-const Arrow = styled.button`
+const ArrowButton = styled.button`
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -54,11 +54,11 @@ const Arrow = styled.button`
   height: 48px;
   border-radius: 24px;
   background-color: white;
-  border: 1px solid #ddd;
+  border: none;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
   font-weight: bold;
-  background-color: rgba(255,255,255, 0.80);
+  background-color: rgba(255,255,255, 0.75);
   backdrop-filter: blur(2px);
 
   &:focus {
@@ -71,22 +71,26 @@ const Arrow = styled.button`
 `;
 
 const GalleryCarousel = ({galleryImages}) => {
+  // hold the index of the currently displayed image in the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // hold the length of the galleryImages array
   const [length, setLength] = useState(galleryImages.length);
 
+  // monitor the galleryImages array to change the length
   useEffect(() => {
     setLength(galleryImages.length);
   }, [galleryImages]);
 
   const nextImage = () => {
     if (currentIndex < (length - 1)) {
-      setCurrentIndex(prevState => prevState + 1);
+      setCurrentIndex((prevState) => prevState + 1);
     }
   };
 
   const prevImage = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prevState => prevState - 1);
+      setCurrentIndex((prevState) => prevState - 1);
     }
   };
 
@@ -96,9 +100,9 @@ const GalleryCarousel = ({galleryImages}) => {
         {
           currentIndex > 0
           && (
-            <Arrow style={{ left: '18px' }} onClick={prevImage}>
+            <ArrowButton style={{ left: '18px' }} onClick={prevImage}>
               &lt;
-            </Arrow>
+            </ArrowButton>
           )
         }
         <CarouselContentWrapper>
@@ -109,9 +113,9 @@ const GalleryCarousel = ({galleryImages}) => {
         {
           currentIndex < (length - 1)
           && (
-            <Arrow style={{ right: '18px' }} onClick={nextImage}>
+            <ArrowButton style={{ right: '18px' }} onClick={nextImage}>
               &gt;
-            </Arrow>
+            </ArrowButton>
           )
         }
       </CarouselWrapper>
