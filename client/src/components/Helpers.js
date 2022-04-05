@@ -24,7 +24,7 @@ module.exports = {
       let currentNumber = parseInt(obj[k]);
       if (currentNumber > largest.quantity) {
         largest.rating = k;
-        largest.quantity = obj[k]
+        largest.quantity = obj[k];
       }
     }
     let distribution = {};

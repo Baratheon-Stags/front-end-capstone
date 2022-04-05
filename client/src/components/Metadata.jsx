@@ -1,5 +1,6 @@
 import React from 'react';
 import Bar from './styled/Bar.styled';
+
 const Helper = require('./Helpers');
 
 const Metadata = ({ metadata }) => {

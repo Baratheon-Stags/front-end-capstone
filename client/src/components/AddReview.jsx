@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AddReview = ({ productId, characteristics, discardHandler}) => {
-  console.log(characteristics);
   return (
     <>
       <input type="text" placeholder="Example: Best purchase ever!" />

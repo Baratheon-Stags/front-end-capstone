@@ -7,11 +7,9 @@ const Metadata = ({ metadata }) => {
   let recommended;
   let distribution;
   if (metadata !== undefined) {
-    console.log(metadata.characteristics)
     ratings = Helper.findAverageRating(metadata.ratings);
     recommended = (metadata.recommended.true * 100 / (parseInt(metadata.recommended.true) + parseInt(metadata.recommended.false))).toFixed(2);
     distribution = Helper.findRatingDistribution(metadata.ratings);
-    console.log(distribution)
   }
   return (
     <>
