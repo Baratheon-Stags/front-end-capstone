@@ -54,12 +54,13 @@ const LeftArrow = styled.button`
   width: 48px;
   height: 48px;
   border-radius: 24px;
-  background-color: white;
+  background-color: rgba(255,255,255, 0.80);
   border: 1px solid #ddd;
   left: 18px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
   font-weight: bold;
+  backdrop-filter: blur(2px);
 
   &:focus {
     outline: none;
@@ -84,6 +85,8 @@ const RightArrow = styled.button`
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
   font-weight: bold;
+  background-color: rgba(255,255,255, 0.80);
+  backdrop-filter: blur(2px);
 
   &:focus {
     outline: none;
