@@ -10,6 +10,7 @@ const AvatarContainer = styled.div`
   justify-content: center;
   box-shadow: ${(props) => (props.selected ? '2px 2px 2px black' : '1px 1px 1px rgba(0, 0, 0, 0.75)')};
   transition: .25s ease;
+  position: relative;
 
   &:hover {
     cursor: pointer;
@@ -23,6 +24,13 @@ const AvatarContainer = styled.div`
     overflow: hidden;
     z-index: -1;
     border-radius: 100%;
+  }
+
+  & > span {
+    display: ${(props) => (props.selected ? 'inline-block' : 'none')};
+    position: absolute;
+    top: -5%;
+    right: -5%;
   }
 `;
 
