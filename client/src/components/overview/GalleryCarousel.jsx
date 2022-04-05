@@ -117,13 +117,27 @@ const GalleryCarousel = ({galleryImages}) => {
   return (
     <CarouselContainer>
       <CarouselWrapper>
-        <LeftArrow onClick={nextImage}>&lt;</LeftArrow>
+        {
+          currentIndex > 0
+          && (
+            <LeftArrow onClick={prevImage}>
+              &lt;
+            </LeftArrow>
+          )
+        }
         <CarouselContentWrapper>
           <CarouselContent currentIndex={currentIndex}>
             {galleryImages.map((image, i) => <img src={image} key={i} alt="" />)}
           </CarouselContent>
         </CarouselContentWrapper>
-        <RightArrow onClick={prevImage}>&gt;</RightArrow>
+        {
+          currentIndex < (length - 1)
+          && (
+            <RightArrow onClick={nextImage}>
+              &gt;
+            </RightArrow>
+          )
+        }
       </CarouselWrapper>
     </CarouselContainer>
   );
