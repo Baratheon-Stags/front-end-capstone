@@ -10,8 +10,6 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
     return images;
   }, []);
 
-  console.log(styleImages);
-
   return (
     <FlexContainer direction="row" wrap="wrap" align="center" gap=".25em">
       <span>STYLE &gt;</span>
