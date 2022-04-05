@@ -45,33 +45,7 @@ const CarouselContent = styled.div`
   }
 `;
 
-// make this DRYer
-const LeftArrow = styled.button`
-  position: absolute;
-  z-index: 1;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 48px;
-  height: 48px;
-  border-radius: 24px;
-  background-color: rgba(255,255,255, 0.80);
-  border: 1px solid #ddd;
-  left: 18px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,.25);
-  transition: all .25s ease;
-  font-weight: bold;
-  backdrop-filter: blur(2px);
-
-  &:focus {
-    outline: none;
-  }
-
-  &:hover {
-    background-color: rgb(246,246,246);
-  }
-`;
-
-const RightArrow = styled.button`
+const Arrow = styled.button`
   position: absolute;
   z-index: 1;
   top: 50%;
@@ -81,7 +55,6 @@ const RightArrow = styled.button`
   border-radius: 24px;
   background-color: white;
   border: 1px solid #ddd;
-  right: 18px;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
   font-weight: bold;
@@ -123,9 +96,9 @@ const GalleryCarousel = ({galleryImages}) => {
         {
           currentIndex > 0
           && (
-            <LeftArrow onClick={prevImage}>
+            <Arrow style={{ left: '18px' }} onClick={prevImage}>
               &lt;
-            </LeftArrow>
+            </Arrow>
           )
         }
         <CarouselContentWrapper>
@@ -136,9 +109,9 @@ const GalleryCarousel = ({galleryImages}) => {
         {
           currentIndex < (length - 1)
           && (
-            <RightArrow onClick={nextImage}>
+            <Arrow style={{ right: '18px' }} onClick={nextImage}>
               &gt;
-            </RightArrow>
+            </Arrow>
           )
         }
       </CarouselWrapper>
