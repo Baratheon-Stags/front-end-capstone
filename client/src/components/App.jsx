@@ -1,12 +1,48 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import ProductDisplay from './ProductDisplay';
+import RelatedProducts from './RelatedProducts';
+import Reviews from './Reviews';
+import Outfit from './Outfit';
+
+import FlexContainer from './styled/FlexContainer.styled';
+import Navbar from './styled/Navbar.styled';
+import AppContainer from './styled/AppContainer.styled';
 
 const App = () => {
-  console.log('hello world');
+  const [product, setProduct] = useState([]);
+
+  // grab product on mount
+  useEffect(() => {
+    axios.get('/product/40344').then((res) => {
+      setProduct(res.data);
+    });
+  }, []);
+
+  // destructure product to use as props
+  const [overview, metadata, styles, related] = product;
 
   return (
-    <div>
-      Hello World!
-    </div>
+    <>
+      <Navbar />
+      {product.length === 0
+        ? null
+        : (
+          <AppContainer>
+            <FlexContainer direction="column" gap="5em">
+              <ProductDisplay
+                product={product}
+                overview={overview}
+                styles={styles}
+                metadata={metadata}
+              />
+              <RelatedProducts related={related} />
+              <Outfit productId={overview.id} />
+              <Reviews productId={overview.id} />
+            </FlexContainer>
+          </AppContainer>
+        )}
+    </>
   );
 };
 

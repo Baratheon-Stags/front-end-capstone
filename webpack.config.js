@@ -1,4 +1,5 @@
 const path = require('path');
+// const webpack = require('webpack');
 
 module.exports = {
   entry: './client/src/index.jsx',
@@ -12,6 +13,9 @@ module.exports = {
       {
         test: /\.js|\.jsx$/,
         exclude: /(node_modules|bower_components)/,
+        resolve: {
+          extensions: ['.js', '.jsx'],
+        },
         use: {
           loader: 'babel-loader',
           options: {
@@ -19,7 +23,10 @@ module.exports = {
           },
         },
       },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        type: 'asset/resource',
+      },
     ],
   },
-
 };
