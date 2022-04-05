@@ -22,7 +22,7 @@ const RatingBar = styled.div`
   left: 0;
 `;
 
-const RatingStars = styled.div`
+const RatingStarsContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -33,9 +33,6 @@ const RatingStars = styled.div`
   z-index: 2;
 `;
 
-// accepts a ratings object and returns a fully generated ratings component
-// component will include a container that houses 5 star icons
-// as well as a rectangle behind the icons that will fill in the rating
 const generateStarRatings = (ratings) => {
   // grab the ratings, parse them into integers, push into an array
   const ratingValues = Object.values(ratings).reduce((values, rating) => {
@@ -57,14 +54,14 @@ const generateStarRatings = (ratings) => {
 
   return (
     <RatingContainer>
-      <RatingStars>
+      <RatingStarsContainer>
         <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-      </RatingStars>
-      <RatingBar width={ratingBarWidth} />
+      </RatingStarsContainer>
+      <RatingBar width={ratingBarWidth} id="mask" />
     </RatingContainer>
   );
 };

@@ -44,5 +44,6 @@ export default createGlobalStyle`
   .star-icon {
     opacity: 75%;
     width: 20px;
+    color: red;
   }
 `;
