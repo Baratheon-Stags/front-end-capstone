@@ -1,7 +1,8 @@
 import React from 'react';
 import FlexContainer from '../styled/FlexContainer.styled';
+import GenerateStarRatings from '../generateStarRatings';
 
-const ProductDetails = ({overview}) => {
+const ProductDetails = ({overview, metadata}) => {
   const { name, category, default_price } = overview;
 
   const formatPrice = (price) => {
@@ -13,7 +14,7 @@ const ProductDetails = ({overview}) => {
 
   return (
     <FlexContainer direction="column" gap="0">
-      <p>Reviews</p>
+      <GenerateStarRatings ratings={metadata.ratings} />
       <p>{category}</p>
       <h1>{name}</h1>
       <p>{displayPrice}</p>

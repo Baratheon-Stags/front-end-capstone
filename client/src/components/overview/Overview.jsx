@@ -28,7 +28,12 @@ const Overview = ({product, overview, styles, metadata}) => {
           justify="space-between"
         >
           <OverviewGallery currentStyle={currentStyle} />
-          <OverviewDetails overview={overview} styles={styles} currentStyle={currentStyle} />
+          <OverviewDetails
+            overview={overview}
+            styles={styles}
+            currentStyle={currentStyle}
+            metadata={metadata}
+          />
         </FlexContainer>
         <OverviewDescription overview={overview} />
       </FlexContainer>
