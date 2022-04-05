@@ -15,9 +15,9 @@ const ProductDetails = ({overview, metadata}) => {
   return (
     <FlexContainer direction="column" gap="0">
       <GenerateStarRatings ratings={metadata.ratings} />
-      <p>{category}</p>
+      <span>{category}</span>
       <h1>{name}</h1>
-      <p>{displayPrice}</p>
+      <span>{displayPrice}</span>
     </FlexContainer>
   );
 };
