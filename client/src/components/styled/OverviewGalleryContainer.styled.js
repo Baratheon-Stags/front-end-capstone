@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const OverviewGalleryContainer = styled.div`
-  width: ${(props) => (props.isExpanded ? '100%' : '60%')};
+  width: ${(props) => (props.expanded ? '100%' : '60%')};
   height: 100%;
   border-radius: 2px;
 
@@ -9,7 +9,7 @@ const OverviewGalleryContainer = styled.div`
     width: 100%;
     height: 60vh;
     object-fit: cover;
-    aspect-ratio: 9/16;
+    aspect-ratio: 16/9;
     border-radius: 2px;
   }
 `;

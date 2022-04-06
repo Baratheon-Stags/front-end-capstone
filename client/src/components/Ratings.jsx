@@ -13,7 +13,6 @@ const Metadata = ({ metadata }) => {
   }
   return (
     <>
-      <h1>Ratings</h1>
       {metadata === undefined ? null : (
         <>
           <div>{ratings.average}</div>

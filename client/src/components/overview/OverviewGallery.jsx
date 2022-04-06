@@ -7,8 +7,13 @@ const OverviewGallery = ({currentStyle}) => {
     return images;
   }, []);
 
+  const galleryThumbnails = currentStyle.photos.reduce((images, current) => {
+    images.push(current.thumbnail_url);
+    return images;
+  }, []);
+
   return (
-    <GalleryCarousel galleryImages={galleryImages} />
+    <GalleryCarousel galleryImages={galleryImages} galleryThumbnails={galleryThumbnails} />
   );
 };
 

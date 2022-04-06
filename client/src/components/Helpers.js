@@ -8,7 +8,7 @@ module.exports = {
     }
     const average = Number((total / count).toFixed(1));
     const percentage = average * 20
-    const roundedPercentage = Math.round((percentage)/ 5) * 5;
+    const roundedPercentage = Math.round((percentage) / 5) * 5;
     return {
       average,
       roundedPercentage,
@@ -16,22 +16,14 @@ module.exports = {
   },
 
   findRatingDistribution: (obj) => {
-    let largest = {
-      rating: 0,
-      quantity: 0
-    };
-    for (const k in obj) {
-      let currentNumber = parseInt(obj[k]);
-      if (currentNumber > largest.quantity) {
-        largest.rating = k;
-        largest.quantity = obj[k];
-      }
-    }
+    let total = 0;
     let distribution = {};
     for (const k in obj) {
-      distribution[k] = (obj[k] / largest.quantity) * 50;
+      total += parseInt(obj[k])
+    }
+    for (const k in obj) {
+      distribution[k] = obj[k] / total * 100;
     }
     return distribution;
   }
-
 }
