@@ -1,8 +1,12 @@
 import React from 'react';
+import { Modal, Backdrop } from './styled/Modal.styled';
 
-const AddReview = ({ productId, characteristics, discardHandler}) => {
+const AddReview = ({ productId, characteristics, onDiscard}) => {
+  console.log('');
   return (
     <>
+    <Backdrop />
+    <Modal>
       <input type="text" placeholder="Example: Best purchase ever!" />
       <input type="text" placeholder="Why did you like the product or not?" />
       Minimum required characters left: [##]
@@ -31,8 +35,10 @@ const AddReview = ({ productId, characteristics, discardHandler}) => {
         </div>
       ))}
       <button type="submit">Submit</button>
-      <button type="button" onClick={() => discardHandler(false)}>Discard</button>
+      <button type="button" onClick={() => onDiscard(false)}>Discard</button>
+      </Modal>
     </>
+
   );
 };
 
