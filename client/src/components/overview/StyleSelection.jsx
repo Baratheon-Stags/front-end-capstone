@@ -6,7 +6,7 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
   const styleOptions = styles.results;
 
   const styleImages = styleOptions.reduce((images, style, i) => {
-    images.push(style.photos[i].thumbnail_url);
+    images.push(style.photos[0].thumbnail_url);
     return images;
   }, []);
 
