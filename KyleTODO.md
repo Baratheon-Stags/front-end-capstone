@@ -1,5 +1,10 @@
--- make the carousel position reset when a new style is selected
+-- make the carousel position reset to position 0 when a new style is selected
 
--- add in the boxed to the top left of the carousel
+-- if sale price (found in styles) is not null, strikethrough the original price and display the sale price below the original price
 
--- make carousel buttons DRYer
+-- create size option buttons
+
+-- create disabled states for size buttons and style selections
+---a style can't be disabled! all styles are options, but sizing options for each style might be disabled if out of stock for that size
+
+-- find a way to hold the current skus which will possibly disable sizing options
