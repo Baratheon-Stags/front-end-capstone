@@ -3,17 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import axios from 'axios';
-import { CardContainer, CardImage, CardDesc } from './styled/Card.styled';
-import GenerateStarRatings from './GenerateStarRatings';
+import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
+import CompareModal from './CompareModal';
+import GenerateStarRatings from '../GenerateStarRatings';
 
-import FlexContainer from './styled/FlexContainer.styled';
+import FlexContainer from '../styled/FlexContainer.styled';
 
-const Card = ({ product }) => {
+const Card = ({ product, overviewFeatures, relatedCompare }) => {
   const {
-    id, image, category, name, default_price, ratings,
+    id, image, category, name, default_price, ratings, features
   } = product;
-
-  const [relatedFeatures, setRelatedFeatures] = useState([]);
 
   // Get features for current item
   // Store them somewhere in state
@@ -33,29 +32,26 @@ const Card = ({ product }) => {
 
   const openComparison = (event) => {
     event.stopPropagation();
-    console.log('Opening modal..');
+    relatedCompare(id);
   };
 
   // Gets features for all related products
-  useEffect(() => {
-    let isMounted = true;
-    axios.get(`/product/${id}`)
-      .then((response) => {
-        if (isMounted) {
-          setRelatedFeatures((previous) => [...previous, ...response.data[0].features]);
-        }
-      });
-    return () => {
-      isMounted = false;
-    };
-  }, []);
-
-  if (relatedFeatures.length !== 0) {
-    console.log("related feats", name, relatedFeatures)
-  }
+  // useEffect(() => {
+  //   let isMounted = true;
+  //   axios.get(`/product/${id}`)
+  //     .then((response) => {
+  //       if (isMounted) {
+  //         setRelatedFeatures((previous) => [...previous, ...response.data[0].features]);
+  //       }
+  //     });
+  //   return () => {
+  //     isMounted = false;
+  //   };
+  // }, []);
 
   return (
     <li>
+      <CompareModal features={features} overviewFeatures={overviewFeatures} />
       <CardContainer onClick={goToProduct}>
         <CardImage url={image}>
           <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
