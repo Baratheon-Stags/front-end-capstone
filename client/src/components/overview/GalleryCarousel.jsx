@@ -48,7 +48,7 @@ const CarouselContent = styled.div`
 const ArrowButton = styled.button`
   position: absolute;
   z-index: 1;
-  top: 90%;
+  top: 95%;
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
