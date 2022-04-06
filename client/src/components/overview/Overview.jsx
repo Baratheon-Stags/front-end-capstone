@@ -15,14 +15,11 @@ const Overview = ({product, overview, styles, metadata}) => {
       {/* overall overview container */}
       <FlexContainer
         direction="column"
-        align="center"
-        justify="space-between"
       >
         {/* container for top half of overview */}
         <FlexContainer
           direction="row"
           align="center"
-          justify="space-between"
         >
           <OverviewGalleryContainer>
             <OverviewGallery currentStyle={currentStyle} />
