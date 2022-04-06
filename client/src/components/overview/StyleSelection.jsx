@@ -5,7 +5,7 @@ import FlexContainer from '../styled/FlexContainer.styled';
 const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
   const styleOptions = styles.results;
 
-  const styleImages = styleOptions.reduce((images, style, i) => {
+  const styleImages = styleOptions.reduce((images, style) => {
     images.push(style.photos[0].thumbnail_url);
     return images;
   }, []);
@@ -13,7 +13,7 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
   return (
     <FlexContainer direction="column" gap="1em">
       <span><strong>STYLE &gt;</strong> {currentStyle.name}</span>
-      <FlexContainer direction="row" wrap="wrap" gap=".5em">
+      <FlexContainer direction="row" wrap="wrap" gap="1.5em">
         {styleOptions.map((style, i) => {
           if (i === styleOptions.indexOf(currentStyle)) {
             return <Avatar style={style} handleStyleChange={handleStyleChange} selected key={i} image={styleImages[i]} />;
