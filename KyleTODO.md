@@ -8,3 +8,5 @@
 ---a style can't be disabled! all styles are options, but sizing options for each style might be disabled if out of stock for that size
 
 -- find a way to hold the current skus which will possibly disable sizing options
+
+-- fix carousel thumbnails for products with lots of photos, product 40348 is an example. Need to be able to scroll through the photos

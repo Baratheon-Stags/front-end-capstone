@@ -21,7 +21,7 @@ const ProductInteraction = ({currentStyle}) => {
   return (
     <FlexContainer direction="column" gap="1em">
       <span>{`Current Size: ${skuList[selectedSkuIndex].size}`}</span>
-      <FlexContainer direction="row" gap=".5em" justify="space-between" wrap="wrap">
+      <FlexContainer direction="row" gap=".5em" wrap="wrap">
         {skuList.map((sku, i) => (
           <SizeButton
             onClick={() => setSelectedSkuIndex(i)}
