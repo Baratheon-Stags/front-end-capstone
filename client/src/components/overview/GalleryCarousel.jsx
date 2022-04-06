@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const CarouselContainer = styled.div`
   width: 100%;
@@ -48,7 +48,7 @@ const CarouselContent = styled.div`
 const ArrowButton = styled.button`
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 90%;
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
@@ -70,7 +70,50 @@ const ArrowButton = styled.button`
   }
 `;
 
-const GalleryCarousel = ({galleryImages}) => {
+const ThumbnailsContainer = styled.div`
+  position: absolute;
+  top: 2.5%;
+  left: 2.5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+  gap: 10px;
+`;
+
+const ThumbnailContainer = styled.div`
+  width: 75px;
+  height: 75px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  ${(props) => props.selected && css`
+    &::after {
+      content: '';
+      width: 100%;
+      height: 3px;
+      background-color: black;
+      position: absolute;
+      bottom: -6px;
+      border-radius: 10px;
+    }
+  `}
+
+  & > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+`;
+
+const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
   // hold the index of the currently displayed image in the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -94,6 +137,10 @@ const GalleryCarousel = ({galleryImages}) => {
     }
   };
 
+  const goToImage = (imageIndex) => {
+    setCurrentIndex(imageIndex);
+  };
+
   return (
     <CarouselContainer>
       <CarouselWrapper>
@@ -106,6 +153,13 @@ const GalleryCarousel = ({galleryImages}) => {
           )
         }
         <CarouselContentWrapper>
+          <ThumbnailsContainer>
+            {galleryThumbnails.map((image, i) => (
+              <ThumbnailContainer onClick={() => goToImage(i)} selected={i === currentIndex}>
+                <img src={image} key={i} alt="" />
+              </ThumbnailContainer>
+            ))}
+          </ThumbnailsContainer>
           <CarouselContent currentIndex={currentIndex}>
             {galleryImages.map((image, i) => <img src={image} key={i} alt="" />)}
           </CarouselContent>
