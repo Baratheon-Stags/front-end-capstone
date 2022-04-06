@@ -4,14 +4,12 @@ import ProductDetails from './ProductDetails';
 import StyleSelection from './StyleSelection';
 import ProductInteraction from './ProductInteraction';
 
-const OverviewDetails = ({overview, styles, currentStyle}) => {
-  return (
-    <FlexContainer direction="column" align="center" justify="space-between">
-      <ProductDetails overview={overview} />
-      <StyleSelection styles={styles} currentStyle={currentStyle} />
-      <ProductInteraction />
-    </FlexContainer>
-  );
-};
+const OverviewDetails = ({overview, styles, currentStyle, metadata, handleStyleChange}) => (
+  <FlexContainer direction="column">
+    <ProductDetails overview={overview} metadata={metadata} />
+    <StyleSelection styles={styles} currentStyle={currentStyle} handleStyleChange={handleStyleChange} />
+    <ProductInteraction />
+  </FlexContainer>
+);
 
 export default OverviewDetails;

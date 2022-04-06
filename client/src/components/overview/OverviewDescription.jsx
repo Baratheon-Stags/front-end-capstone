@@ -7,7 +7,7 @@ const OverviewDescription = ({overview}) => (
     align="center"
     justify="space-between"
   >
-    <div>
+    <div style={{ borderRight: '2px solid black' }}>
       <h2>{overview.slogan}</h2>
       <p>{overview.description}</p>
     </div>

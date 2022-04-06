@@ -3,14 +3,15 @@ import styled from 'styled-components';
 export const CardContainer = styled.div`
   height: 400px;
   width: 300px;
-  border: 3px solid black;
+  border: 1px solid black;
   flex: 0 0 auto;
 `;
 
 export const CardDesc = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1em;
+  margin: auto 1em;
+  justify-content: center;
   height: 35%;
 `;
 
@@ -22,4 +23,5 @@ export const CardImage = styled.div`
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
+  position: relative;
 `;

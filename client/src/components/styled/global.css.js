@@ -40,4 +40,14 @@ export default createGlobalStyle`
   img {
     width: 100%;
   }
+
+  .star-icon {
+    width: 20px;
+    color: black;
+  }
+
+  .text-center {
+    text-align:center;
+  }
+
 `;
