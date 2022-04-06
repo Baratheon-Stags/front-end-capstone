@@ -1,9 +1,10 @@
 import React from 'react';
 import Bar from './styled/Bar.styled';
+import FlexContainer from './styled/FlexContainer.styled';
 
 const Helper = require('./Helpers');
 
-const Metadata = ({ metadata }) => {
+const Metadata = ({ metadata, onRatingSelect }) => {
   let ratings;
   let recommended;
   let distribution;
@@ -13,22 +14,23 @@ const Metadata = ({ metadata }) => {
     distribution = Helper.findRatingDistribution(metadata.ratings);
   }
   return (
-    <>
-      <h1>Ratings</h1>
+    <div>
       {metadata === undefined ? null : (
-        <>
+        <FlexContainer
+          direction="column"
+          align="left"
+          justify="space-between"
+        >
           <div>{ratings.average}</div>
           <div>{ratings.roundedPercentage}</div>
           <div>
-            {recommended}
-            % of reviews recommend this product
+            {`${recommended}% of reviews recommend this product`}
           </div>
           <div id="ratings">
             {Object.keys(distribution).reverse().map((rating) => (
               <div key={rating}>
-                <span>
-                  {rating + ' '}
-                  {rating === '1' ? 'star' : 'stars'}
+                <span onClick={() => onRatingSelect(parseInt(rating))}>
+                  {rating + ' ' + (rating === '1' ? 'star' : 'stars')}
                 </span>
                 <Bar value={distribution[rating]} />
               </div>
@@ -37,16 +39,14 @@ const Metadata = ({ metadata }) => {
           <div id="characteristics">
             {Object.keys(metadata.characteristics).map((characteristic) => (
               <div key={characteristic}>
-                <span>
-                  {characteristic}
-                </span>
+                {characteristic}
                 <Bar value={metadata.characteristics[characteristic].value * 20} />
               </div>
             ))}
           </div>
-        </>
+        </FlexContainer>
       )}
-    </>
+    </div>
   );
 };
 
