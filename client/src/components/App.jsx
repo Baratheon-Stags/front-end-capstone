@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Overview from './overview/Overview';
-import RelatedProducts from './RelatedProducts';
+import RelatedProducts from './relatedproducts/RelatedProducts';
 import Reviews from './Reviews';
 import Outfit from './Outfit';
 
@@ -11,7 +11,6 @@ import AppContainer from './styled/AppContainer.styled';
 
 const App = () => {
   const [product, setProduct] = useState([]);
-
   // grab product on mount
   useEffect(() => {
     axios.get('/product/40344').then((res) => {
