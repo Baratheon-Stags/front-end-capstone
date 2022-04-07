@@ -12,4 +12,4 @@
 
 -- add to cart message is staying after switching to new styles
 
---PRIORITY -- pull 'add to cart' status message out into the product interaction component
+-- stop the cart status message from pushing content

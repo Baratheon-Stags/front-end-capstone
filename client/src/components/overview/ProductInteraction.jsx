@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import FlexContainer from '../styled/FlexContainer.styled';
 import SizeButton from '../styled/SizeButton.styled';
-import AddToCartBtn from './AddToCartBtn';
 import QuantityDropDown from '../styled/QuantityDropDown.styled';
+import CartButton from '../styled/CartButton.styled';
 
 const ProductInteraction = ({currentStyle}) => {
+  // construct skuList
   const styleSkus = currentStyle.skus;
-  const skuList = Object.keys(styleSkus).reduce((list, skuId, i) => {
+  const skuList = Object.keys(styleSkus).reduce((list, skuId) => {
     const sku = { ...styleSkus[skuId], sku_id: skuId };
     list.push(sku);
     return list;
@@ -17,10 +19,12 @@ const ProductInteraction = ({currentStyle}) => {
   const [selectedSize, setSelectedSize] = useState(skuList[selectedSkuIndex].size);
   const [sentCartStatus, setSentCartStatus] = useState(null);
 
+  // monitor the style, size, and quantity selections for changes and reset the status message
   useEffect(() => {
     setSentCartStatus(null);
   }, [currentStyle, selectedSize, selectedQuantity]);
 
+  // handler to control the status of whether a status message should be shown
   const handleCartStatus = (status) => {
     setSentCartStatus(status);
   };
@@ -31,6 +35,22 @@ const ProductInteraction = ({currentStyle}) => {
     currentQuantityList[i] = quantity + 1;
   });
 
+  // construct the options object to be passed in to axios
+  const cartOptions = {
+    sku_id: skuList[selectedSkuIndex].sku_id,
+  };
+
+  // handler to post to the cart API
+  const handleAddToCart = () => {
+    axios.post('/cart', cartOptions)
+      .then(() => {
+        handleCartStatus(true);
+      }).catch(() => {
+        handleCartStatus(false);
+      });
+  };
+
+  // handle creation and display of status message
   let statusMsg;
   if (sentCartStatus) {
     statusMsg = `Added ${selectedQuantity} ${selectedSize} in ${currentStyle.name} to your cart.`;
@@ -81,13 +101,15 @@ const ProductInteraction = ({currentStyle}) => {
               </option>
             ))}
           </QuantityDropDown>
-          <AddToCartBtn
-            selectedQuantity={selectedQuantity}
-            selectedSize={selectedSize}
-            currentStyle={currentStyle}
-            selectedSku={skuList[selectedSkuIndex]}
-            handleCartStatus={handleCartStatus}
-          />
+          <CartButton
+            onClick={() => {
+              if (selectedQuantity > 0) {
+                handleAddToCart();
+              }
+            }}
+          >
+            Add to Cart
+          </CartButton>
         </FlexContainer>
         <span style={statusMsgStyle}>{statusMsg}</span>
         <span>Favorite</span>
