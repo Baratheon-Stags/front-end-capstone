@@ -1,8 +1,7 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import styled from 'styled-components';
-import CurrentFeatures from './CurrentFeatures';
-import CardFeatures from './CardFeatures';
+import RenderRows from './RenderRows';
 import FlexContainer from '../styled/FlexContainer.styled';
 
 const Overlay = styled.div`
@@ -22,7 +21,7 @@ const Overlay = styled.div`
 const Backdrop = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   width:400px;
   height: 300px;
@@ -40,7 +39,7 @@ const namedContainer = styled(FlexContainer)`
 
 const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => {
   console.log('overview feats', overviewFeatures);
-  console.log('modal feats', modalItemFeatures);
+
   return (
     <>
       <Overlay onClick={toggleRelatedCompare}>
@@ -51,13 +50,12 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
             <span>Current Item</span>
             <span> Card Item</span>
           </FlexContainer>
-          <FlexContainer>
-            <div>First column</div>
-            <div>
-              <CurrentFeatures overviewFeatures={overviewFeatures} />
-              <CardFeatures modalItemFeatures={modalItemFeatures} />
-            </div>
-            <div>Second column</div>
+          <FlexContainer direction="row">
+
+            <RenderRows
+              overviewFeatures={overviewFeatures}
+              modalItemFeatures={modalItemFeatures}
+            />
           </FlexContainer>
           <button type="button" onClick={toggleRelatedCompare}>close</button>
         </Backdrop>
@@ -67,3 +65,29 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
 };
 
 export default CompareModal;
+
+// return (
+//   <>
+//     <Overlay onClick={toggleRelatedCompare}>
+//       <Backdrop onClick={(e) => e.stopPropagation()}>
+//         <h2>Comparing</h2>
+//         <FlexContainer direction="row" justify="space-between">
+//           {/* ((FC row, space between?)) */}
+//           <span>Current Item</span>
+//           <span> Card Item</span>
+//         </FlexContainer>
+//         <FlexContainer>
+//           <div>First column</div>
+//           <div>
+//             <RenderRows
+//               overviewFeatures={overviewFeatures}
+//               modalItemFeatures={modalItemFeatures}
+//             />
+//           </div>
+//           <div>Second column</div>
+//         </FlexContainer>
+//         <button type="button" onClick={toggleRelatedCompare}>close</button>
+//       </Backdrop>
+//     </Overlay>
+//   </>
+// );
