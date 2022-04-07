@@ -48,12 +48,15 @@ const Outfit = ({ productId }) => {
       <h1>Outfit</h1>
       <FlexContainer gap="0">
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
-        <AddItemCard addItem={addItem} productId={productId} />
-        <StyledCarousel ref={carousel} direction="row">
-          {productDetails.map((product) => (
-            <OutfitCard productDetails={product} />
-          ))}
-        </StyledCarousel>
+        <FlexContainer>
+          <AddItemCard addItem={addItem} productId={productId} />
+          <StyledCarousel ref={carousel} direction="row">
+            {productDetails.map((product) => (
+              <OutfitCard productDetails={product} />
+
+            ))}
+          </StyledCarousel>
+        </FlexContainer>
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
       </FlexContainer>
     </>
