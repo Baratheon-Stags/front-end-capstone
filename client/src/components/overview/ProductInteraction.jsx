@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FlexContainer from '../styled/FlexContainer.styled';
 import SizeButton from '../styled/SizeButton.styled';
+import AddToCartBtn from './AddToCartBtn';
 
 const ProductInteraction = ({currentStyle}) => {
   const styleSkus = currentStyle.skus;
@@ -11,6 +12,8 @@ const ProductInteraction = ({currentStyle}) => {
   }, []);
 
   const [selectedSkuIndex, setSelectedSkuIndex] = useState(0);
+  const [selectedQuantity, setSelectedQuantity] = useState(0);
+  const [selectedSize, setSelectedSize] = useState(skuList[selectedSkuIndex].size);
 
   // create an array for the selected sku's quantity, and reset the values to be 1-indexed
   const currentQuantityList = Array.from(Array(skuList[selectedSkuIndex].quantity).keys());
@@ -24,7 +27,10 @@ const ProductInteraction = ({currentStyle}) => {
       <FlexContainer direction="row" gap=".5em" wrap="wrap">
         {skuList.map((sku, i) => (
           <SizeButton
-            onClick={() => setSelectedSkuIndex(i)}
+            onClick={() => {
+              setSelectedSkuIndex(i);
+              setSelectedSize(sku.size);
+            }}
             selected={i === selectedSkuIndex}
             key={i}
           >
@@ -33,8 +39,11 @@ const ProductInteraction = ({currentStyle}) => {
         ))}
       </FlexContainer>
       <FlexContainer direction="row" justify="space-between">
-        <span>Select Quantity: </span>
-        <select name="quantity">
+        <select
+          name="quantity"
+          onChange={(e) => setSelectedQuantity(e.target.value)}
+        >
+          <option>Select Quantity</option>
           {currentQuantityList.map((quantity, i) => (
             <option
               key={i}
@@ -46,7 +55,12 @@ const ProductInteraction = ({currentStyle}) => {
         </select>
       </FlexContainer>
       <FlexContainer direction="row" gap=".5em" justify="space-between">
-        <span>Add to bag</span>
+        <AddToCartBtn
+          selectedQuantity={selectedQuantity}
+          selectedSize={selectedSize}
+          currentStyle={currentStyle}
+          selectedSku={skuList[selectedSkuIndex]}
+        />
         <span>Favorite</span>
       </FlexContainer>
     </FlexContainer>

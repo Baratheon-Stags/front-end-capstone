@@ -126,4 +126,18 @@ module.exports = {
       .catch((err) => console.log(err));
   },
 
+  addToCart: (body) => {
+    const options = {
+      method: 'POST',
+      url: `${URL}/cart/`,
+      headers: {
+        Authorization: config.TOKEN,
+      },
+      data: body,
+    };
+    return axios(options)
+      .then((response) => response.data)
+      .catch((err) => console.log(err));
+  },
+
 };

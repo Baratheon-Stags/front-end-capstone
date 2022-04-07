@@ -70,4 +70,10 @@ module.exports = {
       .catch((err) => res.status(err));
   },
 
+  addToCart: (req, res) => {
+    models.addToCart(req.body)
+      .then((data) => res.status(201).send(data))
+      .catch(() => res.status(404));
+  },
+
 };
