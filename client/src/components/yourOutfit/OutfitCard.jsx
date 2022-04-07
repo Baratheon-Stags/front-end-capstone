@@ -3,7 +3,8 @@ import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 
-const OutfitCard = () => {
+const OutfitCard = ({ productDetails }) => {
+
   console.log('')
 
   return (
@@ -13,7 +14,7 @@ const OutfitCard = () => {
         </CardImage>
           <CardDesc>
             <FlexContainer gap="0" direction="column">
-              <span>category</span>
+              <span>{productDetails.category}</span>
               <span>name</span>
               <span>$100</span>
             </FlexContainer>
