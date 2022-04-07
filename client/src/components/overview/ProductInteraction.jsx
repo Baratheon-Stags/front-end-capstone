@@ -23,7 +23,10 @@ const ProductInteraction = ({currentStyle}) => {
 
   return (
     <FlexContainer direction="column" gap="1em">
-      <span>{`Current Size: ${skuList[selectedSkuIndex].size}`}</span>
+      <span>
+        <span style={{ fontWeight: 'bold' }}>SIZE &gt; </span>
+        {skuList[selectedSkuIndex].size}
+      </span>
       <FlexContainer direction="row" gap=".5em" wrap="wrap">
         {skuList.map((sku, i) => (
           <SizeButton
@@ -54,7 +57,7 @@ const ProductInteraction = ({currentStyle}) => {
           ))}
         </select>
       </FlexContainer>
-      <FlexContainer direction="row" gap=".5em" justify="space-between">
+      <FlexContainer direction="column" gap=".5em" justify="space-between">
         <AddToCartBtn
           selectedQuantity={selectedQuantity}
           selectedSize={selectedSize}

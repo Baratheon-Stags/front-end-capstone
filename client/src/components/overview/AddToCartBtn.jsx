@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import FlexContainer from '../styled/FlexContainer.styled';
 
 const CartBtnStyled = styled.button`
   color: #555555;
@@ -30,7 +31,7 @@ const AddToCartBtn = ({selectedQuantity, selectedSize, currentStyle, selectedSku
   const [isAdded, setIsAdded] = useState(false);
 
   const cartOptions = {
-    sku_id: selectedSku.id,
+    sku_id: selectedSku.sku_id,
   };
 
   const handleAddToCart = () => {
@@ -45,24 +46,32 @@ const AddToCartBtn = ({selectedQuantity, selectedSize, currentStyle, selectedSku
 
   let statusMsg;
   if (sentStatus) {
-    statusMsg = `Added ${selectedQuantity} ${selectedSize} in ${currentStyle.name}`;
+    statusMsg = `Added ${selectedQuantity} ${selectedSize} in ${currentStyle.name} to your cart.`;
   } else if (sentStatus === false) {
     statusMsg = 'Failed to add to cart. Please try again';
   }
 
-  const statusMsgStyle = { color: sentStatus ? 'green' : 'red' };
+  const statusMsgStyle = {
+    color: sentStatus ? 'green' : 'red',
+    fontSize: '1rem',
+    width: '70%',
+  };
 
   return (
-    <>
+    <FlexContainer direction="column" gap=".2em">
       <CartBtnStyled
-        onClick={handleAddToCart}
+        onClick={() => {
+          if (selectedQuantity > 0) {
+            handleAddToCart();
+          }
+        }}
       >
         Add to Cart
       </CartBtnStyled>
       {sentStatus && (
         <span style={statusMsgStyle}>{statusMsg}</span>
       )}
-    </>
+    </FlexContainer>
   );
 };
 
