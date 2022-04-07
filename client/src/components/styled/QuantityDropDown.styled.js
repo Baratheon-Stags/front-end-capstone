@@ -5,6 +5,9 @@ const QuantityDropDown = styled.select`
   color: #555555;
   padding: .45em 1.25em;
   background-color: #f3f3f3;
+  font-weight: bold;
+  height: 100%;
+  width: 55%;
 
   &:hover {
     cursor: pointer;
