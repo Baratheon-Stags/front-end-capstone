@@ -35,6 +35,12 @@ const Outfit = ({ productId }) => {
     }
   }, [addedItems]);
 
+  useEffect(() => {
+    if (productDetails.length !== 0) {
+      const details = JSON.stringify(productDetails);
+      localStorage.setItem('ProductDetails', details);
+    }
+  }, [productDetails]);
   const scrollRight = () => {
     carousel.current.scrollLeft += 450;
   };
@@ -52,7 +58,7 @@ const Outfit = ({ productId }) => {
           <AddItemCard addItem={addItem} productId={productId} />
           <StyledCarousel ref={carousel} direction="row">
             {productDetails.map((product) => (
-              <OutfitCard productDetails={product} />
+              <OutfitCard key={Math.random()} productDetails={product} />
 
             ))}
           </StyledCarousel>
