@@ -43,6 +43,10 @@ const CarouselContent = styled.div`
     aspect-ratio: 9/16;
     border-radius: 2px;
   }
+
+  & > img:hover {
+    cursor: zoom-in;
+  }
 `;
 
 const ArrowButton = styled.button`
