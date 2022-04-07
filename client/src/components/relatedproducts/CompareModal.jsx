@@ -33,9 +33,6 @@ const Backdrop = styled.div`
   z-index: 51;
 `;
 
-const namedContainer = styled(FlexContainer)`
-
-`;
 
 const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => {
   console.log('overview feats', overviewFeatures);
@@ -46,7 +43,6 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
         <Backdrop onClick={(e) => e.stopPropagation()}>
           <h2>Comparing</h2>
           <FlexContainer direction="row" justify="space-between">
-            {/* ((FC row, space between?)) */}
             <span>Current Item</span>
             <span> Card Item</span>
           </FlexContainer>
@@ -56,6 +52,7 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
               overviewFeatures={overviewFeatures}
               modalItemFeatures={modalItemFeatures}
             />
+
           </FlexContainer>
           <button type="button" onClick={toggleRelatedCompare}>close</button>
         </Backdrop>
@@ -65,29 +62,3 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
 };
 
 export default CompareModal;
-
-// return (
-//   <>
-//     <Overlay onClick={toggleRelatedCompare}>
-//       <Backdrop onClick={(e) => e.stopPropagation()}>
-//         <h2>Comparing</h2>
-//         <FlexContainer direction="row" justify="space-between">
-//           {/* ((FC row, space between?)) */}
-//           <span>Current Item</span>
-//           <span> Card Item</span>
-//         </FlexContainer>
-//         <FlexContainer>
-//           <div>First column</div>
-//           <div>
-//             <RenderRows
-//               overviewFeatures={overviewFeatures}
-//               modalItemFeatures={modalItemFeatures}
-//             />
-//           </div>
-//           <div>Second column</div>
-//         </FlexContainer>
-//         <button type="button" onClick={toggleRelatedCompare}>close</button>
-//       </Backdrop>
-//     </Overlay>
-//   </>
-// );

@@ -15,8 +15,8 @@ module.exports = {
       }
     ]
     */
-  //  current = [{feature: 'Fabric', value: 'Canvas'}];
-  //  card = [{feature: 'Fabric', value: 'Canvas'}];
+    //  current = [{feature: 'Fabric', value: 'Canvas'}];
+    //  card = [{feature: 'Fabric', value: 'Canvas'}];
     const traits = [];
     // Load current features
     current.forEach((feat) => {
@@ -25,7 +25,7 @@ module.exports = {
       obj.value = feat.value;
       obj.currHas = true;
       traits.push(obj);
-    })
+    });
     // Load product features
     card.forEach((feat) => {
       const obj = {};
@@ -33,7 +33,7 @@ module.exports = {
       obj.value = feat.value;
       obj.cardHas = true;
       traits.push(obj);
-    })
+    });
     return traits;
   },
 
