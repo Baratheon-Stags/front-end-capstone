@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { CardContainer, CardImage, CardDesc } from './styled/Card.styled';
-import GenerateStarRatings from './generateStarRatings';
+import GenerateStarRatings from './GenerateStarRatings';
 import ComparisonModal from './ComparisonModal';
 
 import FlexContainer from './styled/FlexContainer.styled';
