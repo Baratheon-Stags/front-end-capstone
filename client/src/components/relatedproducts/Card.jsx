@@ -9,7 +9,7 @@ import GenerateStarRatings from '../GenerateStarRatings';
 
 import FlexContainer from '../styled/FlexContainer.styled';
 
-const Card = ({ product, overviewFeatures, relatedCompare }) => {
+const Card = ({ product, overviewFeatures, toggleRelatedCompare }) => {
   const {
     id, image, category, name, default_price, ratings, features
   } = product;
@@ -32,7 +32,7 @@ const Card = ({ product, overviewFeatures, relatedCompare }) => {
 
   const openComparison = (event) => {
     event.stopPropagation();
-    relatedCompare(id);
+    toggleRelatedCompare(id);
   };
 
   // Gets features for all related products
@@ -51,7 +51,6 @@ const Card = ({ product, overviewFeatures, relatedCompare }) => {
 
   return (
     <li>
-      <CompareModal features={features} overviewFeatures={overviewFeatures} />
       <CardContainer onClick={goToProduct}>
         <CardImage url={image}>
           <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
