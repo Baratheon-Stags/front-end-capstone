@@ -10,3 +10,7 @@
 -- find a way to hold the current skus which will possibly disable sizing options
 
 -- fix carousel thumbnails for products with lots of photos, product 40348 is an example. Need to be able to scroll through the photos
+
+-- handle null photos
+
+-- handle null styles (40345)
