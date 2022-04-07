@@ -43,6 +43,10 @@ const CarouselContent = styled.div`
     aspect-ratio: 9/16;
     border-radius: 2px;
   }
+
+  & > img:hover {
+    cursor: zoom-in;
+  }
 `;
 
 const ArrowButton = styled.button`
@@ -155,7 +159,11 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
         <CarouselContentWrapper>
           <ThumbnailsContainer>
             {galleryThumbnails.map((image, i) => (
-              <ThumbnailContainer onClick={() => goToImage(i)} selected={i === currentIndex}>
+              <ThumbnailContainer
+                onClick={() => goToImage(i)}
+                selected={i === currentIndex}
+                key={i}
+              >
                 <img src={image} key={i} alt="" />
               </ThumbnailContainer>
             ))}

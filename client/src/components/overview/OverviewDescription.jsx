@@ -5,14 +5,19 @@ const OverviewDescription = ({overview}) => (
   <FlexContainer
     direction="row"
     align="center"
-    justify="space-between"
   >
-    <div style={{ borderRight: '2px solid black' }}>
+    <div style={{ borderRight: '2px solid black', width: '70%' }}>
       <h2>{overview.slogan}</h2>
       <p>{overview.description}</p>
     </div>
-    <ul>
-      {overview.features.map((feature, i) => <li key={i}>{feature.feature}</li>)}
+    <ul style={{ paddingLeft: '0', listStyle: 'none' }}>
+      {overview.features.map((feature, i) => (
+        <li key={i}>
+          {feature.value !== null
+            ? `${feature.feature}: ${feature.value}`
+            : `${feature.feature}`}
+        </li>
+      ))}
     </ul>
   </FlexContainer>
 );

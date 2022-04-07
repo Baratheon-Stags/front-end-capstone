@@ -30,6 +30,9 @@ app.put('/helpful/:review_id', controller.markAsHelpful);
 app.put('/report/:review_id', controller.markAsReported);
 app.post('/reviews', controller.addReview);
 
+// Cart
+app.post('/cart', controller.addToCart);
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

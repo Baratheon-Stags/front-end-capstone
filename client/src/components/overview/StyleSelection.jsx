@@ -5,7 +5,7 @@ import FlexContainer from '../styled/FlexContainer.styled';
 const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
   const styleOptions = styles.results;
 
-  const styleImages = styleOptions.reduce((images, style, i) => {
+  const styleImages = styleOptions.reduce((images, style) => {
     images.push(style.photos[0].thumbnail_url);
     return images;
   }, []);
