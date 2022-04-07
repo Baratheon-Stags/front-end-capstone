@@ -1,48 +1,24 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 
 const OutfitCard = ({ productDetails }) => {
-
-  console.log('')
+  const {image, category, name, default_price, ratings} = productDetails;
 
   return (
-    <>
-      <CardContainer>
-        <CardImage>
-        </CardImage>
-          <CardDesc>
-            <FlexContainer gap="0" direction="column">
-              <span>{productDetails.category}</span>
-              <span>name</span>
-              <span>$100</span>
-            </FlexContainer>
-          </CardDesc>
-      </CardContainer>
-        <CardContainer>
-        <CardImage>
-        </CardImage>
-          <CardDesc>
-            <FlexContainer gap="0" direction="column">
-              <span>category</span>
-              <span>name</span>
-              <span>$100</span>
-            </FlexContainer>
-          </CardDesc>
-      </CardContainer>
-        <CardContainer>
-        <CardImage>
-        </CardImage>
-          <CardDesc>
-            <FlexContainer gap="0" direction="column">
-              <span>category</span>
-              <span>name</span>
-              <span>$100</span>
-            </FlexContainer>
-          </CardDesc>
-      </CardContainer>
-    </>
+    <CardContainer>
+      <CardImage url={image}>
+      </CardImage>
+      <CardDesc>
+        <FlexContainer gap="0" direction="column">
+          <span>{category}</span>
+          <span>{name}</span>
+          <span>${default_price}</span>
+          <span><GenerateStarRatings ratings={ratings} /></span>
+        </FlexContainer>
+      </CardDesc>
+    </CardContainer>
   )
 };
 

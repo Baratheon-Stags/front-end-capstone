@@ -29,7 +29,7 @@ const Card = ({ product }) => {
   };
 
   return (
-    <li>
+    <>
       <ComparisonModal showModal={showModal} setShowModal={setShowModal} />
       <CardContainer onClick={goToProduct}>
         <CardImage url={image}>
@@ -44,7 +44,7 @@ const Card = ({ product }) => {
           </FlexContainer>
         </CardDesc>
       </CardContainer>
-    </li>
+    </>
   );
 };
 

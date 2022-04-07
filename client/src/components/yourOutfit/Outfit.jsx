@@ -27,6 +27,7 @@ const Outfit = ({ productId }) => {
   useEffect(() => {
     if (addedItems.length !== 0) {
       addedItems.forEach((id) => {
+        console.log("Should fire once for each item")
         axios.get(`/related/${id}`)
           .then((product) =>
             setProductDetails((previousProduct) => [...previousProduct, product.data]));
@@ -49,7 +50,9 @@ const Outfit = ({ productId }) => {
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
         <AddItemCard addItem={addItem} productId={productId} />
         <StyledCarousel ref={carousel} direction="row">
-          <OutfitCard productDetails={productDetails}/>
+          {productDetails.map((product) => (
+            <OutfitCard productDetails={product} />
+          ))}
         </StyledCarousel>
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
       </FlexContainer>

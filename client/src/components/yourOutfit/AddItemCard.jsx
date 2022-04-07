@@ -4,16 +4,31 @@ import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer } from '../styled/Card.styled';
 
 const LockedCard = styled(FlexContainer)`
-  width: 70%;
+  width: 50%;
+  background-color: #bdb76b;
 `;
 
-const AddItemCard = ({ addItem }) => {
+const FlexItem = styled(FlexContainer)`
+  background-color: #00ffff;
+  display: flex;
+  direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 300px;
+  border: 1px solid black;
+  flex: 0 0 auto;
+`;
 
+
+
+const AddItemCard = ({ addItem }) => {
+  console.log('');
   return (
     <LockedCard>
-      <CardContainer>
+        <FlexItem>
         <button onClick={addItem}>Add to outfit</button>
-      </CardContainer>
+        </FlexItem>
     </LockedCard>
   )
 }
