@@ -13,6 +13,7 @@ const CartBtnStyled = styled.button`
   transition: all .25s ease;
   font-weight: bold;
   text-align: center;
+  height: 100%;
 
   &:hover {
     cursor: pointer;

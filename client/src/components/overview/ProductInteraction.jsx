@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import FlexContainer from '../styled/FlexContainer.styled';
 import SizeButton from '../styled/SizeButton.styled';
 import AddToCartBtn from './AddToCartBtn';
+import QuantityDropDown from '../styled/QuantityDropDown.styled';
 
 const ProductInteraction = ({currentStyle}) => {
   const styleSkus = currentStyle.skus;
@@ -41,29 +42,29 @@ const ProductInteraction = ({currentStyle}) => {
           </SizeButton>
         ))}
       </FlexContainer>
-      <FlexContainer direction="row" justify="space-between">
-        <select
-          name="quantity"
-          onChange={(e) => setSelectedQuantity(e.target.value)}
-        >
-          <option>Select Quantity</option>
-          {currentQuantityList.map((quantity, i) => (
-            <option
-              key={i}
-              value={quantity}
-            >
-              {quantity}
-            </option>
-          ))}
-        </select>
-      </FlexContainer>
-      <FlexContainer direction="column" gap=".5em" justify="space-between">
-        <AddToCartBtn
-          selectedQuantity={selectedQuantity}
-          selectedSize={selectedSize}
-          currentStyle={currentStyle}
-          selectedSku={skuList[selectedSkuIndex]}
-        />
+      <FlexContainer direction="column" gap="1em">
+        <FlexContainer direction="row" gap=".5em">
+          <QuantityDropDown
+            name="quantity"
+            onChange={(e) => setSelectedQuantity(e.target.value)}
+          >
+            <option>Select Quantity</option>
+            {currentQuantityList.map((quantity, i) => (
+              <option
+                key={i}
+                value={quantity}
+              >
+                {quantity}
+              </option>
+            ))}
+          </QuantityDropDown>
+          <AddToCartBtn
+            selectedQuantity={selectedQuantity}
+            selectedSize={selectedSize}
+            currentStyle={currentStyle}
+            selectedSku={skuList[selectedSkuIndex]}
+          />
+        </FlexContainer>
         <span>Favorite</span>
       </FlexContainer>
     </FlexContainer>

@@ -14,3 +14,5 @@
 -- handle null photos
 
 -- handle null styles (40345)
+
+-- add to cart message is staying after switching to new styles
