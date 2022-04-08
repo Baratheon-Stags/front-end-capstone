@@ -12,7 +12,6 @@ const OverviewDetailsContainer = styled.div`
 
   ${(props) => props.expanded && css`
     display: none;
-    opacity: 0;
   `}
 `;
 
