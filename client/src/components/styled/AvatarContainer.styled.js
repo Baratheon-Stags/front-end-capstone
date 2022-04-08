@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const AvatarContainer = styled.div`
   border-radius: 100%;
-  border: 1px solid rgb(88,88,88);
+  border: 1px solid black;
   width: 75px;
   height: 75px;
   display: flex;
