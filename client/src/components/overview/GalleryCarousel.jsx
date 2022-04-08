@@ -127,7 +127,7 @@ const ThumbnailContainer = styled.div`
   }
 `;
 
-const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
+const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // hold the index of the currently displayed image in the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -180,6 +180,7 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
         <FontAwesomeIcon
           icon={solid('expand')}
           className="fullscreen-button"
+          onClick={handleExpand}
         />
         <CarouselContentWrapper>
           <CarouselContent

@@ -1,7 +1,7 @@
 import React from 'react';
 import GalleryCarousel from './GalleryCarousel';
 
-const OverviewGallery = ({currentStyle}) => {
+const OverviewGallery = ({currentStyle, handleExpand}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
     images.push(current.url);
     return images;
@@ -13,7 +13,11 @@ const OverviewGallery = ({currentStyle}) => {
   }, []);
 
   return (
-    <GalleryCarousel galleryImages={galleryImages} galleryThumbnails={galleryThumbnails} />
+    <GalleryCarousel
+      galleryImages={galleryImages}
+      galleryThumbnails={galleryThumbnails}
+      handleExpand={handleExpand}
+    />
   );
 };
 

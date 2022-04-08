@@ -8,19 +8,32 @@ import OverviewDescription from './OverviewDescription';
 
 const OverviewDetailsContainer = styled.div`
   width: 30%;
+  transition: all .2s ease;
 
   ${(props) => props.expanded && css`
     display: none;
+    opacity: 0;
   `}
 `;
 
 const OverviewGalleryContainer = styled.div`
-  width: ${(props) => (props.expanded ? '100%' : '80%')};
+  width: 70%;
   border-radius: 2px;
+  transition: all .2s ease;
+
+  ${(props) => props.expanded && css`
+    width: 100%;
+  `}
 `;
 
 const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <>
@@ -33,10 +46,15 @@ const Overview = ({overview, styles, metadata}) => {
           direction="row"
           align="center"
         >
-          <OverviewGalleryContainer>
-            <OverviewGallery currentStyle={currentStyle} />
+          <OverviewGalleryContainer
+            expanded={isExpanded}
+          >
+            <OverviewGallery
+              currentStyle={currentStyle}
+              handleExpand={handleExpand}
+            />
           </OverviewGalleryContainer>
-          <OverviewDetailsContainer>
+          <OverviewDetailsContainer expanded={isExpanded}>
             <OverviewDetails
               overview={overview}
               styles={styles}
