@@ -27,20 +27,17 @@ const Outfit = ({ productId }) => {
   useEffect(() => {
     if (addedItems.length !== 0) {
       addedItems.forEach((id) => {
-        console.log("Should fire once for each item")
         axios.get(`/related/${id}`)
-          .then((product) =>
-            setProductDetails((previousProduct) => [...previousProduct, product.data]));
+          .then((product) => {
+            const details = product.data;
+            localStorage.setItem(`${productId}`, JSON.stringify(details));
+            setProductDetails((previousProduct) => [...previousProduct, details]);
+          });
       });
     }
   }, [addedItems]);
 
-  useEffect(() => {
-    if (productDetails.length !== 0) {
-      const details = JSON.stringify(productDetails);
-      localStorage.setItem('ProductDetails', details);
-    }
-  }, [productDetails]);
+
   const scrollRight = () => {
     carousel.current.scrollLeft += 450;
   };

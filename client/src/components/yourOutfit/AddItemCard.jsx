@@ -1,8 +1,8 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import FlexContainer from '../styled/FlexContainer.styled';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer } from '../styled/Card.styled';
 
 const LockedCard = styled(FlexContainer)`
@@ -32,21 +32,14 @@ const StyleBtn = styled.div`
 
 `;
 
-
-const AddItemCard = ({ addItem }) => {
-  console.log('');
-
-  return (
-    <LockedCard>
-        <FlexItem>
-        <StyleBtn>
-          <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
-        </StyleBtn>
-        </FlexItem>
-    </LockedCard>
-  )
-}
+const AddItemCard = ({ addItem }) => (
+  <LockedCard>
+    <FlexItem>
+      <StyleBtn>
+        <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
+      </StyleBtn>
+    </FlexItem>
+  </LockedCard>
+);
 
 export default AddItemCard;
-
-{/* <button onClick={addItem}>Add to outfit</button> */}
