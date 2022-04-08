@@ -38,7 +38,8 @@ const CarouselContent = styled.div`
 
   & > img {
     width: 100%;
-    height: 60vh;
+    height: 100%;
+    max-height: 800px;
     object-fit: cover;
     aspect-ratio: 9/16;
     border-radius: 2px;
