@@ -52,6 +52,15 @@ const Outfit = ({ productId }) => {
     carousel.current.scrollLeft += 1000;
   };
 
+  const removeItem = (toRemove) => {
+    const filteredProducts = productDetails.filter((product) => (toRemove !== product.id));
+    const filteredIds = addedItems.filter((id) => (toRemove !== id));
+
+    localStorage.removeItem(toRemove);
+    setAddedItems(filteredIds);
+    setProductDetails(filteredProducts);
+  };
+
   const addItem = () => {
     if (!addedItems.includes(productId)) {
       setAddedItems([...addedItems, productId]);
@@ -76,7 +85,7 @@ const Outfit = ({ productId }) => {
           <AddItemCard addItem={addItem} productId={productId} />
           <StyledCarousel ref={carousel} direction="row">
             {productDetails.map((product) => (
-              <OutfitCard key={Math.random()} productDetails={product} />
+              <OutfitCard key={Math.random()} productDetails={product} removeItem={removeItem} />
 
             ))}
           </StyledCarousel>
@@ -84,7 +93,7 @@ const Outfit = ({ productId }) => {
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
       </SpecialFlex>
     </>
-  )
+  );
 };
 
 export default Outfit;

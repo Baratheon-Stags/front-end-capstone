@@ -5,7 +5,7 @@ import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 
-const OutfitCard = ({ productDetails }) => {
+const OutfitCard = ({ productDetails, removeItem }) => {
   const {image, category, name, default_price, ratings} = productDetails;
 
   const btnStyle = {
@@ -14,10 +14,15 @@ const OutfitCard = ({ productDetails }) => {
     left: '83%',
   };
 
+  const handleClick = () => {
+    // Must update parent state
+    removeItem(productDetails.id);
+  };
+
   return (
     <CardContainer>
       <CardImage url={image}>
-        <FontAwesomeIcon style={btnStyle} icon={solid('circle-xmark')} className="fa-lg" />
+        <FontAwesomeIcon onClick={handleClick} style={btnStyle} icon={solid('circle-xmark')} className="fa-lg" />
       </CardImage>
       <CardDesc>
         <FlexContainer gap="0" direction="column">
