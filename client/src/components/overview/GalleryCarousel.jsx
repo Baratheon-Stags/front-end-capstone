@@ -40,8 +40,8 @@ const CarouselContent = styled.div`
     width: 100%;
     height: 100%;
     max-height: 800px;
-    object-fit: cover;
     aspect-ratio: 9/16;
+    object-fit: cover;
     border-radius: 2px;
   }
 
@@ -49,7 +49,7 @@ const CarouselContent = styled.div`
     cursor: zoom-in;
   }
 
-  & > img.zoomed {
+  & .zoomed {
     transform: scale(1.5);
   }
 `;
@@ -104,15 +104,6 @@ const ThumbnailContainer = styled.div`
   }
 
   ${(props) => props.selected && css`
-    // &::after {
-    //   content: '';
-    //   width: 95%;
-    //   height: 4px;
-    //   background-color: black;
-    //   position: absolute;
-    //   bottom: -6px;
-    // }
-
     & {
       border: 1px solid white;
     }
@@ -176,15 +167,17 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
               </ThumbnailContainer>
             ))}
           </ThumbnailsContainer>
-          <CarouselContent currentIndex={currentIndex}>
+          <CarouselContent
+            currentIndex={currentIndex}
+            onClick={(e) => {
+              e.target.classList.toggle('zoomed');
+            }}
+          >
             {galleryImages.map((image, i) => (
               <img
                 src={image}
                 key={i}
                 alt=""
-                onClick={ (e) => {
-                  e.target.classList.toggle('zoomed');
-                }}
               />
             ))}
           </CarouselContent>
