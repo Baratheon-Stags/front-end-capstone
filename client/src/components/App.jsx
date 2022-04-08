@@ -28,6 +28,7 @@ const App = () => {
       {product.length === 0
         ? null
         : (
+
           <AppContainer>
             <FlexContainer direction="column" gap="5em">
               <Overview
@@ -38,7 +39,7 @@ const App = () => {
               />
               <RelatedProducts related={related} />
               <Outfit productId={overview.id} />
-              <Reviews productId={overview.id} />
+              <Reviews productId={overview.id} productName={overview.name}/>
             </FlexContainer>
           </AppContainer>
         )}

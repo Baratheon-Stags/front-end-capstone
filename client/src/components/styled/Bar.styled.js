@@ -14,7 +14,7 @@ const Container = styled.div`
 
 `;
 
-const Bar = ({ color = "#00FF00", value, max = 100, width = 100}) => {
+const Bar = ({ color = "blue", value, max = 100, width = 100}) => {
   return (
     <Container color={color} width={width}>
       <progress value={value} max={max} />
