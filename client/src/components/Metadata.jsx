@@ -70,7 +70,6 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             {Object.keys(metadata.characteristics).map((characteristic) => (
               <div key={characteristic}>
                 {characteristic}
-                <SectionedBar value={50} />
               </div>
             ))}
           </div>
