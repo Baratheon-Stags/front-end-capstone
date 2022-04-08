@@ -1,15 +1,15 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FlexContainer from '../styled/FlexContainer.styled';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { CardContainer } from '../styled/Card.styled';
 
 const LockedCard = styled(FlexContainer)`
   width: 50%;
-  background-color: #bdb76b;
 `;
 
 const FlexItem = styled(FlexContainer)`
-  background-color: #00ffff;
   display: flex;
   direction: column;
   justify-content: center;
@@ -27,10 +27,12 @@ const AddItemCard = ({ addItem }) => {
   return (
     <LockedCard>
         <FlexItem>
-        <button onClick={addItem}>Add to outfit</button>
+        <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
         </FlexItem>
     </LockedCard>
   )
 }
 
 export default AddItemCard;
+
+{/* <button onClick={addItem}>Add to outfit</button> */}
