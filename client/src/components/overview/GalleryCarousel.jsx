@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const CarouselContainer = styled.div`
   width: 100%;
@@ -11,6 +13,15 @@ const CarouselWrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
+
+  & > .fullscreen-button {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    z-index: 5;
+    cursor: pointer;
+    color: #333;
+  }
 `;
 
 const CarouselContentWrapper = styled.div`
@@ -155,18 +166,22 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
             </ArrowButton>
           )
         }
+        <ThumbnailsContainer>
+          {galleryThumbnails.map((image, i) => (
+            <ThumbnailContainer
+              onClick={() => goToImage(i)}
+              selected={i === currentIndex}
+              key={i}
+            >
+              <img src={image} key={i} alt="" />
+            </ThumbnailContainer>
+          ))}
+        </ThumbnailsContainer>
+        <FontAwesomeIcon
+          icon={solid('expand')}
+          className="fullscreen-button"
+        />
         <CarouselContentWrapper>
-          <ThumbnailsContainer>
-            {galleryThumbnails.map((image, i) => (
-              <ThumbnailContainer
-                onClick={() => goToImage(i)}
-                selected={i === currentIndex}
-                key={i}
-              >
-                <img src={image} key={i} alt="" />
-              </ThumbnailContainer>
-            ))}
-          </ThumbnailsContainer>
           <CarouselContent
             currentIndex={currentIndex}
             onClick={(e) => {

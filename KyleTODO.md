@@ -15,3 +15,5 @@
 -- stop the cart status message from pushing content
 
 -- reset the selected quantity when style changes
+
+-- combine overview gallery and gallery carousel into one component
