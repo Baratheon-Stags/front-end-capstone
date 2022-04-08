@@ -50,7 +50,6 @@ const RelatedProducts = ({ related }) => {
     <>
       <h1>Related</h1>
       {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare}/> : null}
-      <ul>
         <FlexContainer direction="row" gap="0em">
           <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollLeft}>&lt;</button>
           <StyledCarousel ref={carousel} direction="row">
@@ -59,7 +58,6 @@ const RelatedProducts = ({ related }) => {
           </StyledCarousel>
           <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollRight}>&gt;</button>
         </FlexContainer>
-
     </>
   );
 };
