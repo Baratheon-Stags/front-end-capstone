@@ -3,7 +3,7 @@ import axios from 'axios';
 import Overview from './overview/Overview';
 import RelatedProducts from './relatedproducts/RelatedProducts';
 import Reviews from './Reviews';
-import Outfit from './Outfit';
+import Outfit from './yourOutfit/Outfit';
 
 import FlexContainer from './styled/FlexContainer.styled';
 import Navbar from './styled/Navbar.styled';

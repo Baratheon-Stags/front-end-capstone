@@ -17,6 +17,14 @@ const RelatedProducts = ({ related }) => {
 
   const carousel = useRef(null);
 
+  const style = {
+    outline: '0',
+    fontSize: '25px',
+    backgroundColor: 'Transparent',
+    border: 'none',
+    margin: '10px',
+  };
+
   // After mount, fetch all related product information
   useEffect(() => {
     related.forEach((id) => {
@@ -37,10 +45,8 @@ const RelatedProducts = ({ related }) => {
 
   const toggleRelatedCompare = (id) => {
     if (typeof id === 'number') {
-      console.log("id is...", id);
-      let filtered = relatedProducts.filter((value) => {
-        return (value.id === id);
-      })
+      console.log('id is...', id);
+      const filtered = relatedProducts.filter((value) => (value.id === id));
       setModalItemFeatures(filtered);
     }
     setModalIsOpen(!modalIsOpen);
@@ -49,18 +55,14 @@ const RelatedProducts = ({ related }) => {
   return (
     <>
       <h1>Related</h1>
-      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare}/> : null}
-      <ul>
-        <FlexContainer direction="row" gap="0em">
-          <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollLeft}>&lt;</button>
-          <StyledCarousel ref={carousel} direction="row">
-            {relatedProducts.map((product) =>
-              <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare}/>)}
-          </StyledCarousel>
-          <button style={{ outline: '0', fontSize: '25px', backgroundColor: 'Transparent', border: 'none', margin: '10px' }} type="button" onClick={scrollRight}>&gt;</button>
-        </FlexContainer>
-      </ul>
-
+      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
+      <FlexContainer direction="row" gap="0em">
+        <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
+        <StyledCarousel ref={carousel} direction="row">
+          {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} />)}
+        </StyledCarousel>
+        <button style={style} type="button" onClick={scrollRight}>&gt;</button>
+      </FlexContainer>
     </>
   );
 };
