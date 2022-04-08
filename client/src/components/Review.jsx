@@ -7,9 +7,7 @@ import GenerateStarRatings from './GenerateReviewRatings';
 
 
 const Review = ({ review }) => {
-<<<<<<< Updated upstream
-  // console.log('');
-=======
+
   const date = new Date(review.date);
   const [month, day, year] = [date.getMonth(), date.getDate(), date.getFullYear()];
   var months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
@@ -22,7 +20,6 @@ const Review = ({ review }) => {
     axios.put(`/report/${review.review_id}`)
   }
 
->>>>>>> Stashed changes
   return (
     <>
       <ReviewContainer
