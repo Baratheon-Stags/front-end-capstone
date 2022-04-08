@@ -1,6 +1,5 @@
 import React from 'react';
 import Bar from './styled/Bar.styled';
-import SectionedBar from './styled/SectionedBar.styled';
 import FlexContainer from './styled/FlexContainer.styled';
 import TextContainer from './styled/TextContainer.styled';
 import Link from './styled/Link.styled';
