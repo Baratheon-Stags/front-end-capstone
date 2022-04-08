@@ -21,7 +21,7 @@ const CarouselContentWrapper = styled.div`
 
 const CarouselContent = styled.div`
   display: flex;
-  transition: all .25s linear;
+  transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
   transform: translateX(-${(props) => props.currentIndex * 100}%);
@@ -46,6 +46,10 @@ const CarouselContent = styled.div`
 
   & > img:hover {
     cursor: zoom-in;
+  }
+
+  & > img.zoomed {
+    transform: scale(1.5);
   }
 `;
 
@@ -99,14 +103,17 @@ const ThumbnailContainer = styled.div`
   }
 
   ${(props) => props.selected && css`
-    &::after {
-      content: '';
-      width: 100%;
-      height: 3px;
-      background-color: black;
-      position: absolute;
-      bottom: -6px;
-      border-radius: 10px;
+    // &::after {
+    //   content: '';
+    //   width: 95%;
+    //   height: 4px;
+    //   background-color: black;
+    //   position: absolute;
+    //   bottom: -6px;
+    // }
+
+    & {
+      border: 1px solid white;
     }
   `}
 
@@ -169,7 +176,16 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
             ))}
           </ThumbnailsContainer>
           <CarouselContent currentIndex={currentIndex}>
-            {galleryImages.map((image, i) => <img src={image} key={i} alt="" />)}
+            {galleryImages.map((image, i) => (
+              <img
+                src={image}
+                key={i}
+                alt=""
+                onClick={ (e) => {
+                  e.target.classList.toggle('zoomed');
+                }}
+              />
+            ))}
           </CarouselContent>
         </CarouselContentWrapper>
         {

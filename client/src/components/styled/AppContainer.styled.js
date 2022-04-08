@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const AppContainer = styled.div`
-  width: 1000px;
+  width: 80vw;
   padding: .75em;
-  max-width: 100%;
+  max-width: 1400px;
   margin: 0 auto;
 `;
 
