@@ -31,6 +31,7 @@ module.exports = {
         id: data[0].id,
         name: data[0].name,
         category: data[0].category,
+        features: data[0].features,
         default_price: data[0].default_price,
         image: data[1].results[0].photos[0].thumbnail_url,
         ratings: data[2].ratings,
@@ -67,6 +68,12 @@ module.exports = {
     models.addReview(req.body)
       .then((data) => res.status(201).send(data))
       .catch((err) => res.status(err));
+  },
+
+  addToCart: (req, res) => {
+    models.addToCart(req.body)
+      .then((data) => res.status(201).send(data))
+      .catch(() => res.status(404));
   },
 
 };

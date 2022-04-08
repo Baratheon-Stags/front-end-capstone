@@ -11,7 +11,6 @@ const StyledCarousel = styled(FlexContainer)`
   &::-webkit-scrollbar {
     display: none;
   }
-  transform: translate3d(0);
   scroll-behavior: smooth;
 `;
 

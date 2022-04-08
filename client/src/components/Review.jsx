@@ -2,7 +2,7 @@ import React from 'react';
 import FlexContainer from './styled/FlexContainer.styled';
 
 const Review = ({ review }) => {
-  console.log('');
+  // console.log('');
   return (
     <>
       <div>
