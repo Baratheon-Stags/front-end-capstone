@@ -53,7 +53,7 @@ const ProductInteraction = ({currentStyle}) => {
   // handle creation and display of status message
   let statusMsg;
   if (sentCartStatus) {
-    statusMsg = `Added ${selectedQuantity} ${selectedSize} in ${currentStyle.name} to your cart.`;
+    statusMsg = `Added ${selectedQuantity} ${currentStyle.name} in size ${selectedSize} to your cart.`;
   } else if (sentCartStatus === false) {
     statusMsg = 'Failed to add to cart. Please try again';
   }

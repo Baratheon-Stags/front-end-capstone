@@ -37,10 +37,7 @@ const CarouselContent = styled.div`
   }
 
   & > img {
-    width: 100%;
-    height: 60vh;
     object-fit: cover;
-    aspect-ratio: 9/16;
     border-radius: 2px;
   }
 
