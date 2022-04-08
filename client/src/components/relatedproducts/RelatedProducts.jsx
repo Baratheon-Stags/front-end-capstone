@@ -36,11 +36,11 @@ const RelatedProducts = ({ related }) => {
   }, []);
 
   const scrollRight = () => {
-    carousel.current.scrollLeft += 450;
+    carousel.current.scrollLeft += 1260;
   };
 
   const scrollLeft = () => {
-    carousel.current.scrollLeft -= 450;
+    carousel.current.scrollLeft -= 1260;
   };
 
   const toggleRelatedCompare = (id) => {
@@ -56,9 +56,9 @@ const RelatedProducts = ({ related }) => {
     <>
       <h1>Related</h1>
       {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
-      <FlexContainer direction="row" gap="0em">
+      <FlexContainer direction="row" gap="0em" justify="space-between">
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
-        <StyledCarousel ref={carousel} direction="row">
+        <StyledCarousel gap="20px" ref={carousel} direction="row">
           {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} />)}
         </StyledCarousel>
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
