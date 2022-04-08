@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const CarouselContainer = styled.div`
   width: 100%;
@@ -11,6 +13,15 @@ const CarouselWrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
+
+  & > .fullscreen-button {
+    position: absolute;
+    top: 2.5%;
+    right: 2.5%;
+    z-index: 5;
+    cursor: pointer;
+    color: #333;
+  }
 `;
 
 const CarouselContentWrapper = styled.div`
@@ -21,7 +32,7 @@ const CarouselContentWrapper = styled.div`
 
 const CarouselContent = styled.div`
   display: flex;
-  transition: all .25s linear;
+  transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
   transform: translateX(-${(props) => props.currentIndex * 100}%);
@@ -38,14 +49,19 @@ const CarouselContent = styled.div`
 
   & > img {
     width: 100%;
-    height: 60vh;
-    object-fit: cover;
+    height: 100%;
+    max-height: 800px;
     aspect-ratio: 9/16;
+    object-fit: cover;
     border-radius: 2px;
   }
 
   & > img:hover {
     cursor: zoom-in;
+  }
+
+  & .zoomed {
+    transform: scale(1.5);
   }
 `;
 
@@ -99,14 +115,8 @@ const ThumbnailContainer = styled.div`
   }
 
   ${(props) => props.selected && css`
-    &::after {
-      content: '';
-      width: 100%;
-      height: 3px;
-      background-color: black;
-      position: absolute;
-      bottom: -6px;
-      border-radius: 10px;
+    & {
+      border: 1px solid white;
     }
   `}
 
@@ -117,7 +127,7 @@ const ThumbnailContainer = styled.div`
   }
 `;
 
-const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
+const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // hold the index of the currently displayed image in the carousel
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -156,20 +166,36 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails}) => {
             </ArrowButton>
           )
         }
+        <ThumbnailsContainer>
+          {galleryThumbnails.map((image, i) => (
+            <ThumbnailContainer
+              onClick={() => goToImage(i)}
+              selected={i === currentIndex}
+              key={i}
+            >
+              <img src={image} key={i} alt="" />
+            </ThumbnailContainer>
+          ))}
+        </ThumbnailsContainer>
+        <FontAwesomeIcon
+          icon={solid('expand')}
+          className="fullscreen-button"
+          onClick={handleExpand}
+        />
         <CarouselContentWrapper>
-          <ThumbnailsContainer>
-            {galleryThumbnails.map((image, i) => (
-              <ThumbnailContainer
-                onClick={() => goToImage(i)}
-                selected={i === currentIndex}
+          <CarouselContent
+            currentIndex={currentIndex}
+            onClick={(e) => {
+              e.target.classList.toggle('zoomed');
+            }}
+          >
+            {galleryImages.map((image, i) => (
+              <img
+                src={image}
                 key={i}
-              >
-                <img src={image} key={i} alt="" />
-              </ThumbnailContainer>
+                alt=""
+              />
             ))}
-          </ThumbnailsContainer>
-          <CarouselContent currentIndex={currentIndex}>
-            {galleryImages.map((image, i) => <img src={image} key={i} alt="" />)}
           </CarouselContent>
         </CarouselContentWrapper>
         {

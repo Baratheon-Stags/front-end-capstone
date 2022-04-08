@@ -1,14 +1,38 @@
 import React, { useState } from 'react';
+import styled, { css } from 'styled-components';
 // import PropTypes from 'prop-types';
 import FlexContainer from '../styled/FlexContainer.styled';
 import OverviewGallery from './OverviewGallery';
 import OverviewDetails from './OverviewDetails';
 import OverviewDescription from './OverviewDescription';
-import OverviewGalleryContainer from '../styled/OverviewGalleryContainer.styled';
-import OverviewDetailsContainer from '../styled/OverviewDetailsContainer.styled';
 
-const Overview = ({product, overview, styles, metadata}) => {
+const OverviewDetailsContainer = styled.div`
+  width: 30%;
+  transition: all .2s ease;
+
+  ${(props) => props.expanded && css`
+    display: none;
+  `}
+`;
+
+const OverviewGalleryContainer = styled.div`
+  width: 70%;
+  border-radius: 2px;
+  transition: all .2s ease;
+
+  ${(props) => props.expanded && css`
+    width: 100%;
+  `}
+`;
+
+const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const handleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <>
@@ -21,10 +45,15 @@ const Overview = ({product, overview, styles, metadata}) => {
           direction="row"
           align="center"
         >
-          <OverviewGalleryContainer>
-            <OverviewGallery currentStyle={currentStyle} />
+          <OverviewGalleryContainer
+            expanded={isExpanded}
+          >
+            <OverviewGallery
+              currentStyle={currentStyle}
+              handleExpand={handleExpand}
+            />
           </OverviewGalleryContainer>
-          <OverviewDetailsContainer>
+          <OverviewDetailsContainer expanded={isExpanded}>
             <OverviewDetails
               overview={overview}
               styles={styles}
