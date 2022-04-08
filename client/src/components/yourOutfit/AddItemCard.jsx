@@ -20,14 +20,28 @@ const FlexItem = styled(FlexContainer)`
   flex: 0 0 auto;
 `;
 
+const StyleBtn = styled.div`
+    cursor: pointer;
+    &:hover {
+      filter: drop-shadow(0 0.3rem #1C943E);
+    };
+    &:active {
+      filter: drop-shadow(0 0.3rem black);
+      transform: translateY(4px);
+    }
+
+`;
 
 
 const AddItemCard = ({ addItem }) => {
   console.log('');
+
   return (
     <LockedCard>
         <FlexItem>
-        <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
+        <StyleBtn>
+          <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
+        </StyleBtn>
         </FlexItem>
     </LockedCard>
   )
