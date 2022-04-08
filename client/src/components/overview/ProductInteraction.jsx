@@ -61,7 +61,8 @@ const ProductInteraction = ({currentStyle}) => {
   const statusMsgStyle = {
     color: sentCartStatus ? 'green' : 'red',
     fontSize: '1rem',
-    width: '70%',
+    width: '90%',
+    textAlign: 'center',
     visibility: sentCartStatus ? 'visible' : 'hidden',
   };
 

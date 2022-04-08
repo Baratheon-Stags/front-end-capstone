@@ -13,3 +13,5 @@
 -- add to cart message is staying after switching to new styles
 
 -- stop the cart status message from pushing content
+
+-- reset the selected quantity when style changes
