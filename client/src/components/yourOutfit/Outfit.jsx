@@ -6,9 +6,6 @@ import StyledCarousel from '../styled/RelatedCarousel.styled';
 import OutfitCard from './OutfitCard';
 import AddItemCard from './AddItemCard';
 
-const SpecialFlex = styled(FlexContainer)`
-  width: 90%;
-`;
 
 const Outfit = ({ productId }) => {
   const carousel = useRef(null);
@@ -32,7 +29,7 @@ const Outfit = ({ productId }) => {
     fontSize: '25px',
     backgroundColor: 'Transparent',
     border: 'none',
-    margin: '10px',
+    margin: '10px 10px 10px 0px',
   };
 
   useEffect(() => {
@@ -79,11 +76,11 @@ const Outfit = ({ productId }) => {
   return (
     <>
       <h1>Outfit</h1>
-      <SpecialFlex gap="0">
+      <FlexContainer gap="20px">
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
+        <AddItemCard addItem={addItem} productId={productId} />
         <FlexContainer>
-          <AddItemCard addItem={addItem} productId={productId} />
-          <StyledCarousel ref={carousel} direction="row">
+          <StyledCarousel width="914" gap="20px" ref={carousel} direction="row">
             {productDetails.map((product) => (
               <OutfitCard key={Math.random()} productDetails={product} removeItem={removeItem} />
 
@@ -91,7 +88,7 @@ const Outfit = ({ productId }) => {
           </StyledCarousel>
         </FlexContainer>
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
-      </SpecialFlex>
+      </FlexContainer>
     </>
   );
 };

@@ -33,13 +33,11 @@ const StyleBtn = styled.div`
 `;
 
 const AddItemCard = ({ addItem }) => (
-  <LockedCard>
     <FlexItem>
       <StyleBtn>
         <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
       </StyleBtn>
     </FlexItem>
-  </LockedCard>
 );
 
 export default AddItemCard;
