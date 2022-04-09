@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton} from '../styled/GalleryCarousel.styled';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton} from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
@@ -43,13 +43,13 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   };
 
   const nextThumbnail = () => {
-    if (currentThumbnailIndex < length - 1) {
+    if (currentThumbnailIndex < length - 1 && length > 6) {
       setCurrentThumbnailIndex((prevState) => prevState + 1);
     }
   };
 
   const prevThumbnail = () => {
-    if (currentThumbnailIndex > 0) {
+    if (currentThumbnailIndex > 0 && length > 6) {
       setCurrentThumbnailIndex((prevState) => prevState - 1);
     }
   };
@@ -70,11 +70,15 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
           )
         }
         <ThumbnailControlsContainer>
-          <FontAwesomeIcon
-            icon={solid('arrow-up')}
-            className="thumbnail-control"
-            onClick={prevThumbnail}
-          />
+          {
+            length > 6 && (
+              <FontAwesomeIcon
+                icon={solid('arrow-up')}
+                className="thumbnail-control"
+                onClick={prevThumbnail}
+              />
+            )
+          }
           <ThumbnailsContainerWrapper>
             <ThumbnailsContainer
               thumbnailIndex={currentThumbnailIndex}
@@ -90,11 +94,15 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
               ))}
             </ThumbnailsContainer>
           </ThumbnailsContainerWrapper>
-          <FontAwesomeIcon
-            icon={solid('arrow-down')}
-            className="thumbnail-control"
-            onClick={nextThumbnail}
-          />
+          {
+            length > 6 && (
+              <FontAwesomeIcon
+                icon={solid('arrow-down')}
+                className="thumbnail-control"
+                onClick={nextThumbnail}
+              />
+            )
+          }
         </ThumbnailControlsContainer>
         <FontAwesomeIcon
           icon={solid('expand')}

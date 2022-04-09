@@ -17,7 +17,12 @@ const CarouselWrapper = styled.div`
     right: 2.5%;
     z-index: 5;
     cursor: pointer;
-    color: white;
+    color: black;
+    transition: all .2s ease;
+  }
+
+  & > .fullscreen-button:hover {
+    color: rgb(90,90,90);
   }
 `;
 
@@ -96,12 +101,12 @@ const ThumbnailControlsContainer = styled.div`
 
   & > .thumbnail-control {
     transition: all .2s ease;
-    color: white;
+    color: black;
   }
 
   & > .thumbnail-control:hover {
     cursor: pointer;
-    color: grey;
+    color: rgb(90,90,90);
   }
 `;
 
