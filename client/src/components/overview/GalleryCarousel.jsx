@@ -20,7 +20,7 @@ const CarouselWrapper = styled.div`
     right: 2.5%;
     z-index: 5;
     cursor: pointer;
-    color: red;
+    color: white;
   }
 `;
 
@@ -42,13 +42,11 @@ const CarouselContent = styled.div`
   }
 
   & > * {
-    width: 100%;
     flex-shrink: 0;
     flex-grow: 1;
   }
 
   & > img {
-    width: 100%;
     height: 900px;
     aspect-ratio: 9/16;
     object-fit: cover;
@@ -162,6 +160,7 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // monitor the galleryImages array to change the length
   useEffect(() => {
     setLength(galleryImages.length);
+    setCurrentIndex(0);
   }, [galleryImages]);
 
   const nextImage = () => {
