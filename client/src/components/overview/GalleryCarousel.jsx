@@ -101,11 +101,12 @@ const ThumbnailControlsContainer = styled.div`
 
   & > .thumbnail-control {
     transition: all .2s ease;
+    color: white;
   }
 
   & > .thumbnail-control:hover {
     cursor: pointer;
-    color: black;
+    color: grey;
   }
 `;
 
@@ -144,9 +145,8 @@ const ThumbnailContainer = styled.div`
   `}
 
   & > img {
-    float: left;
-    width: 100%;
-    height: 100%;
+    width: 73px;
+    height: 73px;
     object-fit: cover;
     object-position: center;
   }
