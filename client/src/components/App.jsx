@@ -28,7 +28,6 @@ const App = () => {
       {product.length === 0
         ? null
         : (
-
           <AppContainer>
             <FlexContainer direction="column" gap="5em">
               <Overview
