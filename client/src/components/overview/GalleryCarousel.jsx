@@ -20,7 +20,7 @@ const CarouselWrapper = styled.div`
     right: 2.5%;
     z-index: 5;
     cursor: pointer;
-    color: #333;
+    color: red;
   }
 `;
 
@@ -49,10 +49,10 @@ const CarouselContent = styled.div`
 
   & > img {
     width: 100%;
-    height: 100%;
-    max-height: 800px;
+    height: 900px;
     aspect-ratio: 9/16;
     object-fit: cover;
+    object-position: center;
     border-radius: 2px;
   }
 
@@ -90,15 +90,37 @@ const ArrowButton = styled.button`
   }
 `;
 
-const ThumbnailsContainer = styled.div`
+const ThumbnailControlsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   position: absolute;
-  top: 2.5%;
+  top: 5%;
   left: 2.5%;
+  z-index: 5;
+
+  & > .thumbnail-control {
+    transition: all .2s ease;
+  }
+
+  & > .thumbnail-control:hover {
+    cursor: pointer;
+    color: black;
+  }
+`;
+
+const ThumbnailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 5;
   gap: 10px;
+  max-height: 600px;
+  overflow: scroll;
+  scroll-bar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const ThumbnailContainer = styled.div`
@@ -112,6 +134,7 @@ const ThumbnailContainer = styled.div`
 
   &:hover {
     cursor: pointer;
+    border: 1px solid white;
   }
 
   ${(props) => props.selected && css`
@@ -121,9 +144,11 @@ const ThumbnailContainer = styled.div`
   `}
 
   & > img {
+    float: left;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
   }
 `;
 
@@ -166,17 +191,27 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
             </ArrowButton>
           )
         }
-        <ThumbnailsContainer>
-          {galleryThumbnails.map((image, i) => (
-            <ThumbnailContainer
-              onClick={() => goToImage(i)}
-              selected={i === currentIndex}
-              key={i}
-            >
-              <img src={image} key={i} alt="" />
-            </ThumbnailContainer>
-          ))}
-        </ThumbnailsContainer>
+        <ThumbnailControlsContainer>
+          <FontAwesomeIcon
+            icon={solid('arrow-up')}
+            className="thumbnail-control"
+          />
+          <ThumbnailsContainer>
+            {galleryThumbnails.map((image, i) => (
+              <ThumbnailContainer
+                onClick={() => goToImage(i)}
+                selected={i === currentIndex}
+                key={i}
+              >
+                <img src={image} key={i} alt="" />
+              </ThumbnailContainer>
+            ))}
+          </ThumbnailsContainer>
+          <FontAwesomeIcon
+            icon={solid('arrow-down')}
+            className="thumbnail-control"
+          />
+        </ThumbnailControlsContainer>
         <FontAwesomeIcon
           icon={solid('expand')}
           className="fullscreen-button"
