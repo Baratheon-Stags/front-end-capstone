@@ -9,7 +9,7 @@ const FlexContainer = styled.div`
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
-  width: 100%;
+  width: ${(props) => props.width || '100%'};
 `;
 
 export default FlexContainer;
