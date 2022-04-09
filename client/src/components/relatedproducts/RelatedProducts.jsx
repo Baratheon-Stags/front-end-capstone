@@ -7,7 +7,7 @@ import CompareModal from './CompareModal';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
 
-const RelatedProducts = ({ related }) => {
+const RelatedProducts = ({ related, productId }) => {
   // Extract related product IDs
   // Set state to use array of related products
   const [relatedProducts, setRelated] = useState([]);
@@ -31,7 +31,7 @@ const RelatedProducts = ({ related }) => {
       axios.get(`/related/${id}`)
         .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
     });
-    axios.get('/product/40344')
+    axios.get(`/product/${productId}`)
       .then((response) => setOverviewFeatures(response.data[0].features));
   }, []);
 
@@ -45,7 +45,6 @@ const RelatedProducts = ({ related }) => {
 
   const toggleRelatedCompare = (id) => {
     if (typeof id === 'number') {
-      console.log('id is...', id);
       const filtered = relatedProducts.filter((value) => (value.id === id));
       setModalItemFeatures(filtered);
     }
