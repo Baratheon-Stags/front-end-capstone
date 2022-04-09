@@ -35,7 +35,7 @@ const CarouselContent = styled.div`
   transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
-  transform: translateX(-${(props) => props.currentIndex * 100}%);
+  transform: translateX(-${(props) => props.currentGalleryIndex * 100}%);
 
   &::-webkit-scrollbar {
     display: none;
@@ -108,18 +108,24 @@ const ThumbnailControlsContainer = styled.div`
   }
 `;
 
+const ThumbnailsContainerWrapper = styled.div`
+  overflow: scroll;
+  scroll-bar-width: none;
+  max-height: 600px;
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
 const ThumbnailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  max-height: 600px;
-  overflow: scroll;
-  scroll-bar-width: none;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  transform: translateY(-${(props) => props.thumbnailIndex * 85}px);
+  transition: transform .25s ease-in-out;
 `;
 
 const ThumbnailContainer = styled.div`
@@ -152,7 +158,8 @@ const ThumbnailContainer = styled.div`
 
 const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // hold the index of the currently displayed image in the carousel
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
+  const [currentThumbnailIndex, setCurrentThumbnailIndex] = useState(0);
 
   // hold the length of the galleryImages array
   const [length, setLength] = useState(galleryImages.length);
@@ -160,30 +167,42 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // monitor the galleryImages array to change the length
   useEffect(() => {
     setLength(galleryImages.length);
-    setCurrentIndex(0);
+    setCurrentGalleryIndex(0);
   }, [galleryImages]);
 
   const nextImage = () => {
-    if (currentIndex < (length - 1)) {
-      setCurrentIndex((prevState) => prevState + 1);
+    if (currentGalleryIndex < (length - 1)) {
+      setCurrentGalleryIndex((prevState) => prevState + 1);
     }
   };
 
   const prevImage = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevState) => prevState - 1);
+    if (currentGalleryIndex > 0) {
+      setCurrentGalleryIndex((prevState) => prevState - 1);
+    }
+  };
+
+  const nextThumbnail = () => {
+    if (currentThumbnailIndex < length - 1) {
+      setCurrentThumbnailIndex((prevState) => prevState + 1);
+    }
+  };
+
+  const prevThumbnail = () => {
+    if (currentThumbnailIndex > 0) {
+      setCurrentThumbnailIndex((prevState) => prevState - 1);
     }
   };
 
   const goToImage = (imageIndex) => {
-    setCurrentIndex(imageIndex);
+    setCurrentGalleryIndex(imageIndex);
   };
 
   return (
     <CarouselContainer>
       <CarouselWrapper>
         {
-          currentIndex > 0
+          currentGalleryIndex > 0
           && (
             <ArrowButton style={{ left: '18px' }} onClick={prevImage}>
               &lt;
@@ -194,21 +213,27 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
           <FontAwesomeIcon
             icon={solid('arrow-up')}
             className="thumbnail-control"
+            onClick={prevThumbnail}
           />
-          <ThumbnailsContainer>
-            {galleryThumbnails.map((image, i) => (
-              <ThumbnailContainer
-                onClick={() => goToImage(i)}
-                selected={i === currentIndex}
-                key={i}
-              >
-                <img src={image} key={i} alt="" />
-              </ThumbnailContainer>
-            ))}
-          </ThumbnailsContainer>
+          <ThumbnailsContainerWrapper>
+            <ThumbnailsContainer
+              thumbnailIndex={currentThumbnailIndex}
+            >
+              {galleryThumbnails.map((image, i) => (
+                <ThumbnailContainer
+                  onClick={() => goToImage(i)}
+                  selected={i === currentGalleryIndex}
+                  key={i}
+                >
+                  <img src={image} key={i} alt="" />
+                </ThumbnailContainer>
+              ))}
+            </ThumbnailsContainer>
+          </ThumbnailsContainerWrapper>
           <FontAwesomeIcon
             icon={solid('arrow-down')}
             className="thumbnail-control"
+            onClick={nextThumbnail}
           />
         </ThumbnailControlsContainer>
         <FontAwesomeIcon
@@ -218,7 +243,7 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
         />
         <CarouselContentWrapper>
           <CarouselContent
-            currentIndex={currentIndex}
+            currentGalleryIndex={currentGalleryIndex}
             onClick={(e) => {
               e.target.classList.toggle('zoomed');
             }}
@@ -233,7 +258,7 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
           </CarouselContent>
         </CarouselContentWrapper>
         {
-          currentIndex < (length - 1)
+          currentGalleryIndex < (length - 1)
           && (
             <ArrowButton style={{ right: '18px' }} onClick={nextImage}>
               &gt;
