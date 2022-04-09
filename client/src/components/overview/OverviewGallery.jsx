@@ -17,6 +17,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
       galleryImages={galleryImages}
       galleryThumbnails={galleryThumbnails}
       handleExpand={handleExpand}
+      currentStyle={currentStyle}
     />
   );
 };

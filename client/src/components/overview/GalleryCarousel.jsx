@@ -156,7 +156,7 @@ const ThumbnailContainer = styled.div`
   }
 `;
 
-const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
+const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand, currentStyle}) => {
   // hold the index of the currently displayed image in the carousel
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
   const [currentThumbnailIndex, setCurrentThumbnailIndex] = useState(0);
@@ -167,8 +167,11 @@ const GalleryCarousel = ({galleryImages, galleryThumbnails, handleExpand}) => {
   // monitor the galleryImages array to change the length
   useEffect(() => {
     setLength(galleryImages.length);
-    setCurrentGalleryIndex(0);
   }, [galleryImages]);
+
+  useEffect(() => {
+    setCurrentGalleryIndex(0);
+  }, [currentStyle]);
 
   const nextImage = () => {
     if (currentGalleryIndex < (length - 1)) {
