@@ -114,7 +114,7 @@ const ThumbnailsContainerWrapper = styled.div`
   overflow: scroll;
   scroll-bar-width: none;
   max-height: 600px;
-  overflow: scroll;
+  overflow: hidden;
 
   &::-webkit-scrollbar {
     display: none;
