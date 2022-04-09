@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 const Input = styled.input`
   type: text;
-  height: ${(props) => props.height || '12px'};
-  width: ${(props) => props.width || '50%'};
-  font-size: 12px;
+  height: ${(props) => props.height || '36px'};
+  width: ${(props) => props.width || '45%'};
+  font-size: 16px;
   padding: 10px;
   margin: 10px;
   background: white;
-  border: solid rgb(0, 0, 0, 0.5);
-  border-radius: 3px;
+  border: 1px solid rgb(0, 0, 0, 0.5);
+  border-radius: 5px;
   ::placeholder {
     color: grey;
   }

@@ -24,7 +24,7 @@ export const Modal = styled.div`
   z-index: 2000;
   background-color: rgb(230,230,230);
   height: 1000px;
-  width: 700px;
+  width: 1400px;
   margin: 0px auto;
 `;
 
