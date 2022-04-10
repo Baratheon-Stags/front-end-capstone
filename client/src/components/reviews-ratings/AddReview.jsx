@@ -1,12 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { Modal, Backdrop } from '../styled/ReviewModal.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
+import TextContainer from '../styled/TextContainer.styled';
+import Divider from '../styled/Divider.styled';
 import Input from '../styled/Input.styled';
 import Chart from '../Characteristics';
+import GenerateStarSelection from '../GenerateStarSelection';
 
-const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
-  const [rating, setRating] = useState(0);
+const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
+  // Rating hovered and selected
+  const [ratingHovered, setRatingHovered] = useState(0);
+  const [ratingSelected, setRatingSelected] = useState(0);
+
+  // Input values
   const [summary, setSummary] = useState('');
   const [body, setBody] = useState('');
   const [recommend, setRecommend] = useState('');
@@ -14,7 +21,11 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
   const [email, setEmail] = useState('');
   const [photos, setPhotos] = useState([]);
   const [characteristicRatings, setCharacteristicRatings] = useState(characteristics);
-  Object.keys(characteristicRatings).forEach(key => {characteristicRatings[key].value = 0});
+
+  // Check if there was a failed submission (to show error message)
+  const [failedSubmission, setFailedSubmission] = useState(false);
+
+  // Input validation tracker
   const [validated, setValidated] = useState({
     rating: 0,
     summary: 0,
@@ -25,56 +36,72 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
     characteristics: 0,
   });
 
+  // Input validation check
   const validateInputs = () => {
-    if (rating !== 0) {
-      validated.name = 1;
+    if (ratingSelected !== 0) {
+      validated.rating = 1;
+    } else {
+      validated.rating = 0;
     }
     if (summary.length > 0) {
       validated.summary = 1;
+    } else {
+      validated.summary = 0;
     }
     if (body.length > 50) {
       validated.body = 1;
+    } else {
+      validated.body = 0;
     }
     if (recommend === true || recommend === false) {
       validated.recommend = 1;
+    } else {
+      validated.recommend = 0;
     }
     if (name.length > 0) {
       validated.name = 1;
+    } else {
+      validated.name = 0;
     }
     if (email.length > 0) {
       validated.email = 1;
+    } else {
+      validated.email = 0;
     }
-    if (Object.values(characteristicRatings).length === Object.keys(characteristics).length) {
+    if (Object.keys(characteristicRatings).filter(key => characteristicRatings[key].score > 0).length === Object.keys(characteristics).length) {
       validated.characteristics = 1;
+    } else {
+      validated.characteristics = 0;
     }
-    setValidated({ ...validated });
+    setValidated({ ...validated })
   };
 
+  // Handle characteristic selection
   const handleCharacteristicChange = (characteristic, value) => {
-    characteristicRatings[characteristic].value = value;
+    characteristicRatings[characteristic].score = value;
+    characteristicRatings[characteristic].meaning = Chart[characteristic.toLowerCase()][value];
+    setCharacteristicRatings({ ...characteristicRatings })
   };
 
+  // Handle review submission
   const handleReviewSubmit = () => {
     validateInputs();
     if (Object.values(validated).includes(0)) {
-      let formatCharacteristics = {};
-      Object.keys(characteristicRatings).forEach(key => {formatCharacteristics[characteristics[key].id] =  characteristics[key].value});
-      console.log(formatCharacteristics)
-      console.log('nope');
+      setFailedSubmission(true);
     } else {
       let formatCharacteristics = {};
-      Object.keys(characteristicRatings).forEach(key => {formatCharacteristics[characteristics[key].id] =  characteristics[key].value});
+      Object.keys(characteristicRatings).forEach(key => {formatCharacteristics[characteristics[key].id] =  characteristicRatings[key].score});
       let reviewBody = {
         product_id: productId,
-        rating: 5,
+        rating: ratingSelected,
         summary,
         body,
         recommend,
         name,
         email,
         photos: [],
-        characteristics: characteristicRatings,
-      }
+        characteristics: formatCharacteristics,
+      };
       console.log(reviewBody);
       axios.post('/reviews', reviewBody);
     }
@@ -84,7 +111,6 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
     <>
       <Backdrop />
       <Modal>
-
         <FlexContainer
           direction="column"
           align="center"
@@ -93,90 +119,117 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
         <h1>Write Your Review</h1>
         <h2>{`About the ${productName}`}</h2>
         </FlexContainer>
-
+        <TextContainer
+          width="100%"
+          left="73px"
+        >
+          Summary
+        </TextContainer>
         <FlexContainer
-          direction="column"
-          align="center"
-          gap="0"
+          direction="row"
+          justify="space-evenly"
+          gap="310px"
         >
           <Input
             placeholder="Example: Best purchase ever!"
             value={summary}
             onChange={() => setSummary(event.target.value)}
           />
+          <FlexContainer
+            align="center"
+            direction="row"
+            justify="center"
+            gap="10px"
+            width="20%"
+          >
+            <TextContainer width="300px">
+              {`Select a rating*: `}
+            </TextContainer>
+            <GenerateStarSelection
+              rating={ratingHovered}
+              onHover={setRatingHovered}
+              onClick={setRatingSelected}
+              ratingSelected={ratingSelected}
+            />
+          </FlexContainer>
         </FlexContainer>
-
+        <TextContainer
+          width="100%"
+          left="73px"
+        >
+          Body*
+        </TextContainer>
         <FlexContainer
           direction="column"
           align="center"
           gap="0"
         >
-          <Input
+          <textarea
             placeholder="Why did you like the product or not?"
             value={body}
             onChange={() => setBody(event.target.value)}
-            width="90%"
-            height="200px"
+            cols="170"
+            rows="10"
           />
-          {body.length < 50 ? `Minimum required characters left: [${50 - body.length}]` : `Minimum reached`}
         </FlexContainer>
-
+        <TextContainer
+          width="100%"
+          left="73px"
+        >
+          {body.length < 50 ? `Minimum required characters left: [${50 - body.length}]` : 'Minimum reached'}
+        </TextContainer>
         <FlexContainer
           direction="row"
           justify="center"
           gap="0"
         >
-
           <FlexContainer
             direction="column"
             align="center"
             gap="0"
           >
-            <span>Name</span>
+            <span>Name*</span>
             <Input
               placeholder="Example: jackson11!"
               value={name}
               onChange={() => setName(event.target.value)}
             />
           </FlexContainer>
-
           <FlexContainer
             direction="column"
             align="center"
             gap="0"
           >
-            <span>Email</span>
+            <span>Email*</span>
             <Input
               placeholder="Example: jackson11@email.com"
               value={email}
               onChange={() => setEmail(event.target.value)}
             />
           </FlexContainer>
-
-
-
         </FlexContainer>
-
         <FlexContainer
           direction="column"
           align="center"
           gap="0"
+          margin="15px"
         >
           For privacy reasons, do not use your full name or email address
+          <input
+            type="file"
+            placeholder="Photo URLs"
+            value={photos}
+            multiple
+            onChange={() => setPhotos(event.target.value)}
+          />
         </FlexContainer>
 
         <FlexContainer
           direction="row"
           justify="center"
+          gap="0"
         >
-          <input
-            type="file"
-            placeholder="Photo URLs"
-            value={photos}
-            onChange={() => setPhotos(event.target.value)}
-          />
-          <span>Would you recommend this product?</span>
-
+          <span>Would you recommend this product?*</span>
           <FlexContainer
             direction="column"
             align="center"
@@ -191,7 +244,6 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
               onChange={() => setRecommend(Boolean(event.target.value))}
             />
           </FlexContainer>
-
           <FlexContainer
             direction="column"
             align="center"
@@ -206,27 +258,25 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
               onChange={() => setRecommend(Boolean(event.target.value))}
             />
           </FlexContainer>
-
         </FlexContainer>
-
-
         <FlexContainer
           direction="column"
           align="center"
           width="100%"
-          gap="0"
+          gap="15px"
         >
-          {Object.keys(characteristics).map((characteristic) => (
+          {Object.keys(characteristicRatings).map((characteristic) => (
             <div>
+              <Divider />
               <FlexContainer
                 direction="row"
                 justify="center"
                 width="100%"
                 gap="3em"
               >
-                {`${characteristic}: `}
+                {`${characteristic}*: `}
+                {characteristicRatings[characteristic].score === undefined ? 'none selected' : (characteristicRatings[characteristic].meaning)}
               </FlexContainer>
-
               <FlexContainer
                 direction="row"
                 justify="space-evenly"
@@ -237,24 +287,39 @@ const AddReview = ({ productId, characteristics, productName, onDiscard}) => {
               >
                 {(Object.keys(Chart[characteristic.toLowerCase()])).map(key => (
                   <div>
-                    <span>{key}</span>
-                    <input
-                      type="radio"
-                      id={characteristic}
-                      value={key}
-                    />
-                    {key == 1 || key == 5 ? (<span>{Chart[characteristic.toLowerCase()][key]}</span>) : null}
+                    <FlexContainer
+                      direction="column"
+                      align="center"
+                      justify="space-evenly"
+                      width="150px"
+                      gap="50"
+                    >
+                      <input
+                        type="radio"
+                        id={characteristic}
+                        value={key}
+                        name={characteristic}
+                      />
+                      {key == 1 || key == 5 ? (<span>{Chart[characteristic.toLowerCase()][key]}</span>) : null}
+                    </FlexContainer>
                   </div>
                 ))}
-
               </FlexContainer>
 
             </div>
           ))}
         </FlexContainer>
+        <FlexContainer
+          direction="row"
+          justify="center"
+          gap="15px"
+        >
+          <button type="submit" onClick={() => handleReviewSubmit()}>Submit</button>
+          <button type="button" onClick={() => onDiscard(false)}>Discard</button>
+        </FlexContainer>
 
-        <button type="submit" onClick={() => handleReviewSubmit()}>Submit</button>
-        <button type="button" onClick={() => onDiscard(false)}>Discard</button>
+        {failedSubmission && Object.keys(validated).filter(key => {return validated[key] === 0}).length > 0? <TextContainer color="red" width="100%">{`Missing fields: ${Object.keys(validated).filter(key => {return validated[key] === 0}).toString().replaceAll(',', ', ')}`}</TextContainer> : null}
+
       </Modal>
     </>
   );

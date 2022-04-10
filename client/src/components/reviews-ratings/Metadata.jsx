@@ -8,14 +8,19 @@ import GenerateStarRatings from '../GenerateMetadataRatings';
 const Helper = require('../Helpers');
 
 const Metadata = ({ filter, metadata, onRatingSelect }) => {
+  // Metadata variables
   let ratings;
   let recommended;
   let distribution;
+
   if (metadata !== undefined) {
-    ratings = Helper.findAverageRating(metadata.ratings);
+    // Percentage of reviews that recommend this product
     recommended = (metadata.recommended.true * 100 / (parseInt(metadata.recommended.true) + parseInt(metadata.recommended.false))).toFixed(2);
+
+    // Distribution of ratings
     distribution = Helper.findRatingDistribution(metadata.ratings);
   }
+
   return (
     <div>
       {metadata === undefined ? null : (
@@ -24,7 +29,6 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           align="left"
           justify="space-between"
         >
-
           <FlexContainer
             direction="row"
             align="left"
@@ -36,10 +40,9 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           </div>
           <div id="ratings">
             Rating Breakdown
-            <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort()}`}</div>
+            <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
             <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
             {Object.keys(distribution).reverse().map((rating) => (
-
               <FlexContainer
                 key={rating}
                 direction="row"
@@ -57,11 +60,8 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
                   <div>{metadata.ratings[rating]}</div>
                 </TextContainer>
               </FlexContainer>
-
             ))}
-
           </div>
-
           <div id="characteristics">
             {Object.keys(metadata.characteristics).map((characteristic) => (
               <div key={characteristic}>
