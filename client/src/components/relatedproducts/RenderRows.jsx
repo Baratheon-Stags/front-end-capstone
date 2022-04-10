@@ -6,9 +6,20 @@ import FlexContainer from '../styled/FlexContainer.styled';
 
 const helpers = require('./helpers/DistillTraits');
 
-const Row = styled.div`
+const Row = styled(FlexContainer)`
   display: flex;
   direction: row;
+  justify-content: space-between;
+  padding-right: 10px;
+  padding-left: 10px;
+`;
+
+const FeatureBox = styled(FlexContainer)`
+  width: 200px;
+`;
+
+const CheckBox = styled(FlexContainer)`
+  justify-content: center;
 `;
 
 const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
@@ -19,13 +30,13 @@ const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
     <FlexContainer direction="column" gap="0.5em" align="center">
       {traits.map((row) => (
         <Row>
-          <FlexContainer>
-            <div>{row.currHas ? <FontAwesomeIcon icon={regular('star')} className="fa-sm" /> : null}</div>
-            {row.feature}
-            :
-            {row.value}
-            <div>{row.cardHas ? <FontAwesomeIcon icon={solid('star')} className="fa-sm" /> : null}</div>
-          </FlexContainer>
+          <CheckBox>{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
+          <FeatureBox>
+          {row.feature}
+          :{(' ')}
+          {row.value}
+          </FeatureBox>
+          <CheckBox>{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
         </Row>
       ))}
     </FlexContainer>

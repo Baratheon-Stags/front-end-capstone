@@ -10,15 +10,49 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
     return images;
   }, []);
 
+  // find the current price
+  // either the sale price or if the sale price is null then the original price
+  const originalPrice = currentStyle.original_price;
+  const currentPrice = currentStyle.sale_price ?? originalPrice;
+  const isDiscounted = originalPrice !== currentPrice;
+
+  const originalPriceStyle = {
+    textDecoration: isDiscounted ? 'line-through' : 'none',
+    color: isDiscounted ? 'red' : 'inherit',
+    fontSize: isDiscounted ? '.8em' : 'inherit',
+  };
+
   return (
     <FlexContainer direction="column" gap="1em">
-      <span><strong>STYLE &gt;</strong> {currentStyle.name}</span>
+      <div>
+        <span style={originalPriceStyle}>${originalPrice} </span>
+        {isDiscounted && <span> ${currentPrice}</span>}
+      </div>
+      <span>
+        <strong>STYLE &gt; </strong>
+        {currentStyle.name}
+      </span>
       <FlexContainer direction="row" wrap="wrap" gap=".5em">
         {styleOptions.map((style, i) => {
           if (i === styleOptions.indexOf(currentStyle)) {
-            return <Avatar style={style} handleStyleChange={handleStyleChange} selected key={i} image={styleImages[i]} />;
+            return (
+              <Avatar
+                style={style}
+                handleStyleChange={handleStyleChange}
+                selected
+                key={i}
+                image={styleImages[i]}
+              />
+            );
           }
-          return <Avatar style={style} handleStyleChange={handleStyleChange} image={styleImages[i]} key={i} />;
+          return (
+            <Avatar
+              style={style}
+              handleStyleChange={handleStyleChange}
+              image={styleImages[i]}
+              key={i}
+            />
+          );
         })}
       </FlexContainer>
     </FlexContainer>

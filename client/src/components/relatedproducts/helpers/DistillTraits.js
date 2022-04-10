@@ -34,6 +34,7 @@ module.exports = {
       obj.cardHas = true;
       traits.push(obj);
     });
+
     return traits;
   },
 
