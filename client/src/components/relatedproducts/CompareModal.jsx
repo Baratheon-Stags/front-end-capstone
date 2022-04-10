@@ -25,7 +25,6 @@ const Backdrop = styled.div`
   align-items: center;
   width:400px;
   height: 300px;
-  border: 2px solid blue;
   background-color: white;
   position: relative;
   left: 0;
@@ -33,32 +32,39 @@ const Backdrop = styled.div`
   z-index: 51;
 `;
 
+const Header = styled(FlexContainer)`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 
-const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => {
-  console.log('overview feats', overviewFeatures);
+`;
 
-  return (
-    <>
-      <Overlay onClick={toggleRelatedCompare}>
-        <Backdrop onClick={(e) => e.stopPropagation()}>
-          <h2>Comparing</h2>
-          <FlexContainer direction="row" justify="space-between">
-            <span>Current Item</span>
-            <span> Card Item</span>
-          </FlexContainer>
-          <FlexContainer direction="row">
+const RowsContainer = styled(FlexContainer)`
+  direction: column;
+  overflow-y: auto;
+`;
 
-            <RenderRows
-              overviewFeatures={overviewFeatures}
-              modalItemFeatures={modalItemFeatures}
-            />
+const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
+  <>
+    <Overlay onClick={toggleRelatedCompare}>
+      <Backdrop onClick={(e) => e.stopPropagation()}>
+        <h2>Comparing</h2>
+        <Header>
+          <div>Current Item</div>
+          <div> Card Item</div>
+        </Header>
+        <RowsContainer>
 
-          </FlexContainer>
-          <button type="button" onClick={toggleRelatedCompare}>close</button>
-        </Backdrop>
-      </Overlay>
-    </>
-  );
-};
+          <RenderRows
+            overviewFeatures={overviewFeatures}
+            modalItemFeatures={modalItemFeatures}
+          />
+
+        </RowsContainer>
+        <button type="button" onClick={toggleRelatedCompare}>close</button>
+      </Backdrop>
+    </Overlay>
+  </>
+);
 
 export default CompareModal;
