@@ -23,7 +23,7 @@ export const Modal = styled.div`
   justify-content: flex-start;
   z-index: 2000;
   background-color: rgb(230,230,230);
-  height: 1000px;
+  height: 1100px;
   width: 1400px;
   margin: 0px auto;
 `;
