@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton} from '../styled/Gallery.styled';
+import GalleryImage from './GalleryImage';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
@@ -110,20 +111,10 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
           onClick={handleExpand}
         />
         <CarouselContentWrapper>
-          <CarouselContent
+          <GalleryImage
+            galleryImages={galleryImages}
             currentGalleryIndex={currentGalleryIndex}
-            onClick={(e) => {
-              e.target.classList.toggle('zoomed');
-            }}
-          >
-            {galleryImages.map((image, i) => (
-              <img
-                src={image}
-                key={i}
-                alt=""
-              />
-            ))}
-          </CarouselContent>
+          />
         </CarouselContentWrapper>
         {
           currentGalleryIndex < (length - 1)

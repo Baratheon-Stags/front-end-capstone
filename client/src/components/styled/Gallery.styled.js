@@ -37,7 +37,6 @@ const CarouselContent = styled.div`
   transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
-  transform: translateX(-${(props) => props.currentGalleryIndex * 100}%);
 
   &::-webkit-scrollbar {
     display: none;
@@ -48,20 +47,8 @@ const CarouselContent = styled.div`
     flex-grow: 1;
   }
 
-  & > img {
-    height: 900px;
-    aspect-ratio: 9/16;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 2px;
-  }
-
-  & > img:hover {
+  & > .gallery-image:hover {
     cursor: zoom-in;
-  }
-
-  & .zoomed {
-    transform: scale(1.5);
   }
 `;
 
