@@ -10,20 +10,6 @@ const CarouselWrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
-
-  & > .fullscreen-button {
-    position: absolute;
-    top: 2.5%;
-    right: 2.5%;
-    z-index: 5;
-    cursor: pointer;
-    color: black;
-    transition: all .2s ease;
-  }
-
-  & > .fullscreen-button:hover {
-    color: rgb(90,90,90);
-  }
 `;
 
 const CarouselContentWrapper = styled.div`
@@ -37,7 +23,6 @@ const CarouselContent = styled.div`
   transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
-  transform: translateX(-${(props) => props.currentGalleryIndex * 100}%);
 
   &::-webkit-scrollbar {
     display: none;
@@ -46,22 +31,6 @@ const CarouselContent = styled.div`
   & > * {
     flex-shrink: 0;
     flex-grow: 1;
-  }
-
-  & > img {
-    height: 900px;
-    aspect-ratio: 9/16;
-    object-fit: cover;
-    object-position: center;
-    border-radius: 2px;
-  }
-
-  & > img:hover {
-    cursor: zoom-in;
-  }
-
-  & .zoomed {
-    transform: scale(1.5);
   }
 `;
 
@@ -73,7 +42,6 @@ const ArrowButton = styled.button`
   width: 48px;
   height: 48px;
   border-radius: 24px;
-  background-color: white;
   border: none;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
@@ -130,7 +98,7 @@ const ThumbnailsContainer = styled.div`
   transition: transform .25s ease-in-out;
 `;
 
-const ThumbnailContainer = styled.div`
+const ThumbnailContainer = styled.button`
   width: 75px;
   height: 75px;
   border: 1px solid black;
@@ -138,6 +106,7 @@ const ThumbnailContainer = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
@@ -151,10 +120,44 @@ const ThumbnailContainer = styled.div`
   `}
 
   & > img {
-    width: 73px;
-    height: 73px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 80%;
+  }
+`;
+
+const FullScreenButtonContainer = styled.button`
+  height: 48px;
+  width: 48px;
+  background-color: rgba(255,255,255,.75);
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+  z-index: 5;
+  cursor: pointer;
+  color: black;
+  transition: all .2s ease;
+  background-color: rgba(255,255,255,.75);
+  padding: .5em;
+  border-radius: 100%;
+  border: none;
+
+  &:hover {
+    background-color: rgb(246,246,246)
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
@@ -168,4 +171,5 @@ export {
   ThumbnailsContainer,
   ThumbnailsContainerWrapper,
   ArrowButton,
+  FullScreenButtonContainer,
 };
