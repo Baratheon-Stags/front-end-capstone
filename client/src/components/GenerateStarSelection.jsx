@@ -22,7 +22,7 @@ const RatingContainer = styled.div`
 const RatingBar = styled.span`
   width: ${(props) => props.width};
   height: 100%;
-  background-color: #f5f5f5;
+  background-color: #E6E6E6;
   position: absolute;
   top: 0;
   right: 0;
@@ -46,10 +46,16 @@ const Rating = styled.span`
   font-size: 100px;
 `;
 
-const GenerateStarRatings = ({ rating }) => {
+const GenerateStarSelection = ({ rating, onHover, onClick, ratingSelected }) => {
   // calculate the inverse width of the RatingBar
-  const ratingBarWidth = `${100 - (parseInt(rating) * 20)}%`;
+  let display;
+  if (ratingSelected === 0) {
+    display = rating;
+  } else {
+    display = ratingSelected;
+  }
 
+  const ratingBarWidth = `${100 - (parseInt(display) * 20)}%`;
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
       <RatingContainer>
@@ -62,15 +68,15 @@ const GenerateStarRatings = ({ rating }) => {
         </RatingStarsContainer>
         <RatingBar width={ratingBarWidth} />
         <RatingStarsContainer>
-          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
-          <FontAwesomeIcon icon={regular('star')} className="star-icon" />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" onMouseOver={() => onHover(1)} onClick={() => onClick(1)} />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" onMouseOver={() => onHover(2)} onClick={() => onClick(2)} />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" onMouseOver={() => onHover(3)} onClick={() => onClick(3)} />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" onMouseOver={() => onHover(4)} onClick={() => onClick(4)} />
+          <FontAwesomeIcon icon={regular('star')} className="star-icon" onMouseOver={() => onHover(5)} onClick={() => onClick(5)} />
         </RatingStarsContainer>
       </RatingContainer>
     </FlexContainer>
   );
 };
 
-export default GenerateStarRatings;
+export default GenerateStarSelection;

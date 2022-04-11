@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Overview from './overview/Overview';
 import RelatedProducts from './relatedproducts/RelatedProducts';
-import Reviews from './Reviews';
+import Reviews from './reviews-ratings/Reviews';
 import Outfit from './yourOutfit/Outfit';
 
 import FlexContainer from './styled/FlexContainer.styled';

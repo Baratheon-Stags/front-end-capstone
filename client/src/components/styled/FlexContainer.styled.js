@@ -10,6 +10,7 @@ const FlexContainer = styled.div`
   align-items: ${(props) => props.align};
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
   width: ${(props) => props.width || '100%'};
+  margin: ${(props) => props.margin || '0'};
 `;
 
 export default FlexContainer;
