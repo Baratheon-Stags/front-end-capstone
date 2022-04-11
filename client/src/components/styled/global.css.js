@@ -59,4 +59,8 @@ export default createGlobalStyle`
     color: black;
   }
 
+  button[disabled] {
+    cursor: not-allowed;
+  }
+
 `;

@@ -115,7 +115,7 @@ const ThumbnailsContainer = styled.div`
   transition: transform .25s ease-in-out;
 `;
 
-const ThumbnailContainer = styled.div`
+const ThumbnailContainer = styled.button`
   width: 75px;
   height: 75px;
   border: 1px solid black;
@@ -140,6 +140,10 @@ const ThumbnailContainer = styled.div`
     height: 73px;
     object-fit: cover;
     object-position: center;
+  }
+
+  &:focus {
+    outline: none;
   }
 `;
 
