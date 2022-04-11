@@ -38,6 +38,7 @@ const App = () => {
               />
               <RelatedProducts related={related} productId={overview.id} />
               <Outfit productId={overview.id} />
+              <a id="reviews" />
               <Reviews productId={overview.id} productName={overview.name}/>
             </FlexContainer>
           </AppContainer>

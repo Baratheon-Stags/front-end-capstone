@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import GalleryImage from './GalleryImage';
+import FavoriteButton from './FavoriteButton';
 import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
@@ -116,6 +117,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
             currentGalleryIndex={currentGalleryIndex}
           />
         </CarouselContentWrapper>
+        <FavoriteButton />
         {
           currentGalleryIndex < (length - 1)
           && (

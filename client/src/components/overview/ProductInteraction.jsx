@@ -113,7 +113,6 @@ const ProductInteraction = ({currentStyle}) => {
           </CartButton>
         </FlexContainer>
         <span style={statusMsgStyle}>{statusMsg}</span>
-        <span>Favorite</span>
       </FlexContainer>
     </FlexContainer>
   );

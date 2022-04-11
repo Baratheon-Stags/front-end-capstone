@@ -19,10 +19,13 @@ const CarouselWrapper = styled.div`
     cursor: pointer;
     color: black;
     transition: all .2s ease;
+    background-color: rgba(255,255,255,.75);
+    padding: .5em;
+    border-radius: 100%;
   }
 
   & > .fullscreen-button:hover {
-    color: rgb(90,90,90);
+    background-color: rgb(246,246,246)
   }
 `;
 
@@ -60,7 +63,6 @@ const ArrowButton = styled.button`
   width: 48px;
   height: 48px;
   border-radius: 24px;
-  background-color: white;
   border: none;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
