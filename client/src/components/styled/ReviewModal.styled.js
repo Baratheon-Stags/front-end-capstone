@@ -23,8 +23,9 @@ export const Modal = styled.div`
   justify-content: flex-start;
   z-index: 2000;
   background-color: rgb(230,230,230);
-  height: 1100px;
-  width: 1400px;
+  height: 100%;
+  width: ${(props) => props.width || '45%'};
+
   margin: 0px auto;
 `;
 

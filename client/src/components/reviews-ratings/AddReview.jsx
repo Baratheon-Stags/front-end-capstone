@@ -109,26 +109,26 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
 
   return (
     <>
-      <Backdrop />
-      <Modal>
+      <Backdrop onClick={() => onDiscard(false)} />
+      <Modal width="1000px">
         <FlexContainer
           direction="column"
           align="center"
           gap="0"
         >
-        <h1>Write Your Review</h1>
-        <h2>{`About the ${productName}`}</h2>
+        <b>Write Your Review</b>
+        {`About the ${productName}`}
         </FlexContainer>
         <TextContainer
           width="100%"
-          left="73px"
+          left="125px"
         >
-          Summary
+          <b>Summary</b>
         </TextContainer>
         <FlexContainer
           direction="row"
-          justify="space-evenly"
-          gap="310px"
+          justify="center"
+          gap="50px"
         >
           <Input
             placeholder="Example: Best purchase ever!"
@@ -143,7 +143,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             width="20%"
           >
             <TextContainer width="300px">
-              {`Select a rating*: `}
+            <b>{`Select a rating*: `}</ b>
             </TextContainer>
             <GenerateStarSelection
               rating={ratingHovered}
@@ -155,9 +155,9 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
         </FlexContainer>
         <TextContainer
           width="100%"
-          left="73px"
+          left="125px"
         >
-          Body*
+          <b>Body*</b>
         </TextContainer>
         <FlexContainer
           direction="column"
@@ -168,18 +168,18 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             placeholder="Why did you like the product or not?"
             value={body}
             onChange={() => setBody(event.target.value)}
-            cols="170"
+            cols="100"
             rows="10"
           />
         </FlexContainer>
         <TextContainer
           width="100%"
-          left="73px"
+          left="125px"
         >
           {body.length < 50 ? `Minimum required characters left: [${50 - body.length}]` : 'Minimum reached'}
         </TextContainer>
         <FlexContainer
-          direction="row"
+          direction="columnz"
           justify="center"
           gap="0"
         >
@@ -187,8 +187,14 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             direction="column"
             align="center"
             gap="0"
+            margin="5px 0 0"
           >
-            <span>Name*</span>
+            <TextContainer
+              width="100%"
+              left="125px"
+            >
+              <b>Name*</b>
+            </TextContainer>
             <Input
               placeholder="Example: jackson11!"
               value={name}
@@ -200,7 +206,12 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             align="center"
             gap="0"
           >
-            <span>Email*</span>
+            <TextContainer
+              width="100%"
+              left="125px"
+            >
+              <b>Email*</b>
+            </TextContainer>
             <Input
               placeholder="Example: jackson11@email.com"
               value={email}
@@ -212,9 +223,16 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           direction="column"
           align="center"
           gap="0"
-          margin="15px"
+          margin="0 0 15px"
         >
           For privacy reasons, do not use your full name or email address
+        </FlexContainer>
+        <FlexContainer
+          direction="column"
+          align="center"
+          gap="0"
+          margin="0 0 15px"
+        >
           <input
             type="file"
             placeholder="Photo URLs"
@@ -224,12 +242,14 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           />
         </FlexContainer>
 
+
         <FlexContainer
           direction="row"
           justify="center"
           gap="0"
+          margin="0 0 15px"
         >
-          <span>Would you recommend this product?*</span>
+          <b>Would you recommend this product?*</b>
           <FlexContainer
             direction="column"
             align="center"
@@ -272,9 +292,10 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
                 direction="row"
                 justify="center"
                 width="100%"
-                gap="3em"
+                gap="6px"
+                margin="0"
               >
-                {`${characteristic}*: `}
+                <b>{`${characteristic}*: `}</b>
                 {characteristicRatings[characteristic].score === undefined ? 'none selected' : (characteristicRatings[characteristic].meaning)}
               </FlexContainer>
               <FlexContainer
