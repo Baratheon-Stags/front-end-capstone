@@ -15,8 +15,8 @@ const Chart = {
   },
   comfort: {
     1: 'Uncomfortable',
-    2: 'Slight uncomfortable',
-    3: 'Perfect',
+    2: 'Slightly uncomfortable',
+    3: 'Ok',
     4: 'Comfortable',
     5: 'Perfect',
   },
@@ -29,17 +29,17 @@ const Chart = {
   },
   length: {
     1: 'Runs short',
-    2: '1/2 a size too small',
+    2: 'Runs slightly short',
     3: 'Perfect',
     4: 'Runs slightly long',
     5: 'Runs Long',
   },
   fit: {
     1: 'Runs tight',
-    2: 'Runs slightly short',
+    2: 'Runs slightly tight',
     3: 'Perfect',
-    4: '1/2 a size too  big',
-    5: 'Runs slightly long',
+    4: 'Runs slightly long',
+    5: 'Runs long',
   },
 };
 

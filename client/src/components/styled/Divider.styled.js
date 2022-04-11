@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 
 const Divider = styled.div`
-  border-top: 8px solid #bbb;
-  border-radius: 5px;
+  margin: auto;
+  border-bottom: 2px solid #fff;
+  width: 50%;
 `;
 
 export default Divider;

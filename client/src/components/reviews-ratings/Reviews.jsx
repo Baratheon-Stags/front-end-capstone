@@ -8,22 +8,34 @@ import ReviewsContainer from '../styled/ReviewsContainer.styled';
 
 
 const Reviews = ({ productName, productId }) => {
+  // All reviews
   const [allData, setAllData] = useState([]);
+
+  // Current number of reviews to show
   const [count, setCount] = useState(2);
+
+  // State of whether review form has been opened
   const [form, setForm] = useState(false);
+
+  // Review breakdown filter
   const [starFilter, setStarFilter] = useState([1, 2, 3, 4, 5]);
+
+  // Metadata and reviews variables
   const [metadata, reviews] = allData;
 
+  // Initialize reviews state
   useEffect(() => {
     axios.get(`/reviews/${productId}/1/10000/relevant`).then((data) => {
       setAllData(data.data);
     });
   }, []);
 
+  // Handle when add review button is clicked
   const handleFormToggle = (boolean) => {
     setForm(boolean);
   };
 
+  // Handle sort options (relevance, newest, helpful)
   const handleOptionSort = () => {
     const sortBy = document.getElementById('sort').value;
     axios.get(`/reviews/${productId}/1/10000/${sortBy}`).then((data) => {
@@ -31,6 +43,7 @@ const Reviews = ({ productName, productId }) => {
     });
   };
 
+  // Handle rating breakdown sort (1, 2, 3, 4, 5 stars)
   const handleRatingSort = (star) => {
     if (star === 0) {
       setStarFilter([1, 2, 3, 4, 5]);
@@ -47,7 +60,7 @@ const Reviews = ({ productName, productId }) => {
 
   return (
     <>
-      <h1>Reviews & Ratings</h1>
+      <h1 id="reviews">Reviews & Ratings</h1>
       <FlexContainer
         direction="row"
         align="left"
@@ -69,7 +82,6 @@ const Reviews = ({ productName, productId }) => {
               <option value="newest">Newest</option>
             </select>
           </div>
-
           <FlexContainer
             direction="column"
             align="baseline"

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Overview from './overview/Overview';
 import RelatedProducts from './relatedproducts/RelatedProducts';
-import Reviews from './Reviews';
+import Reviews from './reviews-ratings/Reviews';
 import Outfit from './yourOutfit/Outfit';
 
 import FlexContainer from './styled/FlexContainer.styled';
@@ -44,6 +44,7 @@ const App = () => {
               />
               <RelatedProducts related={related} productId={overview.id} handleClick={handleClick} />
               <Outfit productId={overview.id} />
+              <a id="reviews" />
               <Reviews productId={overview.id} productName={overview.name}/>
             </FlexContainer>
           </AppContainer>

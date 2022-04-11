@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton} from '../styled/Gallery.styled';
+import FavoriteButton from './FavoriteButton';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
@@ -25,10 +26,6 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   useEffect(() => {
     setLength(galleryImages.length);
   }, [galleryImages]);
-
-  useEffect(() => {
-    setCurrentGalleryIndex(0);
-  }, [currentStyle]);
 
   const nextImage = () => {
     if (currentGalleryIndex < (length - 1)) {
@@ -58,13 +55,57 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
     setCurrentGalleryIndex(imageIndex);
   };
 
+  const [zoom, setZoom] = useState(false);
+  const [mouseX, setMouseX] = useState(null);
+  const [mouseY, setMouseY] = useState(null);
+  const zoomScale = 1.5;
+
+  const carouselContent = useRef(null);
+
+  const handleImageClick = () => {
+    setZoom((prevState) => !prevState);
+  };
+
+  const handleMouseMove = (e) => {
+    const DOMRect = carouselContent.current.getBoundingClientRect();
+    const {
+      height, width, left: offsetLeft, top: offsetTop,
+    } = DOMRect;
+    const x = ((e.pageX - offsetLeft) / width) * 100;
+    const y = ((e.pageY - offsetTop) / height) * 100;
+
+    setMouseX(x);
+    setMouseY(y);
+  };
+
+  const transformOrigin = {
+    transformOrigin: `${mouseX}% ${mouseY}%`,
+  };
+
+  const imageDivStyle = {
+    height: '900px',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    transition: 'transform .2s ease-out',
+    backgroundImage: `url(${galleryImages[currentGalleryIndex]})`,
+  };
+
+  const galleryContainerStyle = {
+    height: '900px',
+    overflow: 'hidden',
+  };
+
+  // create a disabled boolean for the carousel controls, to be active when zoom is true
+  const isDisabled = zoom;
+
   return (
     <CarouselContainer>
       <CarouselWrapper>
         {
           currentGalleryIndex > 0
           && (
-            <ArrowButton style={{ left: '18px' }} onClick={prevImage}>
+            <ArrowButton disabled={isDisabled} style={{ left: '18px' }} onClick={prevImage}>
               &lt;
             </ArrowButton>
           )
@@ -88,6 +129,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
                   onClick={() => goToImage(i)}
                   selected={i === currentGalleryIndex}
                   key={i}
+                  disabled={isDisabled}
                 >
                   <img src={image} key={i} alt="" />
                 </ThumbnailContainer>
@@ -104,31 +146,38 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
             )
           }
         </ThumbnailControlsContainer>
-        <FontAwesomeIcon
-          icon={solid('expand')}
-          className="fullscreen-button"
+        <FullScreenButtonContainer
           onClick={handleExpand}
-        />
+          disabled={isDisabled}
+        >
+          <FontAwesomeIcon
+            icon={solid('expand')}
+            className="fullscreen-button"
+          />
+        </FullScreenButtonContainer>
         <CarouselContentWrapper>
           <CarouselContent
-            currentGalleryIndex={currentGalleryIndex}
-            onClick={(e) => {
-              e.target.classList.toggle('zoomed');
-            }}
+            style={galleryContainerStyle}
+            ref={carouselContent}
+            onClick={handleImageClick}
+            onMouseMove={handleMouseMove}
           >
-            {galleryImages.map((image, i) => (
-              <img
-                src={image}
-                key={i}
-                alt=""
-              />
-            ))}
+            <div
+              style={{
+                ...imageDivStyle,
+                transform: zoom ? `scale(${zoomScale})` : 'scale(1)',
+                cursor: zoom ? 'zoom-out' : 'zoom-in',
+                ...transformOrigin,
+              }}
+              className="gallery-image"
+            />
           </CarouselContent>
         </CarouselContentWrapper>
+        <FavoriteButton currentStyle={currentStyle} disabled={isDisabled} />
         {
           currentGalleryIndex < (length - 1)
           && (
-            <ArrowButton style={{ right: '18px' }} onClick={nextImage}>
+            <ArrowButton disabled={isDisabled} style={{ right: '18px' }} onClick={nextImage}>
               &gt;
             </ArrowButton>
           )

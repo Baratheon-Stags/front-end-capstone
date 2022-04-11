@@ -1,15 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import FlexContainer from '../styled/FlexContainer.styled';
 import GenerateStarRatings from '../GenerateStarRatings';
+import StyledLink from '../styled/StyledLink.styled';
 
 const ProductDetails = ({overview, metadata}) => {
-  const { name, category } = overview;
+  const { name, category, id } = overview;
+  const [reviewTotal, setReviewTotal] = useState(null);
+
+  useEffect(() => {
+    axios.get(`/reviews/${id}/1/10000/${sort}`).then((res) => {
+      setReviewTotal(res.data[1].results.length);
+    });
+  }, []);
 
   return (
-    <FlexContainer direction="column" gap="0">
-      <GenerateStarRatings ratings={metadata.ratings} />
-      <span>{category}</span>
-      <h1>{name}</h1>
+    <FlexContainer direction="column" gap="1.5em">
+      <FlexContainer direction="column" gap="0">
+        <GenerateStarRatings ratings={metadata.ratings} />
+        <StyledLink href="#reviews">Read All {reviewTotal} Reviews</StyledLink>
+      </FlexContainer>
+      <FlexContainer direction="column" gap="0">
+        <span>{category}</span>
+        <h1>{name}</h1>
+      </FlexContainer>
     </FlexContainer>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components';
 // import PropTypes from 'prop-types';
 import FlexContainer from '../styled/FlexContainer.styled';
@@ -28,6 +28,10 @@ const OverviewGalleryContainer = styled.div`
 const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
   const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    setSelectedStyle(styles.results[0]);
+  }, [styles]);
 
   const handleExpand = () => {
     setIsExpanded(!isExpanded);

@@ -39,16 +39,24 @@ const RatingStarsContainer = styled.span`
   justify-content: center;
 `;
 
-const Rating = styled.span`
-  display: inline-block;
-  position: relative;
-  display: flex;
-  font-size: 100px;
-`;
+const GenerateStarRatings = ({ratings}) => {
+  // grab the ratings, parse them into integers, push into an array
+  const ratingValues = Object.values(ratings).reduce((values, rating) => {
+    values.push(parseInt(rating));
+    return values;
+  }, []);
 
-const GenerateStarRatings = ({ rating }) => {
+  // calculate sum of reviews from the ratings object
+  const ratingSum = ratingValues.reduce((sum, rating) => sum + rating, 0);
+
+  // calculate weighted total of the reviews
+  const weightedTotal = ratingValues.reduce((total, rating, i) => total + (rating * (i + 1)), 0);
+
+  // calculate the review average
+  const reviewAverage = weightedTotal / ratingSum;
+
   // calculate the inverse width of the RatingBar
-  const ratingBarWidth = `${100 - (parseInt(rating) * 20)}%`;
+  const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
 
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
@@ -69,6 +77,7 @@ const GenerateStarRatings = ({ rating }) => {
           <FontAwesomeIcon icon={regular('star')} className="star-icon" />
         </RatingStarsContainer>
       </RatingContainer>
+      <span>{reviewAverage.toFixed(1)}</span>
     </FlexContainer>
   );
 };

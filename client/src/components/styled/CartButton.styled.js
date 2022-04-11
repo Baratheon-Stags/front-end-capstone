@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const CartBtnStyled = styled.button`
-  color: #555555;
+  color: black;
   padding: .45em .75em;
   background-color: #f3f3f3;
   outline: none;
