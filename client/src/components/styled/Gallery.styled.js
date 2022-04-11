@@ -10,23 +10,6 @@ const CarouselWrapper = styled.div`
   width: 100%;
   display: flex;
   position: relative;
-
-  & > .fullscreen-button {
-    position: absolute;
-    top: 2.5%;
-    right: 2.5%;
-    z-index: 5;
-    cursor: pointer;
-    color: black;
-    transition: all .2s ease;
-    background-color: rgba(255,255,255,.75);
-    padding: .5em;
-    border-radius: 100%;
-  }
-
-  & > .fullscreen-button:hover {
-    background-color: rgb(246,246,246)
-  }
 `;
 
 const CarouselContentWrapper = styled.div`
@@ -123,6 +106,7 @@ const ThumbnailContainer = styled.button`
   align-items: center;
   justify-content: center;
   position: relative;
+  padding: 0;
 
   &:hover {
     cursor: pointer;
@@ -136,10 +120,40 @@ const ThumbnailContainer = styled.button`
   `}
 
   & > img {
-    width: 73px;
-    height: 73px;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     object-position: center;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 80%;
+  }
+`;
+
+const FullScreenButtonContainer = styled.button`
+  height: 48px;
+  width: 48px;
+  background-color: rgba(255,255,255,.75);
+  position: absolute;
+  top: 2.5%;
+  right: 2.5%;
+  z-index: 5;
+  cursor: pointer;
+  color: black;
+  transition: all .2s ease;
+  background-color: rgba(255,255,255,.75);
+  padding: .5em;
+  border-radius: 100%;
+  border: none;
+
+  &:hover {
+    background-color: rgb(246,246,246)
   }
 
   &:focus {
@@ -157,4 +171,5 @@ export {
   ThumbnailsContainer,
   ThumbnailsContainerWrapper,
   ArrowButton,
+  FullScreenButtonContainer,
 };

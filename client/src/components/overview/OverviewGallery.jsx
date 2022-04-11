@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FavoriteButton from './FavoriteButton';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton } from '../styled/Gallery.styled';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
   const galleryImages = currentStyle.photos.reduce((images, current) => {
@@ -129,6 +129,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
                   onClick={() => goToImage(i)}
                   selected={i === currentGalleryIndex}
                   key={i}
+                  disabled={isDisabled}
                 >
                   <img src={image} key={i} alt="" />
                 </ThumbnailContainer>
@@ -145,11 +146,15 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
             )
           }
         </ThumbnailControlsContainer>
-        <FontAwesomeIcon
-          icon={solid('expand')}
-          className="fullscreen-button"
+        <FullScreenButtonContainer
           onClick={handleExpand}
-        />
+          disabled={isDisabled}
+        >
+          <FontAwesomeIcon
+            icon={solid('expand')}
+            className="fullscreen-button"
+          />
+        </FullScreenButtonContainer>
         <CarouselContentWrapper>
           <CarouselContent
             style={galleryContainerStyle}
