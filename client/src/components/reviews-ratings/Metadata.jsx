@@ -2,8 +2,10 @@ import React from 'react';
 import Bar from '../styled/Bar.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
 import TextContainer from '../styled/TextContainer.styled';
+import SectionedBar from '../styled/SectionedBar.styled';
 import Link from '../styled/Link.styled';
 import GenerateStarRatings from '../GenerateMetadataRatings';
+import Chart from '../Characteristics';
 
 const Helper = require('../Helpers');
 
@@ -32,7 +34,8 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           <FlexContainer
             direction="row"
             align="left"
-            justify="space-between">
+            justify="space-between"
+          >
             <div><GenerateStarRatings ratings={metadata.ratings} /></div>
           </FlexContainer>
           <div>
@@ -65,7 +68,12 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           <div id="characteristics">
             {Object.keys(metadata.characteristics).map((characteristic) => (
               <div key={characteristic}>
-                {characteristic}
+                <SectionedBar
+                  name={characteristic}
+                  value={metadata.characteristics[characteristic].value}
+                  low={Chart[characteristic.toLowerCase()][1]}
+                  high={Chart[characteristic.toLowerCase()][5]}
+                />
               </div>
             ))}
           </div>
