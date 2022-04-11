@@ -49,10 +49,6 @@ const CarouselContent = styled.div`
     flex-shrink: 0;
     flex-grow: 1;
   }
-
-  & > .gallery-image:hover {
-    cursor: zoom-in;
-  }
 `;
 
 const ArrowButton = styled.button`

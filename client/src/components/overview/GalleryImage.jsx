@@ -54,6 +54,7 @@ const GalleryImage = ({galleryImages, currentGalleryIndex}) => {
         style={{
           ...imageDivStyle,
           transform: zoom ? `scale(${zoomScale})` : 'scale(1)',
+          cursor: zoom ? 'zoom-out' : 'zoom-in',
           ...transformOrigin,
         }}
         className="gallery-image"
