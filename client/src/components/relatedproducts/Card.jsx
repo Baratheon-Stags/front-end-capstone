@@ -6,7 +6,7 @@ import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
 
-const Card = ({ product, toggleRelatedCompare }) => {
+const Card = ({ product, toggleRelatedCompare, handleClick }) => {
   const {
     id, image, category, name, default_price, ratings,
   } = product;
@@ -19,6 +19,7 @@ const Card = ({ product, toggleRelatedCompare }) => {
 
   const goToProduct = () => {
     console.log('Going to product:', product.id);
+    handleClick(product.id);
   };
 
   const openComparison = (event) => {

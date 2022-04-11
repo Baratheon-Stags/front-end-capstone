@@ -27,7 +27,6 @@ const OverviewGalleryContainer = styled.div`
 
 const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
-
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleExpand = () => {
