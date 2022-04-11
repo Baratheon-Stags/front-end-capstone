@@ -50,4 +50,13 @@ export default createGlobalStyle`
     text-align:center;
   }
 
+  .social-icon {
+    transition: all .2s ease;
+  }
+
+  .social-icon:hover {
+    cursor:pointer;
+    color: black;
+  }
+
 `;

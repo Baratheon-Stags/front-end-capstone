@@ -28,10 +28,6 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
     setLength(galleryImages.length);
   }, [galleryImages]);
 
-  useEffect(() => {
-    setCurrentGalleryIndex(0);
-  }, [currentStyle]);
-
   const nextImage = () => {
     if (currentGalleryIndex < (length - 1)) {
       setCurrentGalleryIndex((prevState) => prevState + 1);

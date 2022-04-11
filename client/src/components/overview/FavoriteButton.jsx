@@ -16,6 +16,7 @@ const FavoriteButtonContainer = styled.div`
   background-color: rgba(255,255,255,.75);
   backdrop-filter: blur(2);
   transition: all .2s ease;
+  box-shadow: 1px 1px 3px rgba(0,0,0,.25);
 
   &:hover {
     cursor: pointer;
