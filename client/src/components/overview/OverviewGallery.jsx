@@ -5,13 +5,14 @@ import FavoriteButton from './FavoriteButton';
 import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand}) => {
+  const defaultUrl = 'https://images.unsplash.com/photo-1590564310418-66304f55a2c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80';
   const galleryImages = currentStyle.photos.reduce((images, current) => {
-    images.push(current.url);
+    images.push(current.url ?? defaultUrl);
     return images;
   }, []);
 
   const galleryThumbnails = currentStyle.photos.reduce((images, current) => {
-    images.push(current.thumbnail_url);
+    images.push(current.thumbnail_url ?? defaultUrl);
     return images;
   }, []);
 
