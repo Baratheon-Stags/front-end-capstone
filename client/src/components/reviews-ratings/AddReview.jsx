@@ -116,7 +116,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           align="center"
           gap="0"
         >
-        <b>Write Your Review</b>
+        <b>Write Your Review</b >
         {`About the ${productName}`}
         </FlexContainer>
         <TextContainer

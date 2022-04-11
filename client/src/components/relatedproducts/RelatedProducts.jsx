@@ -7,7 +7,7 @@ import CompareModal from './CompareModal';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
 
-const RelatedProducts = ({ related, productId }) => {
+const RelatedProducts = ({ related, productId, handleClick }) => {
   // Extract related product IDs
   // Set state to use array of related products
   const [relatedProducts, setRelated] = useState([]);
@@ -58,7 +58,7 @@ const RelatedProducts = ({ related, productId }) => {
       <FlexContainer direction="row" gap="0em" justify="space-between">
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
         <StyledCarousel gap="20px" ref={carousel} direction="row">
-          {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} />)}
+          {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} handleClick={handleClick} />)}
         </StyledCarousel>
         <button style={style} type="button" onClick={scrollRight}>&gt;</button>
       </FlexContainer>
