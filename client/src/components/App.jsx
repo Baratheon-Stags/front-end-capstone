@@ -46,8 +46,7 @@ const App = () => {
               />
               <RelatedProducts related={related} productId={overview.id} handleClick={handleClick} />
               <Outfit productId={overview.id} />
-              <a id="reviews" />
-              <Reviews productId={overview.id} productName={overview.name}/>
+              <Reviews productId={overview.id} productName={overview.name} />
             </FlexContainer>
           </AppContainer>
         )}

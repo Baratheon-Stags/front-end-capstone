@@ -52,6 +52,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
                 align="left"
                 justify="flex-start"
                 gap="6px"
+                margin="0 0 6px"
               >
                 <TextContainer>
                   <Link onClick={() => onRatingSelect(parseInt(rating))}>
@@ -65,18 +66,25 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
               </FlexContainer>
             ))}
           </div>
-          <div id="characteristics">
-            {Object.keys(metadata.characteristics).map((characteristic) => (
-              <div key={characteristic}>
-                <SectionedBar
-                  name={characteristic}
-                  value={metadata.characteristics[characteristic].value}
-                  low={Chart[characteristic.toLowerCase()][1]}
-                  high={Chart[characteristic.toLowerCase()][5]}
-                />
-              </div>
-            ))}
-          </div>
+          <FlexContainer
+            direction="column"
+            align="left"
+            justify="flex-start"
+            gap="0px"
+          >
+            <div id="characteristics">
+              {Object.keys(metadata.characteristics).map((characteristic) => (
+                <div key={characteristic}>
+                  <SectionedBar
+                    name={characteristic}
+                    value={metadata.characteristics[characteristic].value}
+                    low={Chart[characteristic.toLowerCase()][1]}
+                    high={Chart[characteristic.toLowerCase()][5]}
+                  />
+                </div>
+              ))}
+            </div>
+          </FlexContainer>
         </FlexContainer>
       )}
     </div>
