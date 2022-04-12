@@ -35,6 +35,10 @@ export default createGlobalStyle`
     h1 {
       font-size: 2.5rem;
     }
+
+    .description-container {
+      justify-content: center;
+    }
   }
 
   a:hover,
