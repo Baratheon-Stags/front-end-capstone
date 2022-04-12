@@ -84,16 +84,13 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   };
 
   const imageDivStyle = {
-    height: '900px',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize: 'cover',
     transition: 'transform .2s ease-out',
     backgroundImage: `url(${galleryImages[currentGalleryIndex]})`,
   };
 
   const galleryContainerStyle = {
-    height: '900px',
     overflow: 'hidden',
   };
 

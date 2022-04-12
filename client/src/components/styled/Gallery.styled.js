@@ -23,6 +23,7 @@ const CarouselContent = styled.div`
   transition: all .2s ease;
   -ms-overflow-style: none;
   scroll-bar-width: none;
+  height: 900px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -31,6 +32,14 @@ const CarouselContent = styled.div`
   & > * {
     flex-shrink: 0;
     flex-grow: 1;
+  }
+
+  @media (max-height: 1100px) {
+    height: 650px;
+  }
+
+  & > .gallery-image {
+    background-size: cover;
   }
 `;
 
@@ -41,13 +50,18 @@ const ArrowButton = styled.button`
   transform: translateY(-50%);
   width: 48px;
   height: 48px;
-  border-radius: 24px;
+  border-radius: 100%;
   border: none;
   box-shadow: 1px 1px 3px rgba(0,0,0,.25);
   transition: all .25s ease;
   font-weight: bold;
   background-color: rgba(255,255,255, 0.75);
   backdrop-filter: blur(2px);
+
+  @media (max-height: 1100px) {
+    height: 36px;
+    width: 36px;
+  }
 
   &:focus {
     outline: none;
@@ -108,6 +122,11 @@ const ThumbnailContainer = styled.button`
   position: relative;
   padding: 0;
 
+  @media (max-height: 1100px) {
+    height: 60px;
+    width: 60px;
+  }
+
   &:hover {
     cursor: pointer;
     border: 1px solid white;
@@ -137,6 +156,9 @@ const ThumbnailContainer = styled.button`
 `;
 
 const FullScreenButtonContainer = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 48px;
   width: 48px;
   background-color: rgba(255,255,255,.75);
@@ -151,6 +173,11 @@ const FullScreenButtonContainer = styled.button`
   padding: .5em;
   border-radius: 100%;
   border: none;
+
+  @media (max-height: 1100px) {
+    height: 36px;
+    width: 36px;
+  }
 
   &:hover {
     background-color: rgb(246,246,246)
