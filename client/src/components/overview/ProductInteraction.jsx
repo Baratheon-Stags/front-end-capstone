@@ -37,10 +37,15 @@ const ProductInteraction = ({currentStyle}) => {
   };
 
   // create an array for the selected sku's quantity, and reset the values to be 1-indexed
-  const currentQuantityList = Array.from(Array(skuList[selectedSkuIndex].quantity).keys());
+  let currentQuantityList = Array.from(Array(skuList[selectedSkuIndex].quantity).keys());
   currentQuantityList.forEach((quantity, i) => {
     currentQuantityList[i] = quantity + 1;
   });
+
+  // limit quantity list to a max of 15
+  if (currentQuantityList.length > 15) {
+    currentQuantityList = currentQuantityList.slice(0, 14);
+  }
 
   // construct the options object to be passed in to axios
   const cartOptions = {
@@ -68,9 +73,10 @@ const ProductInteraction = ({currentStyle}) => {
   const statusMsgStyle = {
     color: sentCartStatus ? 'green' : 'red',
     fontSize: '1rem',
-    width: '90%',
-    textAlign: 'center',
     visibility: sentCartStatus ? 'visible' : 'hidden',
+    position: 'absolute',
+    bottom: '-50%',
+    transform: 'translateY(100%)',
   };
 
   return (
@@ -90,33 +96,37 @@ const ProductInteraction = ({currentStyle}) => {
         ))}
       </FlexContainer>
       <FlexContainer direction="column" gap="1em">
-        <FlexContainer direction="row" gap="1em" align="center">
-          <QuantityDropDown
-            name="quantity"
-            onChange={(e) => setSelectedQuantity(e.target.value)}
-            value={selectedQuantity}
-          >
-            <option>Select Quantity</option>
-            {currentQuantityList.map((quantity, i) => (
-              <option
-                key={i}
-                value={quantity}
-              >
-                {quantity}
-              </option>
-            ))}
-          </QuantityDropDown>
-          <CartButton
-            onClick={() => {
-              if (selectedQuantity > 0) {
-                handleAddToCart();
-              }
-            }}
-          >
-            Add to Cart
-          </CartButton>
+        <FlexContainer direction="column" gap="1em" align="center" style={{ position: 'relative' }}>
+          <FlexContainer direction="row" gap="1em" align="center">
+            <QuantityDropDown
+              name="quantity"
+              onChange={(e) => setSelectedQuantity(e.target.value)}
+              value={selectedQuantity}
+              disabled={selectedSizeIndex === null}
+            >
+              <option>Quantity</option>
+              {currentQuantityList.map((quantity, i) => (
+                <option
+                  key={i}
+                  value={quantity}
+                >
+                  {quantity}
+                </option>
+              ))}
+            </QuantityDropDown>
+            <CartButton
+              onClick={() => {
+                if (selectedQuantity > 0) {
+                  handleAddToCart();
+                }
+              }}
+              disabled={selectedSizeIndex === null || selectedQuantity === 0}
+            >
+              Add to Cart
+            </CartButton>
+          </FlexContainer>
+          <span style={statusMsgStyle}>{statusMsg}</span>
         </FlexContainer>
-        <span style={statusMsgStyle}>{statusMsg}</span>
       </FlexContainer>
     </FlexContainer>
   );
