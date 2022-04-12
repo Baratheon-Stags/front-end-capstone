@@ -28,12 +28,13 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
   // After mount, fetch all related product information
   useEffect(() => {
     related.forEach((id) => {
+      setRelated([]);
       axios.get(`/related/${id}`)
         .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
     });
     axios.get(`/product/${productId}`)
       .then((response) => setOverviewFeatures(response.data[0].features));
-  }, []);
+  }, [related]);
 
   const scrollRight = () => {
     carousel.current.scrollLeft += 1260;
