@@ -104,7 +104,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
           currentGalleryIndex > 0
           && (
             <ArrowButton disabled={isDisabled} style={{ left: '18px' }} onClick={prevImage}>
-              &lt;
+              <FontAwesomeIcon icon={solid('arrow-left')} />
             </ArrowButton>
           )
         }
@@ -185,7 +185,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
           currentGalleryIndex < (length - 1)
           && (
             <ArrowButton disabled={isDisabled} style={{ right: '18px' }} onClick={nextImage}>
-              &gt;
+              <FontAwesomeIcon icon={solid('arrow-right')} />
             </ArrowButton>
           )
         }
