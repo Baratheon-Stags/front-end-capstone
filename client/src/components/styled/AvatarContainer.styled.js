@@ -29,8 +29,9 @@ const AvatarContainer = styled.div`
   & > span {
     display: ${(props) => (props.selected ? 'inline-block' : 'none')};
     position: absolute;
-    top: -5%;
-    right: -5%;
+    top: -6%;
+    right: -6%;
+    color: black;
   }
 `;
 

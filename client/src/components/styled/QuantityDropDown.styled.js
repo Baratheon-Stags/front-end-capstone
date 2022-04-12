@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const QuantityDropDown = styled.select`
   border: 1px solid #555555;
@@ -7,7 +7,7 @@ const QuantityDropDown = styled.select`
   background-color: #f3f3f3;
   font-weight: bold;
   height: 100%;
-  width: 55%;
+  width: 45%;
 
   &:hover {
     cursor: pointer;
@@ -15,6 +15,11 @@ const QuantityDropDown = styled.select`
 
   &:focus {
     outline: none;
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+    opacity: 50%;
   }
 `;
 

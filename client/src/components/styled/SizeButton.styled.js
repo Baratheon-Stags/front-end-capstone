@@ -24,8 +24,9 @@ const Button = styled.button`
   }
 
   ${(props) => props.selected && css`
-    background-color: grey;
+    background-color: #555555;
     color: white;
+    border: 1px solid black;
   `}
 `;
 

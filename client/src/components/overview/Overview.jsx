@@ -23,6 +23,14 @@ const OverviewGalleryContainer = styled.div`
   ${(props) => props.expanded && css`
     width: 100%;
   `}
+
+  @media (max-height: 1100px) {
+    height: 650px;
+    width: 550px;
+    ${(props) => props.expanded && css`
+      width: 100%;
+    `}
+  }
 `;
 
 const Overview = ({overview, styles, metadata}) => {
@@ -46,7 +54,7 @@ const Overview = ({overview, styles, metadata}) => {
         {/* container for top half of overview */}
         <FlexContainer
           direction="row"
-          align="center"
+          justify="center"
         >
           <OverviewGalleryContainer
             expanded={isExpanded}
@@ -54,6 +62,7 @@ const Overview = ({overview, styles, metadata}) => {
             <OverviewGallery
               currentStyle={currentStyle}
               handleExpand={handleExpand}
+              expanded={isExpanded}
             />
           </OverviewGalleryContainer>
           <OverviewDetailsContainer expanded={isExpanded}>

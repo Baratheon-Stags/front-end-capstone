@@ -19,7 +19,15 @@ const App = () => {
   }, []);
 
   // destructure product to use as props
+
   const [overview, metadata, styles, related] = product;
+
+  const handleClick = (id) => {
+    // Gets product id on click
+    axios.get(`/product/${id}`).then((res) => {
+      setProduct(res.data);
+    });
+  };
 
   return (
     <>
@@ -36,7 +44,11 @@ const App = () => {
                 styles={styles}
                 metadata={metadata}
               />
-              <RelatedProducts related={related} productId={overview.id} />
+              <RelatedProducts
+                related={related}
+                productId={overview.id}
+                handleClick={handleClick}
+              />
               <Outfit productId={overview.id} />
               <Reviews productId={overview.id} productName={overview.name} />
             </FlexContainer>
