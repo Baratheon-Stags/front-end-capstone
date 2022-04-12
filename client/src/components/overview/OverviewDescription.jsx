@@ -7,6 +7,7 @@ const OverviewDescription = ({overview}) => (
   <FlexContainer
     direction="row"
     align="center"
+    justify="center"
     gap="1em"
   >
     <div style={{ borderRight: '2px solid black', width: '70%', paddingRight: '1em' }}>

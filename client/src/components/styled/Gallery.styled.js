@@ -47,7 +47,6 @@ const CarouselContent = styled.div`
     & > .gallery-image {
       background-size: contain;
     }
-    padding: .25em;
   `}
 `;
 
@@ -83,6 +82,8 @@ const ArrowButton = styled.button`
 const ThumbnailControlsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
   position: absolute;
   top: 5%;
@@ -105,9 +106,14 @@ const ThumbnailsContainerWrapper = styled.div`
   scroll-bar-width: none;
   max-height: 600px;
   overflow: hidden;
+  position: relative;
 
   &::-webkit-scrollbar {
     display: none;
+  }
+
+  @media (max-height: 1100px) {
+    max-height: 350px;
   }
 `;
 
@@ -118,6 +124,10 @@ const ThumbnailsContainer = styled.div`
   gap: 10px;
   transform: translateY(-${(props) => props.thumbnailIndex * 85}px);
   transition: transform .25s ease-in-out;
+
+  @media (max-height: 1100px) {
+    transform: translateY(-${(props) => props.thumbnailIndex * 65}px);
+  }
 `;
 
 const ThumbnailContainer = styled.button`
@@ -169,7 +179,6 @@ const FullScreenButtonContainer = styled.button`
   justify-content: center;
   height: 48px;
   width: 48px;
-  background-color: rgba(255,255,255,.75);
   position: absolute;
   top: 2.5%;
   right: 2.5%;
@@ -196,6 +205,35 @@ const FullScreenButtonContainer = styled.button`
   }
 `;
 
+const ThumbnailArrowContainer = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  width: 36px;
+  border: none;
+  border-radius: 100%;
+  transition: all .2s ease;
+  background-color: rgba(255,255,255,.75);
+
+  @media (max-height: 1100px) {
+    height: 24px;
+    width: 24px;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background-color: rgb(246,246,246);
+  }
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+`;
+
 export {
   CarouselContainer,
   CarouselWrapper,
@@ -207,4 +245,5 @@ export {
   ThumbnailsContainerWrapper,
   ArrowButton,
   FullScreenButtonContainer,
+  ThumbnailArrowContainer,
 };

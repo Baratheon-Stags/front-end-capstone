@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FavoriteButton from './FavoriteButton';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer } from '../styled/Gallery.styled';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer, ThumbnailArrowContainer } from '../styled/Gallery.styled';
 
 const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
   const defaultUrl = 'https://images.unsplash.com/photo-1590564310418-66304f55a2c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80';
@@ -41,13 +41,13 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
   };
 
   const nextThumbnail = () => {
-    if (currentThumbnailIndex < length - 1 && length > 6) {
+    if (currentThumbnailIndex < length - 1) {
       setCurrentThumbnailIndex((prevState) => prevState + 1);
     }
   };
 
   const prevThumbnail = () => {
-    if (currentThumbnailIndex > 0 && length > 6) {
+    if (currentThumbnailIndex > 0) {
       setCurrentThumbnailIndex((prevState) => prevState - 1);
     }
   };
@@ -59,7 +59,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
   const [zoom, setZoom] = useState(false);
   const [mouseX, setMouseX] = useState(null);
   const [mouseY, setMouseY] = useState(null);
-  const zoomScale = 1.5;
+  const zoomScale = 1.75;
 
   const carouselContent = useRef(null);
 
@@ -111,11 +111,13 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
         <ThumbnailControlsContainer>
           {
             length > 6 && (
-              <FontAwesomeIcon
-                icon={solid('arrow-up')}
-                className="thumbnail-control"
-                onClick={prevThumbnail}
-              />
+              <ThumbnailArrowContainer disabled={isDisabled}>
+                <FontAwesomeIcon
+                  icon={solid('arrow-up')}
+                  className="thumbnail-control"
+                  onClick={prevThumbnail}
+                />
+              </ThumbnailArrowContainer>
             )
           }
           <ThumbnailsContainerWrapper>
@@ -136,11 +138,13 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
           </ThumbnailsContainerWrapper>
           {
             length > 6 && (
-              <FontAwesomeIcon
-                icon={solid('arrow-down')}
-                className="thumbnail-control"
-                onClick={nextThumbnail}
-              />
+              <ThumbnailArrowContainer disabled={isDisabled}>
+                <FontAwesomeIcon
+                  icon={solid('arrow-down')}
+                  className="thumbnail-control"
+                  onClick={nextThumbnail}
+                />
+              </ThumbnailArrowContainer>
             )
           }
         </ThumbnailControlsContainer>
