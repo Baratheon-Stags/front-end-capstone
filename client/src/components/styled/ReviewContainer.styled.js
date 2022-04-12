@@ -11,7 +11,8 @@ const ReviewContainer = styled.div`
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
   width: 100%;
   word-break: break-word;
-  border-bottom: 2px solid #bbb;;
+  padding: 0 0 10px;
+  border-bottom: 2px solid #bbb;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
