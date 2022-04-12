@@ -1,22 +1,61 @@
 import React from 'react';
 import styled from 'styled-components';
+import FlexContainer from './FlexContainer.styled';
 
-const Container = styled.div`
-  progess {
-    margin-right: 8px;
-  }
-  progress[value] {
-    width: 20;
-    background-color: ${props => props.color};
-  }
+const Section = styled.div`
+  position: relative;
+  background-color: grey;
+  width: 75px;
+  height: 5px;
 `;
 
-const SectionedBar = ({ color = "#00FF00", value, max = 20, width = 20}) => {
+const Triangle = styled.div`
+  position: absolute;
+  top: -24px;
+  left: ${(props) => (props.left - 1) * 22}%;
+  font-size: 48px;
+`
+
+const SectionedBar = ({ name, value, low, high}) => {
   return (
-    <Container color={color} width={width}>
-      <progress value={0} max={20} />
-    </Container>
+    <>
+    <FlexContainer
+      direction="column"
+      align="left"
+      justify="flex-start"
+      gap="2px"
+    >
+      {name}
+      <FlexContainer
+        direction="row"
+        align="left"
+        justify="flex-start"
+        gap="5px"
+        width="320px"
+        margin="0 0 4px"
+      >
+        <Section />
+        <Section />
+        <Section />
+        <Section />
+        <Triangle left={value}>▾</Triangle>
+      </FlexContainer>
+
+
+      <FlexContainer
+        direction="row"
+        justify="space-between"
+        width="94%"
+        margin="0 0 9px"
+      >
+        <span>{low}</span>
+        <span>{high}</span>
+      </FlexContainer>
+    </FlexContainer>
+    </>
   )
 };
 
 export default SectionedBar;
+
+

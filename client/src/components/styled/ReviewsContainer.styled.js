@@ -11,7 +11,7 @@ const ReviewsContainer = styled.div`
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
   width: 100%;
   min-height: 200px;
-  max-height: 700px;
+  max-height: 800px;
   overflow: auto;
 `;
 
