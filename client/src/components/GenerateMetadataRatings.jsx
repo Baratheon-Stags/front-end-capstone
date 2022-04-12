@@ -10,7 +10,7 @@ const RatingContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  left: 50px;
+  left: 0px;
   height: 20px;
   width: 100px;
   line-height: 1;

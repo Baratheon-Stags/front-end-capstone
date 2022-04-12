@@ -3,6 +3,7 @@ import styled from 'styled-components';
 // accepts flex-direction and gap props
 
 const FlexContainer = styled.div`
+  position: relative;
   display: flex;
   flex-direction: ${(props) => props.direction};
   gap: ${(props) => props.gap || '3em'};
