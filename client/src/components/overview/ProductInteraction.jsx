@@ -14,15 +14,22 @@ const ProductInteraction = ({currentStyle}) => {
     return list;
   }, []);
 
+  const sizingOptions = skuList.map((currentSku) => currentSku.size);
+
   const [selectedSkuIndex, setSelectedSkuIndex] = useState(0);
   const [selectedQuantity, setSelectedQuantity] = useState(0);
-  const [selectedSize, setSelectedSize] = useState(skuList[selectedSkuIndex].size);
+  const [selectedSizeIndex, setSelectedSizeIndex] = useState(null);
   const [sentCartStatus, setSentCartStatus] = useState(null);
 
   // monitor the style, size, and quantity selections for changes and reset the status message
   useEffect(() => {
     setSentCartStatus(null);
-  }, [currentStyle, selectedSize, selectedQuantity]);
+  }, [currentStyle, selectedSizeIndex, selectedQuantity]);
+
+  useEffect(() => {
+    setSelectedQuantity(0);
+    setSelectedSizeIndex(null);
+  }, [currentStyle]);
 
   // handler to control the status of whether a status message should be shown
   const handleCartStatus = (status) => {
@@ -53,7 +60,7 @@ const ProductInteraction = ({currentStyle}) => {
   // handle creation and display of status message
   let statusMsg;
   if (sentCartStatus) {
-    statusMsg = `Added ${selectedQuantity} ${currentStyle.name} in size ${selectedSize} to your cart.`;
+    statusMsg = `Added ${selectedQuantity} ${currentStyle.name} in size ${sizingOptions[selectedSizeIndex]} to your cart.`;
   } else if (sentCartStatus === false) {
     statusMsg = 'Failed to add to cart. Please try again';
   }
@@ -68,18 +75,14 @@ const ProductInteraction = ({currentStyle}) => {
 
   return (
     <FlexContainer direction="column" gap="1em">
-      <span>
-        <span style={{ fontWeight: 'bold' }}>SIZE &gt; </span>
-        {skuList[selectedSkuIndex].size}
-      </span>
       <FlexContainer direction="row" gap=".5em" wrap="wrap">
         {skuList.map((sku, i) => (
           <SizeButton
             onClick={() => {
               setSelectedSkuIndex(i);
-              setSelectedSize(sku.size);
+              setSelectedSizeIndex(i);
             }}
-            selected={i === selectedSkuIndex}
+            selected={selectedSizeIndex === i}
             key={i}
           >
             {sku.size}
@@ -91,6 +94,7 @@ const ProductInteraction = ({currentStyle}) => {
           <QuantityDropDown
             name="quantity"
             onChange={(e) => setSelectedQuantity(e.target.value)}
+            value={selectedQuantity}
           >
             <option>Select Quantity</option>
             {currentQuantityList.map((quantity, i) => (
