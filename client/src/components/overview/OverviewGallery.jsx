@@ -111,11 +111,13 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
         <ThumbnailControlsContainer>
           {
             length > 6 && (
-              <ThumbnailArrowContainer disabled={isDisabled}>
+              <ThumbnailArrowContainer
+                disabled={isDisabled}
+                onClick={prevThumbnail}
+              >
                 <FontAwesomeIcon
                   icon={solid('arrow-up')}
                   className="thumbnail-control"
-                  onClick={prevThumbnail}
                 />
               </ThumbnailArrowContainer>
             )
@@ -138,11 +140,13 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
           </ThumbnailsContainerWrapper>
           {
             length > 6 && (
-              <ThumbnailArrowContainer disabled={isDisabled}>
+              <ThumbnailArrowContainer
+                disabled={isDisabled}
+                onClick={nextThumbnail}
+              >
                 <FontAwesomeIcon
                   icon={solid('arrow-down')}
                   className="thumbnail-control"
-                  onClick={nextThumbnail}
                 />
               </ThumbnailArrowContainer>
             )
