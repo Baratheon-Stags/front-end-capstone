@@ -19,14 +19,14 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
   const originalPriceStyle = {
     textDecoration: isDiscounted ? 'line-through' : 'none',
     color: isDiscounted ? 'red' : 'inherit',
-    fontSize: isDiscounted ? '.8em' : '2em',
+    fontSize: isDiscounted ? '.8em' : '1.8em',
     fontWeight: isDiscounted ? 'normal' : 'bold',
   };
 
   return (
     <FlexContainer direction="column" gap="1em">
       <div style={{ borderBottom: '2px solid rgba(200,200,200,.75' }}>
-        {isDiscounted && <span style={{ fontWeight: 'bold', fontSize: '2em'}}> ${currentPrice}  </span>}
+        {isDiscounted && <span style={{ fontWeight: 'bold', fontSize: '1.8em'}}> ${currentPrice}  </span>}
         <span style={originalPriceStyle}>${originalPrice}</span>
       </div>
       <span>

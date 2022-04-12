@@ -8,6 +8,7 @@ const OverviewDescription = ({overview}) => (
     direction="row"
     align="center"
     gap="1em"
+    className="description-container"
   >
     <div style={{ borderRight: '2px solid black', width: '70%', paddingRight: '1em' }}>
       <h2 style={{ textTransform: 'uppercase', letterSpacing: '-1.5px' }}>{overview.slogan}</h2>
