@@ -158,7 +158,6 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
         >
           <FontAwesomeIcon
             icon={solid('expand')}
-            className="fullscreen-button"
           />
         </FullScreenButtonContainer>
         <CarouselContentWrapper>

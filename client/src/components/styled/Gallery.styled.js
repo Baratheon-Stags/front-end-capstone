@@ -190,6 +190,7 @@ const FullScreenButtonContainer = styled.button`
   padding: .5em;
   border-radius: 100%;
   border: none;
+  font-weight: bold;
 
   @media (max-height: 1100px) {
     height: 36px;
