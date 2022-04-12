@@ -4,6 +4,7 @@ const CarouselContainer = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: rgba(220,220,220,.8);
 `;
 
 const CarouselWrapper = styled.div`
@@ -41,6 +42,13 @@ const CarouselContent = styled.div`
   & > .gallery-image {
     background-size: cover;
   }
+
+  ${(props) => props.expanded && css`
+    & > .gallery-image {
+      background-size: contain;
+      box-shadow: 1px 1px 1px rgba(0,0,0.75);
+    }
+  `}
 `;
 
 const ArrowButton = styled.button`

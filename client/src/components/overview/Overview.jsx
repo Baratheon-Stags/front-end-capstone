@@ -62,6 +62,7 @@ const Overview = ({overview, styles, metadata}) => {
             <OverviewGallery
               currentStyle={currentStyle}
               handleExpand={handleExpand}
+              expanded={isExpanded}
             />
           </OverviewGalleryContainer>
           <OverviewDetailsContainer expanded={isExpanded}>
