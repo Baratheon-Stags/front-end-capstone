@@ -28,7 +28,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
   // Input validation tracker
   const [validated, setValidated] = useState({
     rating: 0,
-    summary: 0,
+    // summary: 0,
     body: 0,
     recommend: 0,
     name: 0,
@@ -43,11 +43,11 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
     } else {
       validated.rating = 0;
     }
-    if (summary.length > 0) {
-      validated.summary = 1;
-    } else {
-      validated.summary = 0;
-    }
+    // if (summary.length > 0) {
+    //   validated.summary = 1;
+    // } else {
+    //   validated.summary = 0;
+    // }
     if (body.length > 50) {
       validated.body = 1;
     } else {
@@ -123,7 +123,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           width="100%"
           left="125px"
         >
-          <b>Summary</b>
+          <b>Review Summary</b>
         </TextContainer>
         <FlexContainer
           direction="row"
@@ -133,7 +133,8 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           <Input
             placeholder="Example: Best purchase ever!"
             value={summary}
-            onChange={() => setSummary(event.target.value)}
+            onChange={() => {setSummary(event.target.value)}}
+            maxLength={60}
           />
           <FlexContainer
             align="center"
@@ -157,7 +158,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           width="100%"
           left="125px"
         >
-          <b>Body*</b>
+          <b>Review Body*</b>
         </TextContainer>
         <FlexContainer
           direction="column"
@@ -170,6 +171,8 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             onChange={() => setBody(event.target.value)}
             cols="100"
             rows="10"
+            resize="none"
+            maxLength="1000"
           />
         </FlexContainer>
         <TextContainer
@@ -193,12 +196,13 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
               width="100%"
               left="125px"
             >
-              <b>Name*</b>
+              <b>What is your nickname*</b>
             </TextContainer>
             <Input
               placeholder="Example: jackson11!"
               value={name}
               onChange={() => setName(event.target.value)}
+              maxLength={60}
             />
           </FlexContainer>
           <FlexContainer
@@ -210,12 +214,13 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
               width="100%"
               left="125px"
             >
-              <b>Email*</b>
+              <b>Your email*</b>
             </TextContainer>
             <Input
               placeholder="Example: jackson11@email.com"
               value={email}
               onChange={() => setEmail(event.target.value)}
+              maxLength={60}
             />
           </FlexContainer>
         </FlexContainer>
@@ -234,11 +239,14 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           margin="0 0 15px"
         >
           <input
+            id="files"
             type="file"
             placeholder="Photo URLs"
             value={photos}
-            multiple
+            multiple="multiple"
+            accept="image/*"
             onChange={() => setPhotos(event.target.value)}
+            maxCount={5}
           />
         </FlexContainer>
 

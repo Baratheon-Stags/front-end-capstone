@@ -6,7 +6,6 @@ import AddReview from './AddReview';
 import FlexContainer from '../styled/FlexContainer.styled';
 import ReviewsContainer from '../styled/ReviewsContainer.styled';
 
-
 const Reviews = ({ productName, productId }) => {
   // All reviews
   const [allData, setAllData] = useState([]);
@@ -62,7 +61,7 @@ const Reviews = ({ productName, productId }) => {
     <>
       <h1 id="reviews">Reviews & Ratings</h1>
       <FlexContainer
-        direction="row"
+        direction="column"
         align="left"
         justify="space-between"
         gap="0"

@@ -5,7 +5,7 @@ import FlexContainer from './FlexContainer.styled';
 const Section = styled.div`
   position: relative;
   background-color: grey;
-  width: 75px;
+  width: 125px;
   height: 5px;
 `;
 
@@ -31,7 +31,7 @@ const SectionedBar = ({ name, value, low, high}) => {
         align="left"
         justify="flex-start"
         gap="5px"
-        width="320px"
+        width="100%"
         margin="0 0 4px"
       >
         <Section />
@@ -45,7 +45,7 @@ const SectionedBar = ({ name, value, low, high}) => {
       <FlexContainer
         direction="row"
         justify="space-between"
-        width="94%"
+        width="100%"
         margin="0 0 9px"
       >
         <span>{low}</span>

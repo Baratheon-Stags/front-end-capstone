@@ -67,7 +67,7 @@ const GenerateStarRatings = ({ratings}) => {
   const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
 
   return (
-    <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
+    <FlexContainer direction="column" justify="flex-start" align="center" gap="0">
       <Rating>      <span>{reviewAverage.toFixed(1)}</span></Rating>
       <RatingContainer>
         <RatingStarsContainer>

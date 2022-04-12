@@ -25,7 +25,6 @@ export const Modal = styled.div`
   background-color: rgb(230,230,230);
   height: 100%;
   width: ${(props) => props.width || '45%'};
-
   margin: 0px auto;
 `;
 
