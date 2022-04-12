@@ -44,7 +44,11 @@ const App = () => {
                 styles={styles}
                 metadata={metadata}
               />
-              <RelatedProducts related={related} productId={overview.id} handleClick={handleClick} />
+              <RelatedProducts
+                related={related}
+                productId={overview.id}
+                handleClick={handleClick}
+              />
               <Outfit productId={overview.id} />
               <Reviews productId={overview.id} productName={overview.name} />
             </FlexContainer>

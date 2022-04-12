@@ -18,10 +18,16 @@ const ProductDetails = ({overview, metadata}) => {
     <FlexContainer direction="column" gap="1.5em">
       <FlexContainer direction="column" gap="0">
         <GenerateStarRatings ratings={metadata.ratings} />
-        <StyledLink href="#reviews">Read All {reviewTotal} Reviews</StyledLink>
+        <StyledLink style={{ fontSize: '.75em' }} href="#reviews">
+          {
+            reviewTotal
+              ? `Read All ${reviewTotal} Reviews`
+              : 'Read All Reviews'
+          }
+        </StyledLink>
       </FlexContainer>
       <FlexContainer direction="column" gap="0">
-        <span>{category}</span>
+        <span style={{ fontSize: '.85em' }}>{category}</span>
         <h1>{name}</h1>
       </FlexContainer>
     </FlexContainer>

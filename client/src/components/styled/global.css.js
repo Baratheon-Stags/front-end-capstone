@@ -27,6 +27,10 @@ export default createGlobalStyle`
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#100')};
   }
 
+  h1 {
+    font-size: 3rem;
+  }
+
   a:hover,
   button:hover {
     cursor: pointer;
