@@ -31,6 +31,12 @@ export default createGlobalStyle`
     font-size: 3rem;
   }
 
+  @media (max-height: 1100px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+  }
+
   a:hover,
   button:hover {
     cursor: pointer;

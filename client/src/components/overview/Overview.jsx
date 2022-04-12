@@ -26,7 +26,7 @@ const OverviewGalleryContainer = styled.div`
 
   @media (max-height: 1100px) {
     height: 650px;
-    width: 500px;
+    width: 550px;
     ${(props) => props.expanded && css`
       width: 100%;
     `}
