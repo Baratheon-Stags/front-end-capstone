@@ -10,6 +10,7 @@ import FlexContainer from '../styled/FlexContainer.styled';
 const RelatedProducts = ({ related, productId, handleClick }) => {
   // Extract related product IDs
   // Set state to use array of related products
+  // Added comment for commit check
   const [relatedProducts, setRelated] = useState([]);
   const [overviewFeatures, setOverviewFeatures] = useState([]);
   const [modalItemFeatures, setModalItemFeatures] = useState([]);
@@ -28,12 +29,13 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
   // After mount, fetch all related product information
   useEffect(() => {
     related.forEach((id) => {
+      setRelated([]);
       axios.get(`/related/${id}`)
         .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
     });
     axios.get(`/product/${productId}`)
       .then((response) => setOverviewFeatures(response.data[0].features));
-  }, []);
+  }, [related]);
 
   const scrollRight = () => {
     carousel.current.scrollLeft += 1260;

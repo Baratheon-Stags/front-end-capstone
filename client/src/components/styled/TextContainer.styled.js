@@ -5,6 +5,7 @@ const TextContainer = styled.div`
   position: relative;
   width: ${(props) => (props.width || '60px')};
   left: ${(props) => (props.left || '0')};
+  font-size: ${(props) => (props.size || '16px')}
 `;
 
 export default TextContainer;

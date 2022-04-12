@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Input = styled.input`
   type: ${(props) => props.type || 'text'};
   height: ${(props) => props.height || '36px'};
-  width: ${(props) => props.width || '45%'};
+  width: ${(props) => props.width || '50%'};
   font-size: 16px;
   padding: 10px;
   margin: 10px;
