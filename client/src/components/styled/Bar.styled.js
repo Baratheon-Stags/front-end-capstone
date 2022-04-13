@@ -6,7 +6,6 @@ const Container = styled.div`
 
   progess {
     margin-right: 8px;
-
   }
 
   progress[value] {
