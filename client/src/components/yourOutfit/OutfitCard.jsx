@@ -20,7 +20,7 @@ const OutfitCard = ({ productDetails, removeItem }) => {
   };
 
   return (
-    <CardContainer>
+    <CardContainer style={{ boxShadow: '2px 5px 3px rgba(0,0,0,.5)', marginRight: '5px' }}>
       <CardImage url={image}>
         <FontAwesomeIcon onClick={handleClick} style={btnStyle} icon={solid('circle-xmark')} className="fa-lg" />
       </CardImage>
@@ -33,7 +33,6 @@ const OutfitCard = ({ productDetails, removeItem }) => {
         </FlexContainer>
       </CardDesc>
     </CardContainer>
-
   )
 };
 

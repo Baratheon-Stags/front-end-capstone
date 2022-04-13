@@ -29,7 +29,7 @@ const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
   return (
     <FlexContainer direction="column" gap="0.5em" align="center">
       {traits.map((row) => (
-        <Row>
+        <Row key={Math.random()}>
           <CheckBox>{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
           <FeatureBox>
           {row.feature}
