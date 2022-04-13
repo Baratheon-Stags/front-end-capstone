@@ -48,7 +48,7 @@ const Rating = styled.span`
 
 const GenerateStarRatings = ({ rating }) => {
   // calculate the inverse width of the RatingBar
-  const ratingBarWidth = `${98 - (parseInt(rating) * 20)}%`;
+  const ratingBarWidth = `${100 - (parseInt(rating) * 20)}%`;
 
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
