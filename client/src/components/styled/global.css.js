@@ -10,6 +10,7 @@ export default createGlobalStyle`
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#333333')};
     overflow-x: hidden;
     font-family: 'Poppins', sans-serif;
+  }
 
   *,
   *::before,

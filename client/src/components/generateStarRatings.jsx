@@ -14,6 +14,7 @@ const RatingContainer = styled.div`
   width: 100px;
   line-height: 1;
 
+
   + span {
     line-height: 1;
   }
@@ -28,6 +29,7 @@ const RatingBar = styled.span`
   right: 0;
   white-space: nowrap;
   overflow: hidden;
+
 `;
 
 const RatingStarsContainer = styled.span`
@@ -37,6 +39,7 @@ const RatingStarsContainer = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+
 `;
 
 const GenerateStarRatings = ({ratings}) => {
