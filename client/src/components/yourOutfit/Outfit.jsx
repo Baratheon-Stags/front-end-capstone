@@ -79,7 +79,7 @@ const Outfit = ({ productId }) => {
         <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
         <AddItemCard addItem={addItem} productId={productId} />
         <FlexContainer>
-          <StyledCarousel width="914" gap="20px" ref={carousel} direction="row">
+          <StyledCarousel maxWidth="914px" gap="20px" ref={carousel} direction="row">
             {productDetails.map((product) => (
               <OutfitCard key={Math.random()} productDetails={product} removeItem={removeItem} />
 

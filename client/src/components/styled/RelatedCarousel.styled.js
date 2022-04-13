@@ -5,6 +5,7 @@ const StyledCarousel = styled(FlexContainer)`
   align-items: center;
   justify-content: flex-start;
   width: ${(props) => props.width} || 1260px;
+  max-width: ${(props) => props.maxWidth};
   overflow-x: auto;
   overflow-y: hidden;
   list-style-type: none;
