@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FlexContainer from '../styled/FlexContainer.styled';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import OutfitCard from './OutfitCard';
@@ -74,7 +76,7 @@ const Outfit = ({ productId }) => {
     <>
       <h1>Outfit</h1>
       <FlexContainer gap="20px">
-        <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
+        <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
         <AddItemCard addItem={addItem} productId={productId} />
         <FlexContainer>
           <StyledCarousel width="914" gap="20px" ref={carousel} direction="row">
@@ -84,7 +86,7 @@ const Outfit = ({ productId }) => {
             ))}
           </StyledCarousel>
         </FlexContainer>
-        <button style={style} type="button" onClick={scrollRight}>&gt;</button>
+        <button style={style} type="button" onClick={scrollRight}><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>
     </>
   );

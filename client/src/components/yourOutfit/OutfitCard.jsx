@@ -33,7 +33,6 @@ const OutfitCard = ({ productDetails, removeItem }) => {
         </FlexContainer>
       </CardDesc>
     </CardContainer>
-
   )
 };
 
