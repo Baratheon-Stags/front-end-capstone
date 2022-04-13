@@ -24,7 +24,7 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
 
   return (
     <FlexContainer direction="column" gap="1em">
-      <div style={{ borderBottom: '2px solid rgba(200,200,200,.75' }}>
+      <div style={{ borderBottom: '2px solid rgba(200,200,200,.75', marginTop: '1em' }}>
         {isDiscounted && <span style={{ fontSize: '1.8em'}}> ${currentPrice}  </span>}
         <span style={originalPriceStyle}>${originalPrice}</span>
       </div>

@@ -29,11 +29,17 @@ const Logo = styled.h2`
     position: relative;
   }
 
-  & >  a:focus {
+  @media (max-width: 900px) {
+    & > a {
+      font-size: .8em;
+    }
+  }
+
+  & > a:focus {
     outline: none;
   }
 
-  & >  a:visited {
+  & > a:visited {
     color: white;
   }
 `;
@@ -51,6 +57,12 @@ const NavLinks = styled.ul`
     text-decoration: none;
     transition: all .2s ease;
     position: relative;
+  }
+
+  @media (max-width: 900px) {
+    & > li a {
+      font-size: .8em;
+    }
   }
 
   & > li a:focus {

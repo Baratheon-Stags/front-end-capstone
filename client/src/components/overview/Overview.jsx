@@ -5,14 +5,21 @@ import FlexContainer from '../styled/FlexContainer.styled';
 import OverviewGallery from './OverviewGallery';
 import OverviewDetails from './OverviewDetails';
 import OverviewDescription from './OverviewDescription';
+import OverviewMainContainer from '../styled/OverviewMainContainer.styled';
 
 const OverviewDetailsContainer = styled.div`
   width: 30%;
   transition: all .2s ease;
 
   ${(props) => props.expanded && css`
-    display: none;
+    @media (min-width: 1010px) {
+      display: none;
+    }
   `}
+
+  @media (max-width: 1010px) {
+    width: 100%;
+  }
 `;
 
 const OverviewGalleryContainer = styled.div`
@@ -30,6 +37,10 @@ const OverviewGalleryContainer = styled.div`
     ${(props) => props.expanded && css`
       width: 100%;
     `}
+  }
+
+  @media (max-width: 1010px) {
+    width: 100%;
   }
 `;
 
@@ -52,7 +63,7 @@ const Overview = ({overview, styles, metadata}) => {
         direction="column"
       >
         {/* container for top half of overview */}
-        <FlexContainer
+        <OverviewMainContainer
           direction="row"
           justify="center"
         >
@@ -74,7 +85,7 @@ const Overview = ({overview, styles, metadata}) => {
               handleStyleChange={(style) => setSelectedStyle(style)}
             />
           </OverviewDetailsContainer>
-        </FlexContainer>
+        </OverviewMainContainer>
         <OverviewDescription overview={overview} />
       </FlexContainer>
     </main>

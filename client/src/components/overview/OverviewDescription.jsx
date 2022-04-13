@@ -20,7 +20,7 @@ const OverviewDescription = ({overview}) => (
         <FontAwesomeIcon icon={brands('instagram')} className="social-icon" />
       </FlexContainer>
     </div>
-    <ul style={{ paddingLeft: '0', listStyle: 'none' }}>
+    <ul style={{ paddingLeft: '0', listStyle: 'none', fontSize: '.8em' }}>
       {overview.features.map((feature, i) => (
         <li key={i}>
           <FontAwesomeIcon
