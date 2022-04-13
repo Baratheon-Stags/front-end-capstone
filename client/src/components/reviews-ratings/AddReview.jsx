@@ -7,6 +7,7 @@ import Divider from '../styled/Divider.styled';
 import Input from '../styled/Input.styled';
 import Chart from '../Characteristics';
 import GenerateStarSelection from '../GenerateStarSelection';
+import Button from '../styled/ReviewButton.styled';
 
 const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
   // Rating hovered and selected
@@ -115,8 +116,9 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           direction="column"
           align="center"
           gap="0"
+          margin="6px 0 0"
         >
-        <b>Write Your Review</b >
+        <b>Write Your Review</b>
         {`About the ${productName}`}
         </FlexContainer>
         <TextContainer
@@ -170,7 +172,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             value={body}
             onChange={() => setBody(event.target.value)}
             cols="100"
-            rows="10"
+            rows="8"
             resize="none"
             maxLength="1000"
           />
@@ -178,11 +180,12 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
         <TextContainer
           width="100%"
           left="125px"
+          size="14px"
         >
           {body.length < 50 ? `Minimum required characters left: [${50 - body.length}]` : 'Minimum reached'}
         </TextContainer>
         <FlexContainer
-          direction="columnz"
+          direction="row"
           justify="center"
           gap="0"
         >
@@ -230,9 +233,11 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           gap="0"
           margin="0 0 15px"
         >
+          <TextContainer size="12px" align="center" width="100%">
           For privacy reasons, do not use your full name or email address
+          </TextContainer>
         </FlexContainer>
-        <FlexContainer
+        {/* <FlexContainer
           direction="column"
           align="center"
           gap="0"
@@ -248,14 +253,14 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             onChange={() => setPhotos(event.target.value)}
             maxCount={5}
           />
-        </FlexContainer>
+        </FlexContainer> */}
 
 
         <FlexContainer
           direction="row"
           justify="center"
           gap="0"
-          margin="0 0 15px"
+          margin="0 0 5px"
         >
           <b>Would you recommend this product?*</b>
           <FlexContainer
@@ -264,7 +269,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             width="5%"
             gap="0"
           >
-            <span>Yes</span>
+            <span style={{ fontSize:'16px'}}>Yes</span>
             <input
               type="radio"
               name="recommend"
@@ -278,7 +283,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             width="5%"
             gap="0"
           >
-            <span>No</span>
+            <span style={{ fontSize:'16px'}}>No</span>
             <input
               type="radio"
               name="recommend"
@@ -292,6 +297,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           align="center"
           width="100%"
           gap="15px"
+          margin="0 0 6px"
         >
           {Object.keys(characteristicRatings).map((characteristic) => (
             <div>
@@ -301,10 +307,11 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
                 justify="center"
                 width="100%"
                 gap="6px"
-                margin="0"
-              >
+                margin="3px 0 0"
+              ><TextContainer size="14px" width="100%" align="center">
                 <b>{`${characteristic}*: `}</b>
                 {characteristicRatings[characteristic].score === undefined ? 'none selected' : (characteristicRatings[characteristic].meaning)}
+                </TextContainer>
               </FlexContainer>
               <FlexContainer
                 direction="row"
@@ -321,7 +328,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
                       align="center"
                       justify="space-evenly"
                       width="150px"
-                      gap="50"
+                      gap="0"
                     >
                       <input
                         type="radio"
@@ -329,7 +336,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
                         value={key}
                         name={characteristic}
                       />
-                      {key == 1 || key == 5 ? (<span>{Chart[characteristic.toLowerCase()][key]}</span>) : null}
+                      {key == 1 || key == 5 ? (<TextContainer size="12px" align="center" width="100%">{Chart[characteristic.toLowerCase()][key]}</TextContainer>) : null}
                     </FlexContainer>
                   </div>
                 ))}
@@ -342,13 +349,12 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           direction="row"
           justify="center"
           gap="15px"
+          margin="0 0 2px"
         >
-          <button type="submit" onClick={() => handleReviewSubmit()}>Submit</button>
-          <button type="button" onClick={() => onDiscard(false)}>Discard</button>
+          <Button type="submit" onClick={() => handleReviewSubmit()}>Submit</Button>
+          <Button type="button" onClick={() => onDiscard(false)}>Discard</Button>
         </FlexContainer>
-
-        {failedSubmission && Object.keys(validated).filter(key => {return validated[key] === 0}).length > 0? <TextContainer color="red" width="100%">{`Missing fields: ${Object.keys(validated).filter(key => {return validated[key] === 0}).toString().replaceAll(',', ', ')}`}</TextContainer> : null}
-
+        {failedSubmission && Object.keys(validated).filter(key => {return validated[key] === 0}).length > 0? <TextContainer color="red" width="100%" align="center">{`Missing fields: ${Object.keys(validated).filter(key => {return validated[key] === 0}).toString().replaceAll(',', ', ')}`}</TextContainer> : null}
       </Modal>
     </>
   );

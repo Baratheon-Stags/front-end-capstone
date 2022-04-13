@@ -4,6 +4,7 @@ import FlexContainer from '../styled/FlexContainer.styled';
 import ReviewContainer from '../styled/ReviewContainer.styled';
 import Link from '../styled/Link.styled';
 import GenerateStarRatings from '../GenerateReviewRatings';
+import TextContainer from '../styled/TextContainer.styled';
 
 const Review = ({ review }) => {
   // Date of review
@@ -39,9 +40,10 @@ const Review = ({ review }) => {
             {`${review.reviewer_name}, ${months[month]} ${day}, ${year}`}
           </div>
         </FlexContainer>
+
         <div><b>{review.summary}</b></div>
         <div>{review.body}</div>
-        <div>{review.recommend === true ? 'I recommend this product ✓' : null}</div>
+        <TextContainer width="100%" color="grey">{review.recommend === true ? 'I recommend this product ✓' : null}</TextContainer>
         <FlexContainer
           direction="row"
           align="left"
@@ -52,7 +54,7 @@ const Review = ({ review }) => {
           </div>
           <Link onClick={handleMarkAshelpful}>Yes</Link>
           {`(${review.helpfulness})`}
-          <Link oonClick={handleReport}>Report</Link>
+          <Link onClick={handleReport}>Report</Link>
         </FlexContainer>
       </ReviewContainer>
     </div>
