@@ -86,31 +86,34 @@ export default createGlobalStyle`
   }
 
   .section-header {
-    display: inline-block;
     text-align: center;
-    position: relative;
-    width: 100%;
-    text-shadow: 1px 1px 1px rgba(0,0,0,.45);
-    margin: 1em auto;
-  }
+    margin: 0 auto;
 
-  .section-header::before,
-  .section-header::after {
-    content: '';
-    height: 2px;
-    background-color: black;
-    width: 250px;
-    position: absolute;
-    top: 50%;
-    display: inline-block;
-  }
+    & > h2 {
+      margin: 0;
+      position: relative;
+    }
 
-  .section-header::before {
-    left: 23.5%;
-  }
+    & > h2::before,
+    & > h2::after {
+      content: '';
+      height: 2px;
+      width: 200px;
+      position: absolute;
+      background-color: black;
+      top: 50%;
+      display: inline-block;
+    }
 
-  .section-header::after {
-    right: 23.5%;
+    & > h2::before {
+      left: -10%;
+      transform: translateX(-100%);
+    }
+
+    & > h2::after {
+      right: -10%;
+      transform: translateX(100%);
+    }
   }
 
   button {
