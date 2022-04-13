@@ -5,6 +5,9 @@ export const CardContainer = styled.div`
   width: 300px;
   border: 1px solid black;
   flex: 0 0 auto;
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 export const CardDesc = styled.div`
