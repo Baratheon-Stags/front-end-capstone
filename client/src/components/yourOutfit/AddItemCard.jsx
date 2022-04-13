@@ -3,11 +3,6 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FlexContainer from '../styled/FlexContainer.styled';
-import { CardContainer } from '../styled/Card.styled';
-
-const LockedCard = styled(FlexContainer)`
-  width: 50%;
-`;
 
 const FlexItem = styled(FlexContainer)`
   display: flex;
@@ -18,6 +13,7 @@ const FlexItem = styled(FlexContainer)`
   width: 300px;
   border: 1px solid black;
   flex: 0 0 auto;
+  box-shadow: 2px 5px 3px rgba(0,0,0,.5);
 `;
 
 const StyleBtn = styled.div`
@@ -33,11 +29,11 @@ const StyleBtn = styled.div`
 `;
 
 const AddItemCard = ({ addItem }) => (
-    <FlexItem>
-      <StyleBtn>
-        <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
-      </StyleBtn>
-    </FlexItem>
+  <FlexItem>
+    <StyleBtn>
+      <FontAwesomeIcon onClick={addItem} icon={solid('square-plus')} className="fa-4x" />
+    </StyleBtn>
+  </FlexItem>
 );
 
 export default AddItemCard;

@@ -28,31 +28,29 @@ const Card = ({ product, toggleRelatedCompare, handleClick }) => {
   };
 
   return (
-    <li>
-      <CardContainer onClick={goToProduct}>
-        <CardImage url={image}>
-          <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
-        </CardImage>
-        <CardDesc>
-          <FlexContainer gap="0" direction="column">
-            <span>
-              {' '}
-              {category}
-            </span>
-            <span>
-              {' '}
-              {name}
-            </span>
-            <span>
-              {' '}
-              $
-              {default_price}
-            </span>
-            <GenerateStarRatings ratings={ratings} />
-          </FlexContainer>
-        </CardDesc>
-      </CardContainer>
-    </li>
+    <CardContainer style={{ boxShadow: '2px 5px 3px rgba(0,0,0,.5)' }} onClick={goToProduct}>
+      <CardImage url={image}>
+        <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
+      </CardImage>
+      <CardDesc>
+        <FlexContainer gap="0" direction="column">
+          <span>
+            {' '}
+            {category}
+          </span>
+          <span>
+            {' '}
+            {name}
+          </span>
+          <span>
+            {' '}
+            $
+            {default_price}
+          </span>
+          <GenerateStarRatings ratings={ratings} />
+        </FlexContainer>
+      </CardDesc>
+    </CardContainer>
   );
 };
 

@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import Card from './Card';
 import CompareModal from './CompareModal';
-
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
 
@@ -60,11 +61,12 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
       </div>
       {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
       <FlexContainer direction="row" gap="0em" justify="space-between">
-        <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
+        <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
+
         <StyledCarousel gap="20px" ref={carousel} direction="row">
           {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} handleClick={handleClick} />)}
         </StyledCarousel>
-        <button style={style} type="button" onClick={scrollRight}>&gt;</button>
+        <button style={style} type="button" onClick={scrollRight}><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>
     </>
   );

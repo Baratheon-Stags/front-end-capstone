@@ -1,68 +1,59 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FlexContainer from '../styled/FlexContainer.styled';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import OutfitCard from './OutfitCard';
 import AddItemCard from './AddItemCard';
 
-
 const Outfit = ({ productId }) => {
+  // At default spot
   const carousel = useRef(null);
-  const [addedItems, setAddedItems] = useState([]);
-  // const [productDetails, setProductDetails] = useState([]);
-  const [productDetails, setProductDetails] = useState(() => {
-    // Fetch locally stored data drive Outfit rendering
-    const arr = [];
-    const keys = Object.keys(localStorage);
+  const [productDetails, setProductDetails] = useState([]);
 
-    keys.forEach((id) => {
-      const saved = localStorage.getItem(`${id}`);
-      const formatted = JSON.parse(saved);
-      arr.push(formatted);
-    });
-    return arr || [];
-  });
-
-  const style = {
-    outline: '0',
-    fontSize: '25px',
-    backgroundColor: 'Transparent',
-    border: 'none',
-    margin: '10px 10px 10px 0px',
+  const getOutfitItems = () => {
+    const outfitItems = Object.keys(localStorage);
+    const products = [];
+    for (let x = 0; x < outfitItems.length; x += 1) {
+      const key = outfitItems[x];
+      const storedProduct = localStorage.getItem(key);
+      products.push(JSON.parse(storedProduct));
+    }
+    setProductDetails(products);
   };
 
   useEffect(() => {
-    if (addedItems.length !== 0) {
-      addedItems.forEach((id) => {
-        axios.get(`/related/${id}`)
-          .then((product) => {
-            const details = product.data;
-            localStorage.setItem(`${productId}`, JSON.stringify(details));
-            setProductDetails((previousProduct) => [...previousProduct, details]);
-          });
-      });
-    }
-  }, [addedItems]);
+    getOutfitItems();
+  }, []);
 
-  const snapRight = () => {
-    carousel.current.scrollLeft += 1000;
-  };
+  useEffect(() => {
+    getOutfitItems();
+  }, [productId]);
+
 
   const removeItem = (toRemove) => {
-    const filteredProducts = productDetails.filter((product) => (toRemove !== product.id));
-    const filteredIds = addedItems.filter((id) => (toRemove !== id));
+    const outfitItems = Object.keys(localStorage);
+    const newProducts = [];
 
+    for (let x = 0; x < outfitItems.length; x += 1) {
+      const key = outfitItems[x];
+      if (parseInt(key) !== toRemove) {
+        const storedProduct = localStorage.getItem(key);
+        newProducts.push(JSON.parse(storedProduct));
+      }
+    }
     localStorage.removeItem(toRemove);
-    setAddedItems(filteredIds);
-    setProductDetails(filteredProducts);
+    setProductDetails(newProducts);
   };
 
   const addItem = () => {
-    if (!addedItems.includes(productId)) {
-      setAddedItems([...addedItems, productId]);
-      snapRight();
-    }
+    axios.get(`/related/${productId}`)
+      .then((product) => {
+      // May be overwriting product in local
+        localStorage.setItem(productId, JSON.stringify(product.data));
+        getOutfitItems();
+      });
   };
 
   const scrollRight = () => {
@@ -73,23 +64,31 @@ const Outfit = ({ productId }) => {
     carousel.current.scrollLeft -= 450;
   };
 
+  const style = {
+    outline: '0',
+    fontSize: '25px',
+    backgroundColor: 'Transparent',
+    border: 'none',
+    margin: '10px 10px 10px 0px',
+  };
+
   return (
     <>
       <div className="section-header">
         <h2><span id="outfit"></span>Your Outfit</h2>
       </div>
       <FlexContainer gap="20px">
-        <button style={style} type="button" onClick={scrollLeft}>&lt;</button>
+        <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
         <AddItemCard addItem={addItem} productId={productId} />
         <FlexContainer>
-          <StyledCarousel width="914" gap="20px" ref={carousel} direction="row">
+          <StyledCarousel maxWidth="914px" gap="20px" ref={carousel} direction="row">
             {productDetails.map((product) => (
               <OutfitCard key={Math.random()} productDetails={product} removeItem={removeItem} />
 
             ))}
           </StyledCarousel>
         </FlexContainer>
-        <button style={style} type="button" onClick={scrollRight}>&gt;</button>
+        <button style={style} type="button" onClick={scrollRight}><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>
     </>
   );
