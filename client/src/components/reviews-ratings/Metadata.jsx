@@ -27,24 +27,35 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
     <div>
       {metadata === undefined ? null : (
         <FlexContainer
-          direction="column"
-          align="left"
-          justify="space-between"
+          direction="row"
+          align="flex-start"
+          width="100%"
+          borderbottom="2px solid #bbb"
+          margin="6px"
         >
           <FlexContainer
-            direction="row"
-            align="left"
-            justify="space-between"
+            direction="column"
+            align="center"
+            width="30%"
+            gap="0"
           >
-            <div><GenerateStarRatings ratings={metadata.ratings} /></div>
+            <TextContainer size="20px" align="center" width="100%">
+              <b>Average Rating</b>
+            </TextContainer>
+            <GenerateStarRatings ratings={metadata.ratings} />
+            <TextContainer size="24px" align="center" width="100%">
+              {`${recommended}% of reviews recommend this product`}
+            </TextContainer>
           </FlexContainer>
-          <div>
-            {`${recommended}% of reviews recommend this product`}
-          </div>
-          <div id="ratings">
-            Rating Breakdown
-            <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
-            <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
+          <FlexContainer
+            direction="column"
+            id="ratings"
+            justify="flex-start"
+            align="center"
+            gap="5px"
+            width="30%"
+          >
+            <b>Rating Breakdown</b>
             {Object.keys(distribution).reverse().map((rating) => (
               <FlexContainer
                 key={rating}
@@ -54,36 +65,51 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
                 gap="6px"
                 margin="0 0 6px"
               >
-                <TextContainer>
+                <TextContainer size="20px" width="25%">
                   <Link onClick={() => onRatingSelect(parseInt(rating))}>
-                    {`${rating} ${rating === '1' ? 'star' : 'stars'}`}
+                    {`${rating} ${rating === '1' ? 'Star' : 'Stars'}`}
                   </Link>
                 </TextContainer>
                 <Bar value={distribution[rating]} />
-                <TextContainer>
+                <TextContainer size="20px" align="right">
                   <div>{metadata.ratings[rating]}</div>
                 </TextContainer>
               </FlexContainer>
             ))}
-          </div>
+            <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
+            <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
+          </FlexContainer>
+
           <FlexContainer
             direction="column"
-            align="left"
+            align="center"
             justify="flex-start"
             gap="0px"
+            width="30%"
           >
-            <div id="characteristics">
-              {Object.keys(metadata.characteristics).map((characteristic) => (
-                <div key={characteristic}>
-                  <SectionedBar
-                    name={characteristic}
-                    value={metadata.characteristics[characteristic].value}
-                    low={Chart[characteristic.toLowerCase()][1]}
-                    high={Chart[characteristic.toLowerCase()][5]}
-                  />
-                </div>
-              ))}
-            </div>
+          <TextContainer size="20px" align="center" width="100%">
+            <b>Characteristics Breakdown</b>
+          </TextContainer>
+            <FlexContainer
+              direction="column"
+              align="left"
+              justify="flex-start"
+              gap="0px"
+            >
+              <div id="characteristics">
+
+                {Object.keys(metadata.characteristics).map((characteristic) => (
+                  <div key={characteristic}>
+                    <SectionedBar
+                      name={characteristic}
+                      value={metadata.characteristics[characteristic].value}
+                      low={Chart[characteristic.toLowerCase()][1]}
+                      high={Chart[characteristic.toLowerCase()][5]}
+                    />
+                  </div>
+                ))}
+              </div>
+            </FlexContainer>
           </FlexContainer>
         </FlexContainer>
       )}

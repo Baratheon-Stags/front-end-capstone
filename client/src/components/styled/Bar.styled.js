@@ -3,13 +3,16 @@ import styled from 'styled-components';
 import PropTypes from "prop-types";
 
 const Container = styled.div`
+
   progess {
     margin-right: 8px;
+
   }
 
   progress[value] {
     width: ${props => props.width};
     background-color: ${props => props.color};
+    box-shadow: 2px 5px 3px rgba(0,0,0,.5);
   }
 
 `;

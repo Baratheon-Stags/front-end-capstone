@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FavoriteButton from './FavoriteButton';
-import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer } from '../styled/Gallery.styled';
+import { CarouselContainer, CarouselWrapper, CarouselContentWrapper, CarouselContent, ThumbnailContainer, ThumbnailControlsContainer, ThumbnailsContainer, ThumbnailsContainerWrapper, ArrowButton, FullScreenButtonContainer, ThumbnailArrowContainer } from '../styled/Gallery.styled';
 
-const OverviewGallery = ({currentStyle, handleExpand}) => {
+const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
   const defaultUrl = 'https://images.unsplash.com/photo-1590564310418-66304f55a2c2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2970&q=80';
   const galleryImages = currentStyle.photos.reduce((images, current) => {
     images.push(current.url ?? defaultUrl);
@@ -41,13 +41,13 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   };
 
   const nextThumbnail = () => {
-    if (currentThumbnailIndex < length - 1 && length > 6) {
+    if (currentThumbnailIndex < length - 1) {
       setCurrentThumbnailIndex((prevState) => prevState + 1);
     }
   };
 
   const prevThumbnail = () => {
-    if (currentThumbnailIndex > 0 && length > 6) {
+    if (currentThumbnailIndex > 0) {
       setCurrentThumbnailIndex((prevState) => prevState - 1);
     }
   };
@@ -59,7 +59,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   const [zoom, setZoom] = useState(false);
   const [mouseX, setMouseX] = useState(null);
   const [mouseY, setMouseY] = useState(null);
-  const zoomScale = 1.5;
+  const zoomScale = 1.75;
 
   const carouselContent = useRef(null);
 
@@ -84,16 +84,13 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
   };
 
   const imageDivStyle = {
-    height: '900px',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
-    backgroundSize: 'cover',
     transition: 'transform .2s ease-out',
     backgroundImage: `url(${galleryImages[currentGalleryIndex]})`,
   };
 
   const galleryContainerStyle = {
-    height: '900px',
     overflow: 'hidden',
   };
 
@@ -107,18 +104,22 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
           currentGalleryIndex > 0
           && (
             <ArrowButton disabled={isDisabled} style={{ left: '18px' }} onClick={prevImage}>
-              &lt;
+              <FontAwesomeIcon icon={solid('arrow-left')} />
             </ArrowButton>
           )
         }
         <ThumbnailControlsContainer>
           {
             length > 6 && (
-              <FontAwesomeIcon
-                icon={solid('arrow-up')}
-                className="thumbnail-control"
+              <ThumbnailArrowContainer
+                disabled={isDisabled}
                 onClick={prevThumbnail}
-              />
+              >
+                <FontAwesomeIcon
+                  icon={solid('arrow-up')}
+                  className="thumbnail-control"
+                />
+              </ThumbnailArrowContainer>
             )
           }
           <ThumbnailsContainerWrapper>
@@ -139,11 +140,15 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
           </ThumbnailsContainerWrapper>
           {
             length > 6 && (
-              <FontAwesomeIcon
-                icon={solid('arrow-down')}
-                className="thumbnail-control"
+              <ThumbnailArrowContainer
+                disabled={isDisabled}
                 onClick={nextThumbnail}
-              />
+              >
+                <FontAwesomeIcon
+                  icon={solid('arrow-down')}
+                  className="thumbnail-control"
+                />
+              </ThumbnailArrowContainer>
             )
           }
         </ThumbnailControlsContainer>
@@ -153,7 +158,6 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
         >
           <FontAwesomeIcon
             icon={solid('expand')}
-            className="fullscreen-button"
           />
         </FullScreenButtonContainer>
         <CarouselContentWrapper>
@@ -162,6 +166,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
             ref={carouselContent}
             onClick={handleImageClick}
             onMouseMove={handleMouseMove}
+            expanded={expanded}
           >
             <div
               style={{
@@ -179,7 +184,7 @@ const OverviewGallery = ({currentStyle, handleExpand}) => {
           currentGalleryIndex < (length - 1)
           && (
             <ArrowButton disabled={isDisabled} style={{ right: '18px' }} onClick={nextImage}>
-              &gt;
+              <FontAwesomeIcon icon={solid('arrow-right')} />
             </ArrowButton>
           )
         }

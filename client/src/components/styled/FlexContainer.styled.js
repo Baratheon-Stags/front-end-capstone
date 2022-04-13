@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 // accepts flex-direction and gap props
 
@@ -12,6 +12,9 @@ const FlexContainer = styled.div`
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
   width: ${(props) => props.width || '100%'};
   margin: ${(props) => props.margin || '0'};
+  border-bottom ${(props) => props.borderbottom || '0'};
+  padding: ${(props) => props.margin || '0'};
+
 `;
 
 export default FlexContainer;

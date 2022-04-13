@@ -5,7 +5,10 @@ const TextContainer = styled.div`
   position: relative;
   width: ${(props) => (props.width || '60px')};
   left: ${(props) => (props.left || '0')};
-  font-size: ${(props) => (props.size || '16px')}
+  font-size: ${(props) => (props.size || '16px')};
+  maxLength: ${(props) => (props.maxLength || '5')};
+  text-align: ${(props) => (props.align || 'left')};
+  text-shadow: ${(props) => (props.shadow || '0')};
 `;
 
 export default TextContainer;

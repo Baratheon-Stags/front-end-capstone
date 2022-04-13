@@ -5,7 +5,7 @@ import Review from './Review';
 import AddReview from './AddReview';
 import FlexContainer from '../styled/FlexContainer.styled';
 import ReviewsContainer from '../styled/ReviewsContainer.styled';
-
+import Button from '../styled/ReviewButton.styled';
 
 const Reviews = ({ productName, productId }) => {
   // All reviews
@@ -28,7 +28,7 @@ const Reviews = ({ productName, productId }) => {
     axios.get(`/reviews/${productId}/1/10000/relevant`).then((data) => {
       setAllData(data.data);
     });
-  }, []);
+  }, [productId]);
 
   // Handle when add review button is clicked
   const handleFormToggle = (boolean) => {
@@ -62,7 +62,7 @@ const Reviews = ({ productName, productId }) => {
     <>
       <h1 id="reviews">Reviews & Ratings</h1>
       <FlexContainer
-        direction="row"
+        direction="column"
         align="left"
         justify="space-between"
         gap="0"
@@ -103,8 +103,8 @@ const Reviews = ({ productName, productId }) => {
               justify="flex-start"
               gap="0"
             >
-              <button type="button" onClick={() => setCount(count + 2)}>More Reviews</button>
-              <button type="button" onClick={() => { setForm(true); }}>Add a Review +</button>
+              <Button type="button" onClick={() => setCount(count + 2)}>More Reviews</Button>
+              <Button type="button" onClick={() => { setForm(true); }}>Add a Review +</Button>
             </FlexContainer>
           </FlexContainer>
         </FlexContainer>

@@ -14,6 +14,7 @@ const RatingContainer = styled.div`
   height: 20px;
   width: 100px;
   line-height: 1;
+  margin-bottom: 30px;
 
   + span {
     line-height: 1;
@@ -44,7 +45,7 @@ const Rating = styled.span`
   display: inline-block;
   position: relative;
   display: flex;
-  font-size: 100px;
+  font-size: 160px;
 `;
 
 const GenerateStarRatings = ({ratings}) => {
@@ -67,8 +68,8 @@ const GenerateStarRatings = ({ratings}) => {
   const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
 
   return (
-    <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
-      <Rating>      <span>{reviewAverage.toFixed(1)}</span></Rating>
+    <FlexContainer direction="column" justify="flex-start" align="center" gap="0">
+      <Rating>      <span style={{ textShadow: '2px 5px 3px rgba(0,0,0,.5)' }}>{reviewAverage.toFixed(1)}</span></Rating>
       <RatingContainer>
         <RatingStarsContainer>
           <FontAwesomeIcon icon={solid('star')} className="star-icon" />

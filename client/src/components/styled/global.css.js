@@ -9,6 +9,7 @@ export default createGlobalStyle`
     background-color: ${(props) => (props.darkMode ? '#292A30' : '#f5f5f5')};
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#333333')};
     overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
   }
 
   *,
@@ -25,10 +26,21 @@ export default createGlobalStyle`
   h6 {
     margin-top: 0;
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#100')};
+    font-family: 'Bebas Neue', cursive;
   }
 
   h1 {
     font-size: 3rem;
+  }
+
+  @media (max-height: 1100px) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .description-container {
+      justify-content: center;
+    }
   }
 
   a:hover,
