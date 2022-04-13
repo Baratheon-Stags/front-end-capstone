@@ -60,6 +60,11 @@ export default createGlobalStyle`
   .star-icon {
     width: 20px;
     color: black;
+    margin: 0 -1px;
+  }
+
+  .star-icon.filled {
+    color: rgb(70,130,180);
   }
 
   .text-center {

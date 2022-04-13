@@ -9,6 +9,7 @@ export const Backdrop = styled.div`
   right: 0;
   background-color: #000;
   opacity: 0.5;
+  cursor: pointer;
 `;
 
 export const Modal = styled.div`
@@ -25,7 +26,7 @@ export const Modal = styled.div`
   background-color: rgb(230,230,230);
   height: 850px;
   width: ${(props) => props.width || '45%'};
-  margin: 0px auto;
+  margin: auto;
   border: 0px solid black;
   border-radius: 75px 50px;
   box-shadow: 5px 10px 3px rgba(0,0,0,.5);
