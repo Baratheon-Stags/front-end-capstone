@@ -33,6 +33,7 @@ const App = () => {
       <Navbar>
         <Logo><a href="#">LOGO</a></Logo>
         <NavLinks>
+          <li><a href="#">Overview</a></li>
           <li><a href="#related">Related Products</a></li>
           <li><a href="#outfit">Your Outfit</a></li>
           <li><a href="#reviews">Reviews &amp; Ratings</a></li>

@@ -95,7 +95,7 @@ export default createGlobalStyle`
 
   button[disabled] {
     cursor: not-allowed;
-    opacity: 80%;
+    opacity: 60%;
   }
 
   .section-header {
