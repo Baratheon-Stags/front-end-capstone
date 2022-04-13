@@ -173,7 +173,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             onChange={() => setBody(event.target.value)}
             cols="100"
             rows="8"
-            resize="none"
+            style={{resize: 'none', margin: '10px 0 0'}}
             maxLength="1000"
           />
         </FlexContainer>
@@ -199,7 +199,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
               width="100%"
               left="125px"
             >
-              <b>What is your nickname*</b>
+              <b>Your name*</b>
             </TextContainer>
             <Input
               placeholder="Example: jackson11!"
@@ -212,6 +212,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             direction="column"
             align="center"
             gap="0"
+            margin="5px 0 0"
           >
             <TextContainer
               width="100%"

@@ -74,9 +74,9 @@ const Reviews = ({ productName, productId }) => {
           justify="flex-start"
           gap="0"
         >
-          <div>
+          <div style={{textAlign:'left'}}>
             {metadata === undefined ? null : `${reviews.results.length} reviews, sorted by `}
-            <select id="sort" onChange={() => handleOptionSort()}>
+            <select id="sort" onChange={() => handleOptionSort()} style={{border: '0px solid transparent', fontSize: '20px', fontFamily: 'Poppins, sans-serif', backgroundColor: '#f5f5f5'}}>
               <option value="relevant">Relevance</option>
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
@@ -100,8 +100,8 @@ const Reviews = ({ productName, productId }) => {
             <FlexContainer
               direction="row"
               align="center"
-              justify="flex-start"
-              gap="0"
+              justify="center"
+              width="100%"
             >
               <Button type="button" onClick={() => setCount(count + 2)}>More Reviews</Button>
               <Button type="button" onClick={() => { setForm(true); }}>Add a Review +</Button>

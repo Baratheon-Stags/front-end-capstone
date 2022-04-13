@@ -43,7 +43,7 @@ const Review = ({ review }) => {
 
         <div><b>{review.summary}</b></div>
         <div>{review.body}</div>
-        <TextContainer width="100%" color="grey">{review.recommend === true ? 'I recommend this product ✓' : null}</TextContainer>
+        <TextContainer width="100%" color="green">{review.recommend === true ? 'I recommend this product ✓' : null}</TextContainer>
         <FlexContainer
           direction="row"
           align="left"

@@ -9,13 +9,11 @@ const ReviewContainer = styled.div`
   justify-content: ${(props) => props.justify};
   align-items: ${(props) => props.align};
   flex-wrap: ${(props) => props.wrap || 'nowrap'};
-  width: 95%;
+  width: 100%;
   word-break: break-word;
-  padding: 0 0 10px;
+  padding: 0 0 15px;
   border-bottom: 2px solid #bbb;
   margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
   margin-bottom: 10px;
 `;
 

@@ -29,14 +29,15 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
         <FlexContainer
           direction="row"
           align="flex-start"
+          justify="center"
           width="100%"
           borderbottom="2px solid #bbb"
-          margin="6px"
+          margin="0 0 30px"
         >
           <FlexContainer
             direction="column"
             align="center"
-            width="30%"
+            width="25%"
             gap="0"
           >
             <TextContainer size="20px" align="center" width="100%">
@@ -53,8 +54,9 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             justify="flex-start"
             align="center"
             gap="5px"
-            width="30%"
+            width="38%"
           >
+
             <b>Rating Breakdown</b>
             {Object.keys(distribution).reverse().map((rating) => (
               <FlexContainer
@@ -62,22 +64,31 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
                 direction="row"
                 align="left"
                 justify="flex-start"
-                gap="6px"
+                gap="12px"
                 margin="0 0 6px"
+                width="100%"
               >
-                <TextContainer size="20px" width="25%">
+                <TextContainer size="20px" width="30%" align="right">
                   <Link onClick={() => onRatingSelect(parseInt(rating))}>
-                    {`${rating} ${rating === '1' ? 'Star' : 'Stars'}`}
+                    {`${rating} ${rating === '1' ? 'Star' : 'Star'}`}
                   </Link>
                 </TextContainer>
                 <Bar value={distribution[rating]} />
-                <TextContainer size="20px" align="right">
+                <TextContainer size="20px" width="30%" align="left">
                   <div>{metadata.ratings[rating]}</div>
                 </TextContainer>
               </FlexContainer>
             ))}
-            <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
-            <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
+          <FlexContainer
+            direction="column"
+            align="center"
+            justify="flex-start"
+            gap="6px"
+            margin="22px 0 0"
+          >
+          <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
+          <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
+              </FlexContainer>
           </FlexContainer>
 
           <FlexContainer
@@ -85,7 +96,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             align="center"
             justify="flex-start"
             gap="0px"
-            width="30%"
+            width="25%"
           >
           <TextContainer size="20px" align="center" width="100%">
             <b>Characteristics Breakdown</b>
