@@ -32,7 +32,8 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           justify="center"
           width="100%"
           borderbottom="2px solid #bbb"
-          margin="0 0 30px"
+          margin="0 0 15px"
+          gap="0"
         >
           <FlexContainer
             direction="column"
