@@ -46,7 +46,7 @@ const Overview = ({overview, styles, metadata}) => {
   };
 
   return (
-    <>
+    <main>
       {/* overall overview container */}
       <FlexContainer
         direction="column"
@@ -77,7 +77,7 @@ const Overview = ({overview, styles, metadata}) => {
         </FlexContainer>
         <OverviewDescription overview={overview} />
       </FlexContainer>
-    </>
+    </main>
   );
 };
 
