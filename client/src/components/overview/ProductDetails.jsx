@@ -27,7 +27,7 @@ const ProductDetails = ({overview, metadata}) => {
         </StyledLink>
       </FlexContainer>
       <FlexContainer direction="column" gap="0">
-        <span style={{ fontSize: '.85em', opacity: '.6', textTransform: 'uppercase', marginBottom: '-15px', letterSpacing: '.2em' }}>{category}</span>
+        <span style={{ fontSize: '.85em', opacity: '.8', textTransform: 'uppercase', marginBottom: '-15px', letterSpacing: '.2em' }}>{category}</span>
         <h1 style={{ marginBottom: '1em' }}>{name}</h1>
       </FlexContainer>
     </FlexContainer>

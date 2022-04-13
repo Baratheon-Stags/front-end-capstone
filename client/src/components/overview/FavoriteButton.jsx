@@ -50,6 +50,7 @@ const FavoriteButton = ({currentStyle, disabled}) => {
     <FavoriteButtonContainer
       disabled={disabled}
       onClick={() => setFavorite((prevState) => !prevState)}
+      aria-label="favorite"
     >
       {favorited
         ? <FontAwesomeIcon icon={solid('heart')} />
