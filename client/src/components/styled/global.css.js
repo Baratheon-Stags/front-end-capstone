@@ -80,4 +80,39 @@ export default createGlobalStyle`
     opacity: 80%;
   }
 
+  .section-header {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    width: 100%;
+    text-shadow: 1px 1px 1px rgba(0,0,0,.45);
+    margin: 1em auto;
+  }
+
+  .section-header::before,
+  .section-header::after {
+    content: '';
+    height: 2px;
+    background-color: black;
+    width: 250px;
+    position: absolute;
+    top: 50%;
+    display: inline-block;
+  }
+
+  .section-header::before {
+    left: 23.5%;
+  }
+
+  .section-header::after {
+    right: 23.5%;
+  }
+
+  button {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  select {
+    font-family: 'Poppins', sans-serif;
+  }
 `;

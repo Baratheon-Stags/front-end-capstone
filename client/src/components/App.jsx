@@ -37,7 +37,7 @@ const App = () => {
         ? null
         : (
           <AppContainer>
-            <FlexContainer direction="column" gap="5em">
+            <FlexContainer direction="column" gap="3em">
               <Overview
                 product={product}
                 overview={overview}
