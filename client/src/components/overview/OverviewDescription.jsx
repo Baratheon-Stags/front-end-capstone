@@ -11,7 +11,7 @@ const OverviewDescription = ({overview}) => (
     className="description-container"
   >
     <div style={{ borderRight: '2px solid black', width: '70%', paddingRight: '1em' }}>
-      <h2 style={{ textTransform: 'uppercase', letterSpacing: '-1.5px' }}>{overview.slogan}</h2>
+      <h2 style={{ textTransform: 'uppercase' }}>{overview.slogan}</h2>
       <p>{overview.description}</p>
       <FlexContainer direction="row" gap=".5em" align="center">
         <span>Share on social media: </span>

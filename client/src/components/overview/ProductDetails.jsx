@@ -18,7 +18,7 @@ const ProductDetails = ({overview, metadata}) => {
     <FlexContainer direction="column" gap="1.5em">
       <FlexContainer direction="column" gap="0">
         <GenerateStarRatings ratings={metadata.ratings} />
-        <StyledLink style={{ fontSize: '.75em' }} href="#reviews">
+        <StyledLink style={{ fontSize: '.65em' }} href="#reviews">
           {
             reviewTotal
               ? `Read All ${reviewTotal} Reviews`

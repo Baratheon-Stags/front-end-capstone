@@ -6,7 +6,7 @@ import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 const FavoriteButtonContainer = styled.button`
   position: absolute;
   top: 95%;
-  transform: translateY(-50%);
+  transform: translate(-50%, -50%);
   left: 50%;
   display: flex;
   justify-content: center;
