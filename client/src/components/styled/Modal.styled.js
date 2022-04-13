@@ -26,5 +26,6 @@ export const Modal = styled.div`
   height: 700px;
   width: ${(props) => props.width || '45%'};
   margin: 40px auto;
+
 `;
 

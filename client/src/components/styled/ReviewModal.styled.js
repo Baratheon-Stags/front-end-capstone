@@ -23,8 +23,10 @@ export const Modal = styled.div`
   justify-content: flex-start;
   z-index: 2000;
   background-color: rgb(230,230,230);
-  height: 100%;
+  height: 850px;
   width: ${(props) => props.width || '45%'};
   margin: 0px auto;
+  border: 0px solid black;
+  border-radius: 75px 50px;
+  box-shadow: 5px 10px 3px rgba(0,0,0,.5);
 `;
-

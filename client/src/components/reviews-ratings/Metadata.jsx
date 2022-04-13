@@ -37,12 +37,13 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             direction="column"
             align="center"
             width="30%"
+            gap="0"
           >
             <TextContainer size="20px" align="center" width="100%">
               <b>Average Rating</b>
             </TextContainer>
-            <div><GenerateStarRatings ratings={metadata.ratings} /></div>
-            <TextContainer size="14px" align="center" width="100%">
+            <GenerateStarRatings ratings={metadata.ratings} />
+            <TextContainer size="24px" align="center" width="100%">
               {`${recommended}% of reviews recommend this product`}
             </TextContainer>
           </FlexContainer>
@@ -52,7 +53,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             justify="flex-start"
             align="center"
             gap="5px"
-            width="35%"
+            width="30%"
           >
             <b>Rating Breakdown</b>
             {Object.keys(distribution).reverse().map((rating) => (
@@ -84,7 +85,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             align="center"
             justify="flex-start"
             gap="0px"
-            width="40%"
+            width="30%"
           >
           <TextContainer size="20px" align="center" width="100%">
             <b>Characteristics Breakdown</b>
