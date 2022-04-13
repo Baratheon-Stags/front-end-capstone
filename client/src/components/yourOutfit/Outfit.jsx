@@ -1,68 +1,57 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
 import axios from 'axios';
 import FlexContainer from '../styled/FlexContainer.styled';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import OutfitCard from './OutfitCard';
 import AddItemCard from './AddItemCard';
 
-
 const Outfit = ({ productId }) => {
+  // At default spot
   const carousel = useRef(null);
-  const [addedItems, setAddedItems] = useState([]);
-  // const [productDetails, setProductDetails] = useState([]);
-  const [productDetails, setProductDetails] = useState(() => {
-    // Fetch locally stored data drive Outfit rendering
-    const arr = [];
-    const keys = Object.keys(localStorage);
+  const [productDetails, setProductDetails] = useState([]);
 
-    keys.forEach((id) => {
-      const saved = localStorage.getItem(`${id}`);
-      const formatted = JSON.parse(saved);
-      arr.push(formatted);
-    });
-    return arr || [];
-  });
-
-  const style = {
-    outline: '0',
-    fontSize: '25px',
-    backgroundColor: 'Transparent',
-    border: 'none',
-    margin: '10px 10px 10px 0px',
+  const getOutfitItems = () => {
+    const outfitItems = Object.keys(localStorage);
+    const products = [];
+    for (let x = 0; x < outfitItems.length; x += 1) {
+      const key = outfitItems[x];
+      const storedProduct = localStorage.getItem(key);
+      products.push(JSON.parse(storedProduct));
+    }
+    setProductDetails(products);
   };
 
   useEffect(() => {
-    if (addedItems.length !== 0) {
-      addedItems.forEach((id) => {
-        axios.get(`/related/${id}`)
-          .then((product) => {
-            const details = product.data;
-            localStorage.setItem(`${productId}`, JSON.stringify(details));
-            setProductDetails((previousProduct) => [...previousProduct, details]);
-          });
-      });
-    }
-  }, [addedItems]);
+    getOutfitItems();
+  }, []);
 
-  const snapRight = () => {
-    carousel.current.scrollLeft += 1000;
-  };
+  useEffect(() => {
+    getOutfitItems();
+  }, [productId]);
+
 
   const removeItem = (toRemove) => {
-    const filteredProducts = productDetails.filter((product) => (toRemove !== product.id));
-    const filteredIds = addedItems.filter((id) => (toRemove !== id));
+    const outfitItems = Object.keys(localStorage);
+    const newProducts = [];
 
+    for (let x = 0; x < outfitItems.length; x += 1) {
+      const key = outfitItems[x];
+      if (parseInt(key) !== toRemove) {
+        const storedProduct = localStorage.getItem(key);
+        newProducts.push(JSON.parse(storedProduct));
+      }
+    }
     localStorage.removeItem(toRemove);
-    setAddedItems(filteredIds);
-    setProductDetails(filteredProducts);
+    setProductDetails(newProducts);
   };
 
   const addItem = () => {
-    if (!addedItems.includes(productId)) {
-      setAddedItems([...addedItems, productId]);
-      snapRight();
-    }
+    axios.get(`/related/${productId}`)
+      .then((product) => {
+      // May be overwriting product in local
+        localStorage.setItem(productId, JSON.stringify(product.data));
+        getOutfitItems();
+      });
   };
 
   const scrollRight = () => {
@@ -71,6 +60,14 @@ const Outfit = ({ productId }) => {
 
   const scrollLeft = () => {
     carousel.current.scrollLeft -= 450;
+  };
+
+  const style = {
+    outline: '0',
+    fontSize: '25px',
+    backgroundColor: 'Transparent',
+    border: 'none',
+    margin: '10px 10px 10px 0px',
   };
 
   return (
