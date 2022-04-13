@@ -56,7 +56,7 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
   return (
     <>
       <div className="section-header">
-        <h2>Related Products</h2>
+        <h2><span id="related"></span>Related Products</h2>
       </div>
       {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
       <FlexContainer direction="row" gap="0em" justify="space-between">

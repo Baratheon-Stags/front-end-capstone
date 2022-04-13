@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -24,13 +28,22 @@ export default createGlobalStyle`
   h4,
   h5,
   h6 {
-    margin-top: 0;
+    margin: 0;
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#100')};
     font-family: 'Bebas Neue', cursive;
   }
 
   h1 {
     font-size: 3rem;
+  }
+
+  h2 {
+    position: relative;
+  }
+
+  h2 span {
+    position: absolute;
+    top: -90px;
   }
 
   @media (max-height: 1100px) {

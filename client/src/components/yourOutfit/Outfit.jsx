@@ -76,7 +76,7 @@ const Outfit = ({ productId }) => {
   return (
     <>
       <div className="section-header">
-        <h2>Your Outfit</h2>
+        <h2><span id="outfit"></span>Your Outfit</h2>
       </div>
       <FlexContainer gap="20px">
         <button style={style} type="button" onClick={scrollLeft}>&lt;</button>

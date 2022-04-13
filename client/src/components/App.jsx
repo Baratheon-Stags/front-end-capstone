@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import Overview from './overview/Overview';
 import RelatedProducts from './relatedproducts/RelatedProducts';
 import Reviews from './reviews-ratings/Reviews';
 import Outfit from './yourOutfit/Outfit';
-
 import FlexContainer from './styled/FlexContainer.styled';
-import Navbar from './styled/Navbar.styled';
+import { Navbar, Logo, NavLinks } from './styled/Navbar.styled';
 import AppContainer from './styled/AppContainer.styled';
 
 const App = () => {
@@ -31,7 +30,14 @@ const App = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar>
+        <Logo><a href="#">LOGO</a></Logo>
+        <NavLinks>
+          <li><a href="#related">Related Products</a></li>
+          <li><a href="#outfit">Your Outfit</a></li>
+          <li><a href="#reviews">Reviews &amp; Ratings</a></li>
+        </NavLinks>
+      </Navbar>
       <h4 className="text-center">Site-wide Announcement Message</h4>
       {product.length === 0
         ? null

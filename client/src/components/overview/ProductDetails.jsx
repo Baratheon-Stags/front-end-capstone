@@ -28,7 +28,7 @@ const ProductDetails = ({overview, metadata}) => {
       </FlexContainer>
       <FlexContainer direction="column" gap="0">
         <span style={{ fontSize: '.85em', opacity: '.6', textTransform: 'uppercase', marginBottom: '-15px', letterSpacing: '.2em' }}>{category}</span>
-        <h1>{name}</h1>
+        <h1 style={{ marginBottom: '1em' }}>{name}</h1>
       </FlexContainer>
     </FlexContainer>
   );
