@@ -4,7 +4,11 @@ import FlexContainer from '../styled/FlexContainer.styled';
 import OverviewGallery from './OverviewGallery';
 import OverviewDetails from './OverviewDetails';
 import OverviewDescription from './OverviewDescription';
-import { OverviewMainContainer, OverviewDetailsContainer, OverviewGalleryContainer } from '../styled/OverviewContainers.styled';
+import {
+  OverviewMainContainer,
+  OverviewDetailsContainer,
+  OverviewGalleryContainer,
+} from '../styled/OverviewContainers.styled';
 
 const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
