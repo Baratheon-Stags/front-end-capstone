@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import RenderRows from './RenderRows';
 import FlexContainer from '../styled/FlexContainer.styled';
 
@@ -23,7 +23,7 @@ const Backdrop = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width:400px;
+  width: 400px;
   height: 300px;
   background-color: white;
   position: relative;
@@ -34,8 +34,12 @@ const Backdrop = styled.div`
 
 const Header = styled(FlexContainer)`
   display: flex;
+  max-width: 350px;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 20px;
+  margin-top: 5px;
+  border-bottom: 2px solid black;
 
 `;
 
@@ -44,14 +48,19 @@ const RowsContainer = styled(FlexContainer)`
   overflow-y: auto;
 `;
 
-const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
+const BtnContainer = styled(FlexContainer)`
+  margin-top: 5px;
+  margin-bottom: 5px;
+`;
+
+const CompareModal = ({cardName, overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
   <>
     <Overlay onClick={toggleRelatedCompare}>
       <Backdrop onClick={(e) => e.stopPropagation()}>
         <h2>Comparing</h2>
         <Header>
-          <div>Current Item</div>
-          <div> Card Item</div>
+          <FlexContainer justify="center">Current Item</FlexContainer>
+          <FlexContainer justify="center"> {cardName} </FlexContainer>
         </Header>
         <RowsContainer>
 
@@ -61,7 +70,9 @@ const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompar
           />
 
         </RowsContainer>
-        <button type="button" onClick={toggleRelatedCompare}>close</button>
+        <BtnContainer justify="center">
+          <button type="button" onClick={toggleRelatedCompare}>close</button>
+        </BtnContainer>
       </Backdrop>
     </Overlay>
   </>
