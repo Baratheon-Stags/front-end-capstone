@@ -47,7 +47,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
               <b>Average Rating</b>
             </TextContainer>
             <GenerateStarRatings ratings={metadata.ratings} />
-            <TextContainer size="24px" align="center" width="100%">
+            <TextContainer size="20px" align="center" width="100%">
               {`${recommended}% of reviews recommend this product`}
             </TextContainer>
           </FlexContainer>

@@ -22,7 +22,6 @@ const OverviewDescription = ({overview}) => (
       </h2>
       <p>{overview.description}</p>
       <FlexContainer direction="row" gap=".5em" align="center">
-        <span>Share on social media: </span>
         <FontAwesomeIcon
           icon={brands('facebook')}
           className="social-icon"
