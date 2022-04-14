@@ -61,19 +61,24 @@ const Reviews = ({ productName, productId }) => {
   return (
     <>
       <h1 id="reviews">Reviews & Ratings</h1>
+      {/* Main */}
       <FlexContainer
         direction="column"
         align="left"
         justify="space-between"
         gap="0"
       >
+        {/* Metadata */}
         <Metadata metadata={metadata} onRatingSelect={handleRatingSort} filter={starFilter}/>
+
+        {/* Reviews */}
         <FlexContainer
           direction="column"
           align="left"
           justify="flex-start"
           gap="0"
         >
+          {/* Sort by */}
           <div style={{textAlign:'left'}}>
             {metadata === undefined ? null : `${reviews.results.length} reviews, sorted by `}
             <select id="sort" onChange={() => handleOptionSort()} style={{border: '0px solid transparent', fontSize: '20px', fontFamily: 'Poppins, sans-serif', backgroundColor: '#f5f5f5'}}>
@@ -82,12 +87,16 @@ const Reviews = ({ productName, productId }) => {
               <option value="newest">Newest</option>
             </select>
           </div>
+
+          {/* Reviews List and Button */}
           <FlexContainer
             direction="column"
             align="baseline"
             justify="flex-start"
             gap="0"
           >
+
+            {/* Reviews */}
             <ReviewsContainer
               direction="column"
               align="left"
@@ -97,6 +106,8 @@ const Reviews = ({ productName, productId }) => {
               {metadata === undefined ? null
                 : reviews.results.filter(review => starFilter.includes(review.rating)).slice(0, count).map((review) => <Review key={review.review_id} review={review} />,)}
             </ReviewsContainer>
+
+            {/* More Reviews & Add Review */}
             <FlexContainer
               direction="row"
               align="center"
@@ -106,9 +117,14 @@ const Reviews = ({ productName, productId }) => {
               <Button type="button" onClick={() => setCount(count + 2)}>More Reviews</Button>
               <Button type="button" onClick={() => { setForm(true); }}>Add a Review +</Button>
             </FlexContainer>
+
           </FlexContainer>
+
         </FlexContainer>
+
       </FlexContainer>
+
+      {/* Render Form */}
       {form ? (
         <AddReview
           productId={productId}

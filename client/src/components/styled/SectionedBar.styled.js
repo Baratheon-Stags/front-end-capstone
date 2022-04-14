@@ -49,8 +49,8 @@ const SectionedBar = ({ name, value, low, high}) => {
         width="100%"
         margin="0 0 9px"
       >
-        <TextContainer size="14px" align="left" width="30%">{low}</TextContainer>
-        <TextContainer size="14px" align="right" width="30%">{high}</TextContainer>
+        <TextContainer size="14px" align="left" width="35%">{low}</TextContainer>
+        <TextContainer size="14px" align="right" width="35%">{high}</TextContainer>
       </FlexContainer>
     </FlexContainer>
     </>

@@ -26,6 +26,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
   return (
     <div>
       {metadata === undefined ? null : (
+        //  Main
         <FlexContainer
           direction="row"
           align="flex-start"
@@ -35,6 +36,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           margin="0 0 15px"
           gap="0"
         >
+          {/* Average Rating */}
           <FlexContainer
             direction="column"
             align="center"
@@ -58,6 +60,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             width="38%"
           >
 
+            {/* Rating Breakdown */}
             <b>Rating Breakdown</b>
             {Object.keys(distribution).reverse().map((rating) => (
               <FlexContainer
@@ -80,18 +83,19 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
                 </TextContainer>
               </FlexContainer>
             ))}
-          <FlexContainer
-            direction="column"
-            align="center"
-            justify="flex-start"
-            gap="6px"
-            margin="22px 0 0"
-          >
-          <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
-          <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
-              </FlexContainer>
+            <FlexContainer
+              direction="column"
+              align="center"
+              justify="flex-start"
+              gap="6px"
+              margin="21px 0 0"
+            >
+              <div>{filter.length === 5 ? null : `Filter applied: ${filter.sort().toString().replaceAll(',', ', ')}`}</div>
+              <div>{filter.length === 5 ? null : <Link onClick={() => onRatingSelect(0)}>Remove all filters</Link>}</div>
+            </FlexContainer>
           </FlexContainer>
 
+          {/* Characteristics Breakdown */}
           <FlexContainer
             direction="column"
             align="center"
@@ -109,7 +113,6 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
               gap="0px"
             >
               <div id="characteristics">
-
                 {Object.keys(metadata.characteristics).map((characteristic) => (
                   <div key={characteristic}>
                     <SectionedBar
