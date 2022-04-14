@@ -9,9 +9,6 @@ import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
 
 const RelatedProducts = ({ related, productId, handleClick }) => {
-  // Extract related product IDs
-  // Set state to use array of related products
-  // Added comment for commit check
   const [relatedProducts, setRelated] = useState([]);
   const [overviewFeatures, setOverviewFeatures] = useState([]);
   const [modalItemFeatures, setModalItemFeatures] = useState([]);
@@ -57,14 +54,36 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
   return (
     <>
       <div className="section-header">
-        <h2><span id="related"></span>Related Products</h2>
+        <h2>
+          <span id="related" />
+          Related Products
+        </h2>
       </div>
-      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} cardName={modalItemFeatures[0].name} toggleRelatedCompare={toggleRelatedCompare} /> : null}
+      {
+        modalIsOpen
+          ? (
+            <CompareModal
+              overviewFeatures={overviewFeatures}
+              modalItemFeatures={modalItemFeatures[0].features}
+              cardName={modalItemFeatures[0].name}
+              toggleRelatedCompare={toggleRelatedCompare}
+            />
+          )
+          : null
+}
       <FlexContainer direction="row" gap="0em" justify="space-between">
         <button style={style} type="button" onClick={scrollLeft} aria-label="previous-related-carousel"><FontAwesomeIcon icon={solid('arrow-left')} /></button>
 
         <StyledCarousel gap="20px" ref={carousel} direction="row">
-          {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} handleClick={handleClick} />)}
+          {relatedProducts.map((product) => (
+            <Card
+              key={Math.random()}
+              product={product}
+              overviewFeatures={overviewFeatures}
+              toggleRelatedCompare={toggleRelatedCompare}
+              handleClick={handleClick}
+            />
+          ))}
         </StyledCarousel>
         <button style={style} type="button" onClick={scrollRight} aria-label="next-related-carousel"><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>

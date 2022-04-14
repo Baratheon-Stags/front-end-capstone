@@ -1,6 +1,7 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import RenderRows from './RenderRows';
 import FlexContainer from '../styled/FlexContainer.styled';
 
