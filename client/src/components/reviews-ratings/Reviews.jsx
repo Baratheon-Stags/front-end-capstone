@@ -63,33 +63,43 @@ const Reviews = ({ productName, productId }) => {
       <div className="section-header">
         <h2><span id="reviews"></span>Reviews & Ratings</h2>
       </div>
+      {/* Main */}
       <FlexContainer
         direction="column"
         align="left"
         justify="space-between"
         gap="0"
       >
+        {/* Metadata */}
         <Metadata metadata={metadata} onRatingSelect={handleRatingSort} filter={starFilter}/>
+
+        {/* Reviews */}
         <FlexContainer
           direction="column"
-          align="left"
+          align="center"
           justify="flex-start"
           gap="0"
         >
-          <div>
+          {/* Sort by */}
+          <div style={{textAlign:'left'}}>
             {metadata === undefined ? null : `${reviews.results.length} reviews, sorted by `}
-            <select id="sort" onChange={() => handleOptionSort()}>
+            <select id="sort" onChange={() => handleOptionSort()} style={{border: '0px solid transparent', fontSize: '20px', fontFamily: 'Poppins, sans-serif', backgroundColor: '#f5f5f5'}}>
               <option value="relevant">Relevance</option>
               <option value="helpful">Helpful</option>
               <option value="newest">Newest</option>
             </select>
           </div>
+
+          {/* Reviews List and Button */}
           <FlexContainer
             direction="column"
             align="baseline"
             justify="flex-start"
             gap="0"
+            width="90%"
           >
+
+            {/* Reviews */}
             <ReviewsContainer
               direction="column"
               align="left"
@@ -99,18 +109,25 @@ const Reviews = ({ productName, productId }) => {
               {metadata === undefined ? null
                 : reviews.results.filter(review => starFilter.includes(review.rating)).slice(0, count).map((review) => <Review key={review.review_id} review={review} />,)}
             </ReviewsContainer>
+
+            {/* More Reviews & Add Review */}
             <FlexContainer
               direction="row"
               align="center"
-              justify="flex-start"
-              gap="0"
+              justify="center"
+              width="100%"
             >
               <Button type="button" onClick={() => setCount(count + 2)}>More Reviews</Button>
               <Button type="button" onClick={() => { setForm(true); }}>Add a Review +</Button>
             </FlexContainer>
+
           </FlexContainer>
+
         </FlexContainer>
+
       </FlexContainer>
+
+      {/* Render Form */}
       {form ? (
         <AddReview
           productId={productId}

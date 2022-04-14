@@ -12,11 +12,12 @@ const Container = styled.div`
     width: ${props => props.width};
     background-color: ${props => props.color};
     box-shadow: 2px 5px 3px rgba(0,0,0,.5);
+
   }
 
 `;
 
-const Bar = ({ color = "blue", value, max = 100, width = 100}) => {
+const Bar = ({ color = "green", value, max = 100, width = 100}) => {
   return (
     <Container color={color} width={width}>
       <progress value={value} max={max} />
