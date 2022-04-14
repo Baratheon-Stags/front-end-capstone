@@ -10,17 +10,39 @@ const OverviewDescription = ({overview}) => (
     gap="1em"
     className="description-container"
   >
-    <div style={{ borderRight: '2px solid black', width: '70%', paddingRight: '1em' }}>
-      <h2 style={{ textTransform: 'uppercase' }}>{overview.slogan}</h2>
+    <div
+      style={{
+        borderRight: '2px solid black',
+        width: '70%',
+        paddingRight: '1em',
+      }}
+    >
+      <h2 style={{ textTransform: 'uppercase' }}>
+        {overview.slogan}
+      </h2>
       <p>{overview.description}</p>
       <FlexContainer direction="row" gap=".5em" align="center">
         <span>Share on social media: </span>
-        <FontAwesomeIcon icon={brands('facebook')} className="social-icon" />
-        <FontAwesomeIcon icon={brands('twitter')} className="social-icon" />
-        <FontAwesomeIcon icon={brands('instagram')} className="social-icon" />
+        <FontAwesomeIcon
+          icon={brands('facebook')}
+          className="social-icon"
+        />
+        <FontAwesomeIcon
+          icon={brands('twitter')}
+          className="social-icon"
+        />
+        <FontAwesomeIcon
+          icon={brands('instagram')}
+          className="social-icon"
+        />
       </FlexContainer>
     </div>
-    <ul style={{ paddingLeft: '0', listStyle: 'none', fontSize: '.8em' }}>
+    <ul style={{
+      paddingLeft: '0',
+      listStyle: 'none',
+      fontSize: '.8em',
+    }}
+    >
       {overview.features.map((feature, i) => (
         <li key={i}>
           <FontAwesomeIcon
