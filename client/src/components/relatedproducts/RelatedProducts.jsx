@@ -7,6 +7,7 @@ import Card from './Card';
 import CompareModal from './CompareModal';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
+import ItemCompareContainer from '../styled/ModalCustomContainers.styled';
 
 const RelatedProducts = ({ related, productId, handleClick }) => {
   // Extract related product IDs
@@ -59,7 +60,7 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
       <div className="section-header">
         <h2><span id="related"></span>Related Products</h2>
       </div>
-      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
+      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} cardName={modalItemFeatures[0].name} toggleRelatedCompare={toggleRelatedCompare} /> : null}
       <FlexContainer direction="row" gap="0em" justify="space-between">
         <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
 

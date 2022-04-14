@@ -18,6 +18,7 @@ const FeatureBox = styled(FlexContainer)`
   width: 150px;
   max-width: 200px;
   justify-content: center;
+  flex-basis: min-content;
 `;
 
 const CheckBox = styled(FlexContainer)`

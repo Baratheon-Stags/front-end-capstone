@@ -34,8 +34,11 @@ const Backdrop = styled.div`
 
 const Header = styled(FlexContainer)`
   display: flex;
+  max-width: 350px;
   flex-direction: row;
   justify-content: space-around;
+  margin-bottom: 20px;
+  border-bottom: 2px solid black;
 
 `;
 
@@ -44,14 +47,14 @@ const RowsContainer = styled(FlexContainer)`
   overflow-y: auto;
 `;
 
-const CompareModal = ({ overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
+const CompareModal = ({cardName, overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
   <>
     <Overlay onClick={toggleRelatedCompare}>
       <Backdrop onClick={(e) => e.stopPropagation()}>
         <h2>Comparing</h2>
         <Header>
           <div>Current Item</div>
-          <div> Card Item</div>
+          <div> {cardName} </div>
         </Header>
         <RowsContainer>
 
