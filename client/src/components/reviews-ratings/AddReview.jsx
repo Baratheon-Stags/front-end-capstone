@@ -47,8 +47,6 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
     setCharacteristicRatings(characteristics);
     Object.keys(characteristicRatings).forEach((key => {delete characteristicRatings[key].score; delete characteristicRatings[key].meaning;}))
     onDiscard(false);
-    console.log(characteristicRatings)
-    console.log(summary)
   };
 
   // Input validation check
