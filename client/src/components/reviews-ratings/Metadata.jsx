@@ -6,6 +6,7 @@ import SectionedBar from '../styled/SectionedBar.styled';
 import Link from '../styled/Link.styled';
 import GenerateStarRatings from '../GenerateMetadataRatings';
 import Chart from '../Characteristics';
+import Divider from '../styled/Divider.styled';
 
 const Helper = require('../Helpers');
 
@@ -32,8 +33,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           align="flex-start"
           justify="center"
           width="100%"
-          borderbottom="2px solid #bbb"
-          margin="0 0 15px"
+          margin="0 0 6px"
           gap="0"
         >
           {/* Average Rating */}
@@ -59,7 +59,6 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
             gap="5px"
             width="38%"
           >
-
             {/* Rating Breakdown */}
             <b>Rating Breakdown</b>
             {Object.keys(distribution).reverse().map((rating) => (
@@ -128,6 +127,7 @@ const Metadata = ({ filter, metadata, onRatingSelect }) => {
           </FlexContainer>
         </FlexContainer>
       )}
+      <Divider width="90%" />
     </div>
   );
 };
