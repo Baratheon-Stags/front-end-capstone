@@ -169,7 +169,7 @@ const ThumbnailContainer = styled.button`
 
   &[disabled] {
     cursor: not-allowed;
-    opacity: 80%;
+    opacity: 60%;
   }
 `;
 

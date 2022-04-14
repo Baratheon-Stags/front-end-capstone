@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
 
 export default createGlobalStyle`
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -24,13 +28,22 @@ export default createGlobalStyle`
   h4,
   h5,
   h6 {
-    margin-top: 0;
+    margin: 0;
     color: ${(props) => (props.darkMode ? '#f5f5f5' : '#100')};
     font-family: 'Bebas Neue', cursive;
   }
 
   h1 {
     font-size: 3rem;
+  }
+
+  h2 {
+    position: relative;
+  }
+
+  h2 span {
+    position: absolute;
+    top: -90px;
   }
 
   @media (max-height: 1100px) {
@@ -60,6 +73,11 @@ export default createGlobalStyle`
   .star-icon {
     width: 20px;
     color: black;
+    margin: 0 -1px;
+  }
+
+  .star-icon.filled {
+    color: rgb(70,130,180);
   }
 
   .text-center {
@@ -77,7 +95,45 @@ export default createGlobalStyle`
 
   button[disabled] {
     cursor: not-allowed;
-    opacity: 80%;
+    opacity: 60%;
   }
 
+  .section-header {
+    text-align: center;
+    margin: 0 auto;
+
+    & > h2 {
+      margin: 0;
+      position: relative;
+    }
+
+    & > h2::before,
+    & > h2::after {
+      content: '';
+      height: 2px;
+      width: 200px;
+      position: absolute;
+      background-color: black;
+      top: 50%;
+      display: inline-block;
+    }
+
+    & > h2::before {
+      left: -10%;
+      transform: translateX(-100%);
+    }
+
+    & > h2::after {
+      right: -10%;
+      transform: translateX(100%);
+    }
+  }
+
+  button {
+    font-family: 'Poppins', sans-serif;
+  }
+
+  select {
+    font-family: 'Poppins', sans-serif;
+  }
 `;
