@@ -1,7 +1,8 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import FlexContainer from '../styled/FlexContainer.styled';
 
 const helpers = require('./helpers/DistillTraits');
@@ -38,9 +39,10 @@ const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
         <Row key={Math.random()}>
           <CheckBox direction="column">{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
           <FeatureBox>
-          {row.feature}
-          :{(' ')}
-          {row.value}
+            {row.feature}
+            :
+            {(' ')}
+            {row.value}
           </FeatureBox>
           <CheckBox direction="column">{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
         </Row>

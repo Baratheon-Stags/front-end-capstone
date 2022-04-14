@@ -11,7 +11,7 @@ module.exports = {
     });
     // Load product features
     card.forEach((feat) => {
-      var skip = false;
+      let skip = false;
       traits.forEach((trait) => {
         if (trait.feature === feat.feature && trait.value === feat.value) {
           trait.cardHas = true;
