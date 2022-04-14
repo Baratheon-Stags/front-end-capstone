@@ -7,6 +7,7 @@ import Outfit from './yourOutfit/Outfit';
 import FlexContainer from './styled/FlexContainer.styled';
 import { Navbar, Logo, NavLinks } from './styled/Navbar.styled';
 import AppContainer from './styled/AppContainer.styled';
+import LoadingSpinner from './LoadingSpinner';
 
 const App = () => {
   const [product, setProduct] = useState([]);
@@ -29,7 +30,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div style={{ position: 'relative' }}>
       <Navbar>
         <Logo><a href="#">LOGO</a></Logo>
         <NavLinks>
@@ -41,7 +42,7 @@ const App = () => {
       </Navbar>
       <h4 className="text-center">Site-wide Announcement Message</h4>
       {product.length === 0
-        ? null
+        ? <LoadingSpinner />
         : (
           <AppContainer>
             <FlexContainer direction="column" gap="3em">
@@ -61,7 +62,7 @@ const App = () => {
             </FlexContainer>
           </AppContainer>
         )}
-    </>
+    </div>
   );
 };
 
