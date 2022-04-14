@@ -7,7 +7,6 @@ import Card from './Card';
 import CompareModal from './CompareModal';
 import StyledCarousel from '../styled/RelatedCarousel.styled';
 import FlexContainer from '../styled/FlexContainer.styled';
-import ItemCompareContainer from '../styled/ModalCustomContainers.styled';
 
 const RelatedProducts = ({ related, productId, handleClick }) => {
   // Extract related product IDs

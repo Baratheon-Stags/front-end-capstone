@@ -5,6 +5,7 @@ import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
+import { BtnBackdrop } from '../styled/RelatedandOutfitBtns.styled';
 
 const Card = ({ product, toggleRelatedCompare, handleClick }) => {
   const {
@@ -30,7 +31,9 @@ const Card = ({ product, toggleRelatedCompare, handleClick }) => {
   return (
     <CardContainer style={{ boxShadow: '2px 5px 3px rgba(0,0,0,.5)' }} onClick={goToProduct}>
       <CardImage url={image}>
-        <FontAwesomeIcon onClick={openComparison} style={style} icon={regular('star')} className="fa-lg" />
+        <BtnBackdrop>
+          <FontAwesomeIcon onClick={openComparison}icon={regular('star')} className="fa-lg" />
+        </BtnBackdrop>
       </CardImage>
       <CardDesc>
         <FlexContainer gap="0" direction="column">
