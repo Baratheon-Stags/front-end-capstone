@@ -76,7 +76,7 @@ const Reviews = ({ productName, productId }) => {
         {/* Reviews */}
         <FlexContainer
           direction="column"
-          align="left"
+          align="center"
           justify="flex-start"
           gap="0"
         >
@@ -96,6 +96,7 @@ const Reviews = ({ productName, productId }) => {
             align="baseline"
             justify="flex-start"
             gap="0"
+            width="90%"
           >
 
             {/* Reviews */}
