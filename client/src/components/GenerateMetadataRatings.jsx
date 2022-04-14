@@ -45,7 +45,7 @@ const Rating = styled.span`
   display: inline-block;
   position: relative;
   display: flex;
-  font-size: 100px;
+  font-size: 164px;
 `;
 
 const GenerateStarRatings = ({ratings}) => {
