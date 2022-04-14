@@ -1,37 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import styled, { css } from 'styled-components';
 // import PropTypes from 'prop-types';
 import FlexContainer from '../styled/FlexContainer.styled';
 import OverviewGallery from './OverviewGallery';
 import OverviewDetails from './OverviewDetails';
 import OverviewDescription from './OverviewDescription';
-
-const OverviewDetailsContainer = styled.div`
-  width: 30%;
-  transition: all .2s ease;
-
-  ${(props) => props.expanded && css`
-    display: none;
-  `}
-`;
-
-const OverviewGalleryContainer = styled.div`
-  width: 70%;
-  border-radius: 2px;
-  transition: all .2s ease;
-
-  ${(props) => props.expanded && css`
-    width: 100%;
-  `}
-
-  @media (max-height: 1100px) {
-    height: 650px;
-    width: 550px;
-    ${(props) => props.expanded && css`
-      width: 100%;
-    `}
-  }
-`;
+import {
+  OverviewMainContainer,
+  OverviewDetailsContainer,
+  OverviewGalleryContainer,
+} from '../styled/OverviewContainers.styled';
 
 const Overview = ({overview, styles, metadata}) => {
   const [currentStyle, setSelectedStyle] = useState(styles.results[0]);
@@ -52,7 +29,7 @@ const Overview = ({overview, styles, metadata}) => {
         direction="column"
       >
         {/* container for top half of overview */}
-        <FlexContainer
+        <OverviewMainContainer
           direction="row"
           justify="center"
         >
@@ -74,7 +51,7 @@ const Overview = ({overview, styles, metadata}) => {
               handleStyleChange={(style) => setSelectedStyle(style)}
             />
           </OverviewDetailsContainer>
-        </FlexContainer>
+        </OverviewMainContainer>
         <OverviewDescription overview={overview} />
       </FlexContainer>
     </main>

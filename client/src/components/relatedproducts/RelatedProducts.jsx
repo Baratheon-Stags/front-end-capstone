@@ -59,14 +59,14 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
       <div className="section-header">
         <h2><span id="related"></span>Related Products</h2>
       </div>
-      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} toggleRelatedCompare={toggleRelatedCompare} /> : null}
+      {modalIsOpen ? <CompareModal overviewFeatures={overviewFeatures} modalItemFeatures={modalItemFeatures[0].features} cardName={modalItemFeatures[0].name} toggleRelatedCompare={toggleRelatedCompare} /> : null}
       <FlexContainer direction="row" gap="0em" justify="space-between">
-        <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
+        <button style={style} type="button" onClick={scrollLeft} aria-label="previous-related-carousel"><FontAwesomeIcon icon={solid('arrow-left')} /></button>
 
         <StyledCarousel gap="20px" ref={carousel} direction="row">
           {relatedProducts.map((product) => <Card key={Math.random()} product={product} overviewFeatures={overviewFeatures} toggleRelatedCompare={toggleRelatedCompare} handleClick={handleClick} />)}
         </StyledCarousel>
-        <button style={style} type="button" onClick={scrollRight}><FontAwesomeIcon icon={solid('arrow-right')} /></button>
+        <button style={style} type="button" onClick={scrollRight} aria-label="next-related-carousel"><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>
     </>
   );

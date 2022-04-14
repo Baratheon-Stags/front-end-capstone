@@ -96,8 +96,17 @@ const ProductInteraction = ({currentStyle}) => {
         ))}
       </FlexContainer>
       <FlexContainer direction="column" gap="1em">
-        <FlexContainer direction="column" gap="1em" align="center" style={{ position: 'relative' }}>
-          <FlexContainer direction="row" gap="1em" align="center">
+        <FlexContainer
+          direction="column"
+          gap="1em"
+          align="center"
+          style={{ position: 'relative' }}
+        >
+          <FlexContainer
+            direction="row"
+            gap="1em"
+            align="center"
+          >
             <QuantityDropDown
               name="quantity"
               onChange={(e) => setSelectedQuantity(e.target.value)}

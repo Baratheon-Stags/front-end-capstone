@@ -55,7 +55,7 @@ const GenerateStarSelection = ({ rating, onHover, onClick, ratingSelected }) => 
     display = ratingSelected;
   }
 
-  const ratingBarWidth = `${98 - (parseInt(display) * 20)}%`;
+  const ratingBarWidth = `${100 - (parseInt(display) * 20)}%`;
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
       <RatingContainer>

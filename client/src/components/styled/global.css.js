@@ -77,7 +77,7 @@ export default createGlobalStyle`
   }
 
   .star-icon.filled {
-    color: rgb(70,130,180);
+    color: rgba(0,0,0,.75);
   }
 
   .text-center {

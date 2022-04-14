@@ -15,11 +15,17 @@ const Row = styled(FlexContainer)`
 `;
 
 const FeatureBox = styled(FlexContainer)`
-  width: 200px;
+
+  width: 150px;
+  max-width: 200px;
+  justify-content: center;
+  flex-basis: min-content;
 `;
 
 const CheckBox = styled(FlexContainer)`
   justify-content: center;
+  width: 50px;
+  height: 50px;
 `;
 
 const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
@@ -30,13 +36,13 @@ const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
     <FlexContainer direction="column" gap="0.5em" align="center">
       {traits.map((row) => (
         <Row key={Math.random()}>
-          <CheckBox>{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
+          <CheckBox direction="column">{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
           <FeatureBox>
           {row.feature}
           :{(' ')}
           {row.value}
           </FeatureBox>
-          <CheckBox>{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
+          <CheckBox direction="column">{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
         </Row>
       ))}
     </FlexContainer>
