@@ -15,11 +15,15 @@ const Row = styled(FlexContainer)`
 `;
 
 const FeatureBox = styled(FlexContainer)`
-  width: 200px;
+  width: 150px;
+  max-width: 200px;
+  justify-content: center;
 `;
 
 const CheckBox = styled(FlexContainer)`
   justify-content: center;
+  width: 50px;
+  height: 50px;
 `;
 
 const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
