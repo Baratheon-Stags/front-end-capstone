@@ -34,6 +34,19 @@ border: none;
 &[disabled] {
   cursor: not-allowed;
 }
+
+&:active {
+  &:not([disabled]) {
+    width: 54px;
+    height: 54px;
+    font-size: 1em;
+
+    @media (max-height: 1100px) {
+      height: 39px;
+      width: 39px;
+    }
+  }
+}
 `;
 
 export default FavoriteButtonContainer;

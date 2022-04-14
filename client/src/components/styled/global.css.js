@@ -86,6 +86,7 @@ export default createGlobalStyle`
 
   .social-icon {
     transition: all .2s ease;
+    font-size: 1.5rem;
   }
 
   .social-icon:hover {

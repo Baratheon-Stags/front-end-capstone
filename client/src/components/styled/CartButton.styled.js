@@ -12,12 +12,52 @@ const CartBtnStyled = styled.button`
   height: 100%;
   width: 45%;
   text-transform: uppercase;
+  position: relative;
+
+  &:not([disabled]) {
+    transform: translate(-3px, -3px);
+  }
+
+  &::after,
+  &::before {
+    display: block;
+    content: '';
+    position: absolute;
+    transition: .1s ease;
+  }
+
+  &::after {
+    height: 100%;
+    width: 3px;
+    top: 3px;
+    right: -3px;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+  }
+
+  &::before {
+    width: 100%;
+    height: 3px;
+    left: 3px;
+    bottom: -3px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+  }
+
+  &:active {
+    transform: translate(0, 0);
+
+    &::after,
+    &::before {
+      transform: translate(-3px, -3px);
+      opacity: 0;
+    }
+  }
 
   &:hover {
     cursor: pointer;
     background-color: grey;
     color: white;
-    border-radius: 3px;
   }
 
   &:focus {
@@ -27,6 +67,10 @@ const CartBtnStyled = styled.button`
   &[disabled] {
     cursor: not-allowed;
     opacity: 50%;
+    &::after,
+    &::before {
+      opacity: 0;
+    }
   }
 
   &[disabled]:hover {
