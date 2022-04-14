@@ -60,7 +60,9 @@ const Reviews = ({ productName, productId }) => {
 
   return (
     <>
-      <h1 id="reviews">Reviews & Ratings</h1>
+      <div className="section-header">
+        <h2><span id="reviews"></span>Reviews & Ratings</h2>
+      </div>
       {/* Main */}
       <FlexContainer
         direction="column"
