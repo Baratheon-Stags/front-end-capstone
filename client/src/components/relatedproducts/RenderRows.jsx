@@ -15,6 +15,7 @@ const Row = styled(FlexContainer)`
 `;
 
 const FeatureBox = styled(FlexContainer)`
+
   width: 150px;
   max-width: 200px;
   justify-content: center;
@@ -35,13 +36,13 @@ const RenderRows = ({ overviewFeatures, modalItemFeatures }) => {
     <FlexContainer direction="column" gap="0.5em" align="center">
       {traits.map((row) => (
         <Row key={Math.random()}>
-          <CheckBox>{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
+          <CheckBox direction="column">{row.currHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
           <FeatureBox>
           {row.feature}
           :{(' ')}
           {row.value}
           </FeatureBox>
-          <CheckBox>{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
+          <CheckBox direction="column">{row.cardHas ? <FontAwesomeIcon icon={solid('check')} className="fa-sm" /> : null}</CheckBox>
         </Row>
       ))}
     </FlexContainer>

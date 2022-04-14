@@ -38,6 +38,7 @@ const Header = styled(FlexContainer)`
   flex-direction: row;
   justify-content: space-around;
   margin-bottom: 20px;
+  margin-top: 5px;
   border-bottom: 2px solid black;
 
 `;
@@ -53,8 +54,8 @@ const CompareModal = ({cardName, overviewFeatures, modalItemFeatures, toggleRela
       <Backdrop onClick={(e) => e.stopPropagation()}>
         <h2>Comparing</h2>
         <Header>
-          <div>Current Item</div>
-          <div> {cardName} </div>
+          <FlexContainer justify="center">Current Item</FlexContainer>
+          <FlexContainer justify="center"> {cardName} </FlexContainer>
         </Header>
         <RowsContainer>
 
