@@ -14,6 +14,7 @@ const Card = ({ product, toggleRelatedCompare, handleClick }) => {
 
   const goToProduct = () => {
     handleClick(product.id);
+    window.scrollTo(0, 0)
   };
 
   const openComparison = (event) => {
