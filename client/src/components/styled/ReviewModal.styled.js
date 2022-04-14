@@ -14,7 +14,7 @@ export const Backdrop = styled.div`
 
 export const Modal = styled.div`
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   right: 0;
   bottom: 0;

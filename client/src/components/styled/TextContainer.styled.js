@@ -9,6 +9,7 @@ const TextContainer = styled.div`
   maxLength: ${(props) => (props.maxLength || '5')};
   text-align: ${(props) => (props.align || 'left')};
   text-shadow: ${(props) => (props.shadow || '0')};
+  margin: ${(props) => (props.margin || '0')};
 `;
 
 export default TextContainer;
