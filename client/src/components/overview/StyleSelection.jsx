@@ -20,16 +20,34 @@ const StyleSelection = ({styles, currentStyle, handleStyleChange}) => {
     textDecoration: isDiscounted ? 'line-through' : 'none',
     color: isDiscounted ? 'red' : 'inherit',
     fontSize: isDiscounted ? '.8em' : '1.8em',
+    marginLeft: isDiscounted ? '4px' : '0',
   };
 
   return (
     <FlexContainer direction="column" gap="1em">
-      <div style={{ borderBottom: '2px solid rgba(200,200,200,.75' }}>
-        {isDiscounted && <span style={{ fontSize: '1.8em'}}> ${currentPrice}  </span>}
-        <span style={originalPriceStyle}>${originalPrice}</span>
+      <div
+        style={{
+          borderBottom: '2px solid rgba(200,200,200,.75', marginTop: '1em',
+        }}
+      >
+        {
+          isDiscounted && (
+            <span style={{ fontSize: '1.8em' }}>
+              $
+              {currentPrice}
+            </span>
+          )
+        }
+        <span style={originalPriceStyle}>
+          $
+          {originalPrice}
+        </span>
       </div>
       <span>
-        <span style={{ fontWeight: 'bold' }}>STYLE &gt; </span>
+        <span style={{ fontWeight: 'bold' }}>
+          STYLE &gt;
+          {' '}
+        </span>
         {currentStyle.name}
       </span>
       <FlexContainer

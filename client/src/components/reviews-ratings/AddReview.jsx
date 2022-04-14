@@ -120,9 +120,9 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           margin="6px 0 0"
         >
 
-        {/* Title and Subtitle */}
-        <b>Write Your Review</b>
-        {`About the ${productName}`}
+          {/* Title and Subtitle */}
+          <b>Write Your Review</b>
+          {`About the ${productName}`}
         </FlexContainer>
         <TextContainer
           width="100%"
@@ -152,7 +152,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             width="20%"
           >
             <TextContainer width="300px">
-            <b>{`Select a rating*: `}</ b>
+              <b>{`Select a rating*: `}</b>
             </TextContainer>
             <GenerateStarSelection
               rating={ratingHovered}
@@ -162,7 +162,6 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
             />
           </FlexContainer>
         </FlexContainer>
-
 
         <TextContainer
           width="100%"
@@ -255,10 +254,9 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           margin="0 0 10px"
         >
           <TextContainer size="12px" align="center" width="100%">
-          For privacy reasons, do not use your full name or email address
+            For privacy reasons, do not use your full name or email address
           </TextContainer>
         </FlexContainer>
-
 
         {/* <FlexContainer
           direction="column"

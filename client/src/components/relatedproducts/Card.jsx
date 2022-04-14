@@ -37,7 +37,7 @@ const Card = ({ product, toggleRelatedCompare, handleClick }) => {
       </CardImage>
       <CardDesc>
         <FlexContainer gap="0" direction="column">
-          <span>
+          <span style={{ fontSize: '.8em' }}>
             {' '}
             {category}
           </span>
@@ -45,7 +45,7 @@ const Card = ({ product, toggleRelatedCompare, handleClick }) => {
             {' '}
             {name}
           </span>
-          <span>
+          <span style={{ fontSize: '.8em' }}>
             {' '}
             $
             {default_price}

@@ -13,7 +13,6 @@ const Navbar = styled.header`
   position: sticky;
   top: 0%;
   z-index: 9999;
-  transition: all .1s ease;
   padding: .6em 2em;
 `;
 
@@ -29,11 +28,17 @@ const Logo = styled.h2`
     position: relative;
   }
 
-  & >  a:focus {
+  @media (max-width: 900px) {
+    & > a {
+      font-size: .8em;
+    }
+  }
+
+  & > a:focus {
     outline: none;
   }
 
-  & >  a:visited {
+  & > a:visited {
     color: white;
   }
 `;
@@ -46,11 +51,21 @@ const NavLinks = styled.ul`
   list-style: none;
   padding-left: 0;
 
+  @media (max-width: 620px) {
+    display: none;
+  }
+
   & > li a {
     color: white;
     text-decoration: none;
     transition: all .2s ease;
     position: relative;
+  }
+
+  @media (max-width: 900px) {
+    & > li a {
+      font-size: .8em;
+    }
   }
 
   & > li a:focus {

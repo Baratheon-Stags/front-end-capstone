@@ -77,7 +77,7 @@ const Outfit = ({ productId }) => {
         <h2><span id="outfit"></span>Your Outfit</h2>
       </div>
       <FlexContainer gap="20px">
-        <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
+        <button style={style} type="button" onClick={scrollLeft} aria-label="previous-outfit-carousel"><FontAwesomeIcon icon={solid('arrow-left')} /></button>
         <AddItemCard addItem={addItem} productId={productId} />
         <FlexContainer>
           <StyledCarousel maxWidth="914px" gap="20px" ref={carousel} direction="row">
@@ -87,7 +87,7 @@ const Outfit = ({ productId }) => {
             ))}
           </StyledCarousel>
         </FlexContainer>
-        <button style={style} type="button" onClick={scrollRight}><FontAwesomeIcon icon={solid('arrow-right')} /></button>
+        <button style={style} type="button" onClick={scrollRight} aria-label="next-outfit-carousel"><FontAwesomeIcon icon={solid('arrow-right')} /></button>
       </FlexContainer>
     </>
   );
