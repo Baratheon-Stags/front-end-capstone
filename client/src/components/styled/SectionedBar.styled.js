@@ -12,10 +12,10 @@ const Section = styled.div`
 
 const Triangle = styled.div`
   position: absolute;
-  top: -24px;
+  top: -28px;
   left: ${(props) => (props.left - 1) * 22}%;
   font-size: 48px;
-`
+`;
 
 const SectionedBar = ({ name, value, low, high}) => {
   return (
