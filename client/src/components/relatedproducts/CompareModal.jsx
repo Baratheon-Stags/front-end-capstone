@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import RenderRows from './RenderRows';
 import FlexContainer from '../styled/FlexContainer.styled';
 
@@ -18,18 +18,51 @@ const Overlay = styled.div`
   justify-content: center;
 `;
 
+const Anim = keyframes`
+{
+  from {
+    margin-left: 100%;
+    width: 300%;
+  }
+
+  75% {
+    font-size: 300%;
+    margin-left: 25%;
+    width: 150%;
+  }
+
+  90% {
+    font-size: 100%;
+    margin-left: 5%;
+    width: 105%;
+  }
+
+  to {
+    margin-left: 0%;
+    width: 100%;
+    width: 400px;
+  }
+}
+`;
+
 const Backdrop = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  width:400px;
+  width: 400px;
   height: 300px;
   background-color: white;
   position: relative;
   left: 0;
   top: 0;
   z-index: 51;
+  animation-name:${Anim};
+  animation-duration: 2s;
+  animation-iteration-count: once;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
 `;
 
 const Header = styled(FlexContainer)`
@@ -46,6 +79,11 @@ const Header = styled(FlexContainer)`
 const RowsContainer = styled(FlexContainer)`
   direction: column;
   overflow-y: auto;
+`;
+
+const BtnContainer = styled(FlexContainer)`
+  margin-top: 5px;
+  margin-bottom: 5px;
 `;
 
 const CompareModal = ({cardName, overviewFeatures, modalItemFeatures, toggleRelatedCompare }) => (
@@ -65,7 +103,9 @@ const CompareModal = ({cardName, overviewFeatures, modalItemFeatures, toggleRela
           />
 
         </RowsContainer>
-        <button type="button" onClick={toggleRelatedCompare}>close</button>
+        <BtnContainer justify="center">
+          <button type="button" onClick={toggleRelatedCompare}>close</button>
+        </BtnContainer>
       </Backdrop>
     </Overlay>
   </>
