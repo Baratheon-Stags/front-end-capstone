@@ -52,6 +52,10 @@ const NavLinks = styled.ul`
   list-style: none;
   padding-left: 0;
 
+  @media (max-width: 620px) {
+    display: none;
+  }
+
   & > li a {
     color: white;
     text-decoration: none;
