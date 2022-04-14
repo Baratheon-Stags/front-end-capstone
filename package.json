@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "client-dev": "npx webpack --watch",
+    "build": "webpack --config webpack.prod.js",
+    "client-dev": "npx webpack --watch --config webpack.dev.js",
     "server-dev": "npx nodemon server/index.js"
   },
   "repository": {
@@ -27,6 +27,7 @@
     "@babel/preset-react": "^7.16.7",
     "@testing-library/react": "^12.1.4",
     "babel-loader": "^8.2.4",
+    "compression-webpack-plugin": "^9.2.0",
     "eslint": "^8.12.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",
