@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+/* eslint-disable react/prop-types */
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { regular, solid } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import GenerateStarRatings from '../GenerateStarRatings';
 import FlexContainer from '../styled/FlexContainer.styled';
 import { CardContainer, CardImage, CardDesc } from '../styled/Card.styled';
 import { RemoveBtnBackdrop } from '../styled/RelatedandOutfitBtns.styled';
 
 const OutfitCard = ({ productDetails, removeItem }) => {
-  const {image, category, name, default_price, ratings} = productDetails;
+  const {
+    image, category, name, default_price, ratings,
+  } = productDetails;
 
   const handleClick = () => {
     // Must update parent state
@@ -25,12 +28,15 @@ const OutfitCard = ({ productDetails, removeItem }) => {
         <FlexContainer gap="0" direction="column">
           <span>{category}</span>
           <span>{name}</span>
-          <span>${default_price}</span>
+          <span>
+            $
+            {default_price}
+          </span>
           <span><GenerateStarRatings ratings={ratings} /></span>
         </FlexContainer>
       </CardDesc>
     </CardContainer>
-  )
+  );
 };
 
 export default OutfitCard;
