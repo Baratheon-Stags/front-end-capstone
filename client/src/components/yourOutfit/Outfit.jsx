@@ -31,7 +31,6 @@ const Outfit = ({ productId }) => {
     getOutfitItems();
   }, [productId]);
 
-
   const removeItem = (toRemove) => {
     const outfitItems = Object.keys(localStorage);
     const newProducts = [];

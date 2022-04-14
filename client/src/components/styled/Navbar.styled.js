@@ -13,7 +13,6 @@ const Navbar = styled.header`
   position: sticky;
   top: 0%;
   z-index: 9999;
-  transition: all .1s ease;
   padding: .6em 2em;
 `;
 
@@ -51,6 +50,10 @@ const NavLinks = styled.ul`
   align-items: center;
   list-style: none;
   padding-left: 0;
+
+  @media (max-width: 620px) {
+    display: none;
+  }
 
   & > li a {
     color: white;
