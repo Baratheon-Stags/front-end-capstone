@@ -59,7 +59,7 @@ const GenerateStarRatings = ({ratings}) => {
   const reviewAverage = weightedTotal / ratingSum;
 
   // calculate the inverse width of the RatingBar
-  const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
+  const ratingBarWidth = `${98 - (reviewAverage / 5) * 100}%`;
 
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">

@@ -7,6 +7,7 @@ export const CardContainer = styled.div`
   flex: 0 0 auto;
   &:hover {
     cursor: pointer;
+    border: 2px solid black;
   }
 `;
 
