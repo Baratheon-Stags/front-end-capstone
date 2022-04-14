@@ -60,7 +60,9 @@ const Reviews = ({ productName, productId }) => {
 
   return (
     <>
-      <h1 id="reviews">Reviews & Ratings</h1>
+      <div className="section-header">
+        <h2><span id="reviews"></span>Reviews & Ratings</h2>
+      </div>
       {/* Main */}
       <FlexContainer
         direction="column"
@@ -74,7 +76,7 @@ const Reviews = ({ productName, productId }) => {
         {/* Reviews */}
         <FlexContainer
           direction="column"
-          align="left"
+          align="center"
           justify="flex-start"
           gap="0"
         >
@@ -94,6 +96,7 @@ const Reviews = ({ productName, productId }) => {
             align="baseline"
             justify="flex-start"
             gap="0"
+            width="90%"
           >
 
             {/* Reviews */}
