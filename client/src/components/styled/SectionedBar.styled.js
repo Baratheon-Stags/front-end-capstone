@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import FlexContainer from './FlexContainer.styled';
+import TextContainer from './TextContainer.styled';
 
 const Section = styled.div`
   position: relative;
@@ -48,8 +49,8 @@ const SectionedBar = ({ name, value, low, high}) => {
         width="100%"
         margin="0 0 9px"
       >
-        <span>{low}</span>
-        <span>{high}</span>
+        <TextContainer size="14px" align="left" width="35%">{low}</TextContainer>
+        <TextContainer size="14px" align="right" width="35%">{high}</TextContainer>
       </FlexContainer>
     </FlexContainer>
     </>

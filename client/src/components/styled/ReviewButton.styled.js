@@ -9,9 +9,11 @@ const Button = styled.button`
   transition: all .25s ease;
   font-weight: bold;
   text-align: center;
-  width: 30%;
+  width: 37%;
   height:40px;
   border-radius: 6px;
+  font-family: 'Poppins', sans-serif;
+  box-shadow: 2px 5px 3px rgba(0,0,0,.5);
 
   &:hover {
     cursor: pointer;

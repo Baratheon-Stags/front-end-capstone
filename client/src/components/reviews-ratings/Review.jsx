@@ -27,6 +27,7 @@ const Review = ({ review }) => {
       <ReviewContainer
         direction="column"
       >
+        {/* Star Rating, Name and Date*/}
         <FlexContainer
           direction="row"
           align="baseline"
@@ -41,9 +42,16 @@ const Review = ({ review }) => {
           </div>
         </FlexContainer>
 
+        {/* Body */}
         <div><b>{review.summary}</b></div>
+
+        {/* Summary */}
         <div>{review.body}</div>
-        <TextContainer width="100%" color="grey">{review.recommend === true ? 'I recommend this product ✓' : null}</TextContainer>
+
+        {/* Recommend */}
+        <TextContainer width="100%" color="green">{review.recommend === true ? 'I recommend this product ✓' : null}</TextContainer>
+
+        {/* Helpful, Yes, Report */}
         <FlexContainer
           direction="row"
           align="left"
