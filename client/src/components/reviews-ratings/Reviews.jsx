@@ -4,6 +4,7 @@ import Metadata from './Metadata';
 import Review from './Review';
 import AddReview from './AddReview';
 import FlexContainer from '../styled/FlexContainer.styled';
+import TextContainer from '../styled/TextContainer.styled';
 import ReviewsContainer from '../styled/ReviewsContainer.styled';
 import Button from '../styled/ReviewButton.styled';
 
@@ -73,15 +74,17 @@ const Reviews = ({ productName, productId }) => {
         {/* Metadata */}
         <Metadata metadata={metadata} onRatingSelect={handleRatingSort} filter={starFilter}/>
 
-        {/* Reviews */}
-        <FlexContainer
-          direction="column"
-          align="center"
+        {/* Sort by */}
+        <TextContainer
+          left="70px"
+          direction="row"
+          align="left"
           justify="flex-start"
-          gap="0"
+          width="100%"
+          size="20px"
+          margin="10px 0 0"
         >
-          {/* Sort by */}
-          <div style={{textAlign:'left'}}>
+          <div style={{ textAlign: 'left' }}>
             {metadata === undefined ? null : `${reviews.results.length} reviews, sorted by `}
             <select id="sort" onChange={() => handleOptionSort()} style={{border: '0px solid transparent', fontSize: '20px', fontFamily: 'Poppins, sans-serif', backgroundColor: '#f5f5f5'}}>
               <option value="relevant">Relevance</option>
@@ -89,7 +92,15 @@ const Reviews = ({ productName, productId }) => {
               <option value="newest">Newest</option>
             </select>
           </div>
+        </TextContainer>
 
+        {/* Reviews */}
+        <FlexContainer
+          direction="column"
+          align="center"
+          justify="flex-start"
+          gap="0"
+        >
           {/* Reviews List and Button */}
           <FlexContainer
             direction="column"

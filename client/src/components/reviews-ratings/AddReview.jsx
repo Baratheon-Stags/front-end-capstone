@@ -37,6 +37,20 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
     characteristics: 0,
   });
 
+  const discard = () => {
+    setSummary('');
+    setBody('');
+    setRecommend('');
+    setName('');
+    setEmail('');
+    setPhotos([]);
+    setCharacteristicRatings(characteristics);
+    Object.keys(characteristicRatings).forEach((key => {delete characteristicRatings[key].score; delete characteristicRatings[key].meaning;}))
+    onDiscard(false);
+    console.log(characteristicRatings)
+    console.log(summary)
+  };
+
   // Input validation check
   const validateInputs = () => {
     if (ratingSelected !== 0) {
@@ -74,14 +88,14 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
     } else {
       validated.characteristics = 0;
     }
-    setValidated({ ...validated })
+    setValidated({ ...validated });
   };
 
   // Handle characteristic selection
   const handleCharacteristicChange = (characteristic, value) => {
     characteristicRatings[characteristic].score = value;
     characteristicRatings[characteristic].meaning = Chart[characteristic.toLowerCase()][value];
-    setCharacteristicRatings({ ...characteristicRatings })
+    setCharacteristicRatings({ ...characteristicRatings });
   };
 
   // Handle review submission
@@ -110,7 +124,7 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
 
   return (
     <>
-      <Backdrop onClick={() => onDiscard(false)} />
+      <Backdrop onClick={() => discard()} />
       <Modal width="900px">
         {/* Main */}
         <FlexContainer
@@ -382,8 +396,9 @@ const AddReview = ({ productId, characteristics, productName, onDiscard }) => {
           gap="15px"
           margin="0 0 4px"
         >
+          <Button type="button" onClick={() => discard()}>Discard</Button>
           <Button type="submit" onClick={() => handleReviewSubmit()}>Submit</Button>
-          <Button type="button" onClick={() => onDiscard(false)}>Discard</Button>
+
         </FlexContainer>
         {failedSubmission && Object.keys(validated).filter(key => {return validated[key] === 0}).length > 0? <TextContainer color="red" width="100%" align="center">{`Missing fields: ${Object.keys(validated).filter(key => {return validated[key] === 0}).toString().replaceAll(',', ', ')}`}</TextContainer> : null}
       </Modal>
