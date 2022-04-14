@@ -103,7 +103,12 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
         {
           currentGalleryIndex > 0
           && (
-            <ArrowButton disabled={isDisabled} style={{ left: '18px' }} onClick={prevImage}>
+            <ArrowButton
+              disabled={isDisabled}
+              style={{ left: '18px' }}
+              onClick={prevImage}
+              aria-label="previous-image"
+            >
               <FontAwesomeIcon icon={solid('arrow-left')} />
             </ArrowButton>
           )
@@ -114,6 +119,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
               <ThumbnailArrowContainer
                 disabled={isDisabled}
                 onClick={prevThumbnail}
+                aria-label="previous-thumbnail"
               >
                 <FontAwesomeIcon
                   icon={solid('arrow-up')}
@@ -132,6 +138,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
                   selected={i === currentGalleryIndex}
                   key={i}
                   disabled={isDisabled}
+                  aria-label="carousel-thumbnail"
                 >
                   <img src={image} key={i} alt="" />
                 </ThumbnailContainer>
@@ -143,6 +150,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
               <ThumbnailArrowContainer
                 disabled={isDisabled}
                 onClick={nextThumbnail}
+                aria-label="next-thumbnail"
               >
                 <FontAwesomeIcon
                   icon={solid('arrow-down')}
@@ -155,6 +163,7 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
         <FullScreenButtonContainer
           onClick={handleExpand}
           disabled={isDisabled}
+          aria-label="expand-image"
         >
           <FontAwesomeIcon
             icon={solid('expand')}
@@ -179,11 +188,19 @@ const OverviewGallery = ({currentStyle, handleExpand, expanded}) => {
             />
           </CarouselContent>
         </CarouselContentWrapper>
-        <FavoriteButton currentStyle={currentStyle} disabled={isDisabled} />
+        <FavoriteButton
+          currentStyle={currentStyle}
+          disabled={isDisabled}
+        />
         {
           currentGalleryIndex < (length - 1)
           && (
-            <ArrowButton disabled={isDisabled} style={{ right: '18px' }} onClick={nextImage}>
+            <ArrowButton
+              disabled={isDisabled}
+              style={{ right: '18px' }}
+              onClick={nextImage}
+              aria-label="next-image"
+            >
               <FontAwesomeIcon icon={solid('arrow-right')} />
             </ArrowButton>
           )

@@ -74,7 +74,9 @@ const Outfit = ({ productId }) => {
 
   return (
     <>
-      <h1>Outfit</h1>
+      <div className="section-header">
+        <h2><span id="outfit"></span>Your Outfit</h2>
+      </div>
       <FlexContainer gap="20px">
         <button style={style} type="button" onClick={scrollLeft}><FontAwesomeIcon icon={solid('arrow-left')} /></button>
         <AddItemCard addItem={addItem} productId={productId} />

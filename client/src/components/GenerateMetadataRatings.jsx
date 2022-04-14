@@ -12,7 +12,7 @@ const RatingContainer = styled.div`
   justify-content: center;
   left: 0px;
   height: 20px;
-  width: 100px;
+  width: 90px;
   line-height: 1;
   margin-bottom: 30px;
 
@@ -65,18 +65,18 @@ const GenerateStarRatings = ({ratings}) => {
   const reviewAverage = weightedTotal / ratingSum;
 
   // calculate the inverse width of the RatingBar
-  const ratingBarWidth = `${100 - (reviewAverage / 5) * 100}%`;
+  const ratingBarWidth = `${98 - (reviewAverage / 5) * 100}%`;
 
   return (
     <FlexContainer direction="column" justify="flex-start" align="center" gap="0">
       <Rating>      <span style={{ textShadow: '2px 5px 3px rgba(0,0,0,.5)' }}>{reviewAverage.toFixed(1)}</span></Rating>
       <RatingContainer>
         <RatingStarsContainer>
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
         </RatingStarsContainer>
         <RatingBar width={ratingBarWidth} />
         <RatingStarsContainer>

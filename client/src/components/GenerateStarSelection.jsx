@@ -11,7 +11,7 @@ const RatingContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 20px;
-  width: 100px;
+  width: 90px;
   line-height: 1;
 
   + span {
@@ -55,16 +55,16 @@ const GenerateStarSelection = ({ rating, onHover, onClick, ratingSelected }) => 
     display = ratingSelected;
   }
 
-  const ratingBarWidth = `${100 - (parseInt(display) * 20)}%`;
+  const ratingBarWidth = `${98 - (parseInt(display) * 20)}%`;
   return (
     <FlexContainer direction="row" justify="flex-start" align="center" gap=".5em">
       <RatingContainer>
         <RatingStarsContainer>
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
-          <FontAwesomeIcon icon={solid('star')} className="star-icon" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
+          <FontAwesomeIcon icon={solid('star')} className="star-icon filled" />
         </RatingStarsContainer>
         <RatingBar width={ratingBarWidth} />
         <RatingStarsContainer>
