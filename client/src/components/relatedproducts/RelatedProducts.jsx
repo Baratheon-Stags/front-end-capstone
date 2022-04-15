@@ -27,9 +27,11 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
   // After mount, fetch all related product information
   useEffect(() => {
     related.forEach((id) => {
-      setRelated([]);
-      axios.get(`/related/${id}`)
-        .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
+      if (id !== productId) {
+        setRelated([]);
+        axios.get(`/related/${id}`)
+          .then((product) => setRelated((previousProduct) => [...previousProduct, product.data]));
+      }
     });
     axios.get(`/product/${productId}`)
       .then((response) => setOverviewFeatures(response.data[0].features));
@@ -70,7 +72,7 @@ const RelatedProducts = ({ related, productId, handleClick }) => {
             />
           )
           : null
-}
+      }
       <FlexContainer direction="row" gap="0em" justify="space-between">
         <button style={style} type="button" onClick={scrollLeft} aria-label="previous-related-carousel"><FontAwesomeIcon icon={solid('arrow-left')} /></button>
 
