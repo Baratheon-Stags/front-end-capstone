@@ -8,9 +8,15 @@ const port = 3000;
 
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
-
 const controller = require('./controllers');
+
+app.get('*.js', (req, res, next) => {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 // Route endpoints to controller methods
 // All products

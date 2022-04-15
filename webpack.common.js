@@ -1,5 +1,4 @@
 const path = require('path');
-// const webpack = require('webpack');
 
 module.exports = {
   entry: './client/src/index.jsx',
@@ -7,7 +6,6 @@ module.exports = {
     filename: 'main.js',
     path: path.resolve(__dirname, 'client/dist'),
   },
-  mode: 'development',
   module: {
     rules: [
       {
