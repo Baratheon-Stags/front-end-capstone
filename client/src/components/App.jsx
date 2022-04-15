@@ -13,7 +13,7 @@ const App = () => {
   const [product, setProduct] = useState([]);
   // grab product on mount
   useEffect(() => {
-    axios.get('/product/40344').then((res) => {
+    axios.get('/product/40348').then((res) => {
       setProduct(res.data);
     });
   }, []);
@@ -21,6 +21,7 @@ const App = () => {
   // destructure product to use as props
 
   const [overview, metadata, styles, related] = product;
+  const uniqueRelated = [...new Set(related)];
 
   const handleClick = (id) => {
     // Gets product id on click
@@ -53,7 +54,7 @@ const App = () => {
                 metadata={metadata}
               />
               <RelatedProducts
-                related={related}
+                related={uniqueRelated}
                 productId={overview.id}
                 handleClick={handleClick}
               />
