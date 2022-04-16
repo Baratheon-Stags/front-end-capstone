@@ -1,6 +1,6 @@
 # eCommerce Front-end Project
-Given a Business Requirements Document we created a dynamic eCommerce page with modern designs and features.
-
+<p>A React app built to simulate a modern eCommerce page.</p>
+<p>The page consists of three main widgets: the product overview, related and saved products, and ratings & reviews.</p>
 
 <h2>Overview</h2>
 <p>Contributor: Kyle Nissley</p>
