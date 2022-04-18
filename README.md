@@ -161,11 +161,11 @@ The Reviews & Ratings section consists of three main sections: metadata, reviews
   </li>
   
   <li>
-    Radio buttons that allow users to select whether their recommend the selected product.
+    Radio buttons that allow users to select whether or not they recommend the selected product.
   </li>
   
   <li>
-    Radio buttons that allow users to rate characteristics of the selected product (size, width, comfort, quality, etc.).
+    Radio buttons that allow users to rate each characteristic of the selected product (size, width, comfort, quality, etc.).
   </li>
   
   <li>
