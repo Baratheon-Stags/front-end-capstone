@@ -95,3 +95,86 @@ The Related Products and Your Outfit section each involves a horizontal scrollin
 ![outfit](https://user-images.githubusercontent.com/70232572/163691565-51cacfdd-bb6e-424c-99c6-9400e02774b1.gif)
 
 </ul>
+
+<h2>Reviews & Ratings</h2>
+<p>Contributor: Justin Tang</p>
+The Reviews & Ratings section consists of three main sections: metadata, reviews, and a review modal.
+<h3>1. Metadata</h3>
+<p>The Metadata section shows the average rating of every review for the selected product.</p>
+
+<h4>Main features include:</h4>
+<ul>
+      <li>Filtering options for the review list. Upon clicking on any of the rating options (e.g. 5 Star), the review list will update to show reviews of that selected rating.</li>
+  <li>The filter is also additive, so it is possible to apply multiple filters at once.</li>
+<li>Once any number of filters are applied, a "Remove All Filters" link appears and will return the review list to its original state upon being clicked.</li>
+    
+<br/>
+  
+![Rating Breakdown](https://user-images.githubusercontent.com/97769405/163753428-ddddb531-5554-4fe6-899b-57f9f68d0bab.gif)
+
+</ul>
+
+<h3>2. Review List</h3>
+<p>The Reviews section displays a list of reviews.</p>
+
+<h4>Main features include:</h4>
+<ul>
+  <li>
+    A sorting options dropdown menu. A user may sort the review list based on Relevance, Newest and Helpful.
+  </li>
+  
+  <li>
+    A link that marks a review as "Helpful". This increments the "Helpful" count by 1.
+  </li>
+  
+  <li>
+    A link that "Reports" a review. This will remove the review from the review list.
+  </li>
+  
+  <li>
+    A "More Reviews" button that loads two more reviews every single time it is clicked.
+  </li>
+  
+  <li>
+    An "Add A Review" button that opens up a review modal where users can leave their own review on the product.
+  </li>
+  
+  <br/>
+  
+![sort and load](https://user-images.githubusercontent.com/97769405/163753750-37643a1e-473d-4c05-bbc2-555fe4a1770b.gif)
+</ul>
+
+
+
+
+<h3>3. Review Modal</h3>
+<p>The Review Modal allows users to rate and review the selected product.</p>
+
+
+<ul>
+  <li>
+   A star rating system that allows users to rate a review from a score of 1 to 5. Hovering over a star will fill in every star up to the selected star. Clicking on a star will save its position.
+  </li>
+  
+  <li>
+   Fields that allow users to include a summary, review body, name, email address. If any required fields are not filled out, an error message will be sent indicating which fields are missing.
+  </li>
+  
+  <li>
+    Radio buttons that allow users to select whether their recommend the selected product.
+  </li>
+  
+  <li>
+    Radio buttons that allow users to rate characteristics of the selected product (size, width, comfort, quality, etc.).
+  </li>
+  
+  <li>
+    A discard button and a clickable backdrop that exits the modal and returns users to the product page.
+  </li>
+  <br/>
+
+![modal](https://user-images.githubusercontent.com/97769405/163753974-3f0c65bb-3ecf-451b-9226-04f58638e9dd.gif)
+  
+</ul>
+
+<br/><br/>
