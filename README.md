@@ -2,7 +2,7 @@
 <p>A React app built to simulate a modern eCommerce page.</p>
 <p>The page consists of three main widgets: the product overview, related and saved products, and ratings & reviews.</p>
 
-<h2>Overview</h2>
+<h2>Product Overview</h2>
 <p>Contributor: Kyle Nissley</p>
 The product overview section consists of three main sections: gallery, product details, and product description.
 <h3>1. Gallery</h3>
