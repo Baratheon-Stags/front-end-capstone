@@ -11,6 +11,11 @@
 <p>A front-end web application built to interact with modern e-commerce APIs.</p>
 <p>This application consists of three main widgets: product overview and styles, related and saved products, and ratings & reviews.</p>
 
+<h2>Lighthouse Performance Metrics</h2>
+
+![Screen Shot 2022-04-14 at 6 41 32 PM](https://user-images.githubusercontent.com/97769405/168492294-2cf2e721-1d71-4431-a4bd-4ada7e9b8f24.png)
+
+
 <h2>Product Overview</h2>
 <p>Contributor: Kyle Nissley</p>
 The product overview section consists of three main sections: gallery, product details, and product description.
