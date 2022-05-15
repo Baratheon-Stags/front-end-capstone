@@ -1,6 +1,15 @@
 # eCommerce Front-end Project
-<p>A React app built to simulate a modern eCommerce page.</p>
-<p>The page consists of three main widgets: the product overview, related and saved products, and ratings & reviews.</p>
+
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![Babel](https://img.shields.io/badge/Babel-F9DC3e?style=for-the-badge&logo=babel&logoColor=black)
+![Webpack](https://img.shields.io/badge/webpack-%238DD6F9.svg?style=for-the-badge&logo=webpack&logoColor=black)
+![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
+![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=for-the-badge&logo=eslint&logoColor=white)
+
+<p>A front-end web application built to interact with modern e-commerce APIs.</p>
+<p>This application consists of three main widgets: product overview and styles, related and saved products, and ratings & reviews.</p>
 
 <h2>Product Overview</h2>
 <p>Contributor: Kyle Nissley</p>
