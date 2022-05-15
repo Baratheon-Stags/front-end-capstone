@@ -17,7 +17,6 @@
 
 
 <h2>Product Overview</h2>
-<p>Contributor: Kyle Nissley</p>
 The product overview section consists of three main sections: gallery, product details, and product description.
 <h3>1. Gallery</h3>
 <p>The Gallery section handles displaying a product/style combination to the user.</p>
@@ -80,7 +79,6 @@ The product overview section consists of three main sections: gallery, product d
 <br/><br/>
 
 <h2>Related Products & Your Outfit</h2>
-<p>Contributor: Joe Van Camp</p>
 The Related Products and Your Outfit section each involves a horizontal scrolling carousel with 2 main points of functionality: Viewing and navigating to products related to the Overview item and adding the Overview product to a persistent outfit collection. 
 <h3>1. Related Products</h3>
 <p>The Related Products section displays all similar products relating to the currently viewed Overview item.</p>
@@ -111,7 +109,6 @@ The Related Products and Your Outfit section each involves a horizontal scrollin
 </ul>
 
 <h2>Reviews & Ratings</h2>
-<p>Contributor: Justin Tang</p>
 The Reviews & Ratings section consists of three main sections: metadata, reviews, and a review modal.
 <h3>1. Metadata</h3>
 <p>The Metadata section shows the average rating of every review for the selected product.</p>
@@ -190,5 +187,10 @@ The Reviews & Ratings section consists of three main sections: metadata, reviews
 ![modal](https://user-images.githubusercontent.com/97769405/163753974-3f0c65bb-3ecf-451b-9226-04f58638e9dd.gif)
   
 </ul>
+
+<h2>Contributors</h2>
+<li>Kyle Nissley</li>
+<li>Joe Van Camp</li>
+<li>Justin Tang</li>
 
 <br/><br/>
