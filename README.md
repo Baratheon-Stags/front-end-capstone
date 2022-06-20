@@ -117,7 +117,7 @@ The Reviews & Ratings section consists of three main sections: metadata, reviews
 <ul>
       <li>Filtering options for the review list. Upon clicking on any of the rating options (e.g. 5 Star), the review list will update to show reviews of that selected rating.</li>
   <li>The filter is also additive, so it is possible to apply multiple filters at once.</li>
-<li>Once any number of filters are applied, a "Remove All Filters" link appears and will return the review list to its original state upon being clicked.</li>
+<li>Once any number of filters are applied, a "Remove All Filters" link appears and will return the review list to its original state upon being clicked. Selecting every rating will also reset the filter.</li>
     
 <br/>
   
